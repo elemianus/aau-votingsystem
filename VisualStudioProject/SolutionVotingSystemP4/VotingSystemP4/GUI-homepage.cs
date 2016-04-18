@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace VotingSystemP4
 {
-    public partial class Form1 : Form
+    public partial class GUI_homepage : Form
     {
-        public Form1()
+        public GUI_homepage()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
