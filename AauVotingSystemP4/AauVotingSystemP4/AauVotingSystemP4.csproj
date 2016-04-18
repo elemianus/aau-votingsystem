@@ -55,12 +55,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Citizen_interface.xaml.cs">
+      <DependentUpon>Citizen_interface.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HeaderUserControl.xaml.cs">
       <DependentUpon>HeaderUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="NominationDistrict.cs" />
     <Compile Include="VotingBallot.cs" />
     <Compile Include="VotingOption.cs" />
+    <Page Include="Citizen_interface.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HeaderUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
