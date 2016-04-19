@@ -25,14 +25,11 @@ namespace AauVotingSystemP4
             InitializeComponent();
         }
 
-        private void SeePreviouslyElections_Click(object sender, RoutedEventArgs e)
+        private void SeePreviouslyElections_Click_1(object sender, RoutedEventArgs e)
         {
             //Når man trykker på "See Previously Elections" skal man herinde definere hvad der skal ske.
             //Dette her er en test på om det virker:
-            PreviouslyElections previouslyElections = new PreviouslyElections();
-            this.NavigationService.Navigate(expenseReportPage);
-
-            // TestPreviouslyElection.Text = "Ja, det virker!";
+            TestPreviouslyElection.Text = "Ja, det virker!";
         }
     }
 }

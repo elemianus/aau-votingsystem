@@ -16,17 +16,13 @@ using System.Windows.Shapes;
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for PreviouslyElections.xaml
+    /// Interaction logic for CitizenVote.xaml
     /// </summary>
-    public partial class PreviouslyElections : UserControl
+    public partial class CitizenVote : UserControl
     {
-        public PreviouslyElections()
+        public CitizenVote()
         {
             InitializeComponent();
-        }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Name = "Hey";
         }
     }
 }
