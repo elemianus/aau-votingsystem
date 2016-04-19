@@ -29,7 +29,10 @@ namespace AauVotingSystemP4
         {
             //Når man trykker på "See Previously Elections" skal man herinde definere hvad der skal ske.
             //Dette her er en test på om det virker:
-            TestPreviouslyElection.Text = "Ja, det virker!";
+            PreviouslyElections previouslyElections = new PreviouslyElections();
+            this.NavigationService.Navigate(expenseReportPage);
+
+            // TestPreviouslyElection.Text = "Ja, det virker!";
         }
     }
 }
