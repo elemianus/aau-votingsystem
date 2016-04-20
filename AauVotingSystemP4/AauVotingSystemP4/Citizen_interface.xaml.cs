@@ -29,7 +29,16 @@ namespace AauVotingSystemP4
         {
             //Når man trykker på "See Previously Elections" skal man herinde definere hvad der skal ske.
             //Dette her er en test på om det virker:
-            TestPreviouslyElection.Text = "Ja, det virker!";
+            //TestPreviouslyElection.Text = "Ja, det virker!";
+            SeeElections se = new SeeElections();
+            se.Show();
+        }
+
+        private void SnydeKnap_Click(object sender, RoutedEventArgs e)
+        {
+            //Denne knap skal fjernes, men indtilvidere fører den bare til interfacet for Electionboardet
+            ElectionboardMainWindow emw = new ElectionboardMainWindow();
+            emw.Show();
         }
     }
 }

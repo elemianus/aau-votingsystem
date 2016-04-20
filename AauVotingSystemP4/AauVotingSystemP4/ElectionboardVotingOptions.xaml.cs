@@ -16,16 +16,13 @@ using System.Windows.Shapes;
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for PreviouslyElections.xaml
+    /// Interaction logic for ElectionboardVotingOptions.xaml
     /// </summary>
-    public partial class PreviouslyElections : UserControl
+    public partial class ElectionboardVotingOptions : UserControl
     {
-        public PreviouslyElections()
+        public ElectionboardVotingOptions()
         {
             InitializeComponent();
-        }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
         }
     }
 }

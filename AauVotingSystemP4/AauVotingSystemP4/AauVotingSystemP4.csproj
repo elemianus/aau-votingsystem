@@ -58,6 +58,18 @@
     <Compile Include="Citizen_interface.xaml.cs">
       <DependentUpon>Citizen_interface.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ElectionboardMainWindow.xaml.cs">
+      <DependentUpon>ElectionboardMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ElectionboardOptions.xaml.cs">
+      <DependentUpon>ElectionboardOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ElectionboardVotingBallot.xaml.cs">
+      <DependentUpon>ElectionboardVotingBallot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ElectionboardVotingOptions.xaml.cs">
+      <DependentUpon>ElectionboardVotingOptions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HeaderUserControl.xaml.cs">
       <DependentUpon>HeaderUserControl.xaml</DependentUpon>
     </Compile>
@@ -65,9 +77,28 @@
     <Compile Include="PreviouslyElections.xaml.cs">
       <DependentUpon>PreviouslyElections.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SeeElections.xaml.cs">
+      <DependentUpon>SeeElections.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VotingBallot.cs" />
     <Compile Include="VotingOption.cs" />
     <Page Include="Citizen_interface.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElectionboardMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElectionboardOptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElectionboardVotingBallot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElectionboardVotingOptions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,6 +122,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PreviouslyElections.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SeeElections.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

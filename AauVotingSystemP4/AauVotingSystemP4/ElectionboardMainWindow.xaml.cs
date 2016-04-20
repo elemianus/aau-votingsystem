@@ -10,22 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for PreviouslyElections.xaml
+    /// Interaction logic for ElectionboardMainWindow.xaml
     /// </summary>
-    public partial class PreviouslyElections : UserControl
+    public partial class ElectionboardMainWindow : Window
     {
-        public PreviouslyElections()
+        public ElectionboardMainWindow()
         {
             InitializeComponent();
-        }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
         }
     }
 }

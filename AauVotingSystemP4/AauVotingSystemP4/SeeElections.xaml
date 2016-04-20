@@ -1,13 +1,14 @@
-﻿<Window x:Class="AauVotingSystemP4.MainWindow"
+﻿<Window x:Class="AauVotingSystemP4.SeeElections"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AauVotingSystemP4"
         mc:Ignorable="d"
-        Title="Frontpage" Height="350" Width="525">
+        Title="SeeElections" Height="300" Width="520.354">
     <DockPanel Margin="0,0,0,0">
         <local:HeaderUserControl x:Name="HeaderUserControl" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2"/>
-        <local:Citizen_interface x:Name="Citizen_interface" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Margin="0,0,-59.414,0" Height="273.6"/>
+        <local:Citizen_interface x:Name="Citizen_interface" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="273.6"/>
+        <local:PreviouslyElections x:Name="PreviouslyElections" Grid.Row="0" UseLayoutRounding="False" Margin="90,-143.102,123.6,-128.298" Width="303.01"/>
     </DockPanel>
 </Window>
