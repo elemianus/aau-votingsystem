@@ -15,15 +15,14 @@ using System.Windows.Shapes;
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for ElectionboardVotingBallot.xaml
+    /// Interaction logic for DeleteVotingOption.xaml
     /// </summary>
-    public partial class ElectionboardVotingBallot : Window
+    public partial class DeleteVotingOption : Window
     {
-        public ElectionboardVotingBallot()
+        public DeleteVotingOption()
         {
             InitializeComponent();
         }
-
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
@@ -32,6 +31,12 @@ namespace AauVotingSystemP4
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteVotingOption dvo = new DeleteVotingOption();
+            dvo.Show();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
         {
 
         }

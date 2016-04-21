@@ -10,19 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for ElectionboardVotingOptions.xaml
+    /// Interaction logic for VotingConfirmation.xaml
     /// </summary>
-    public partial class ElectionboardVotingOptions : UserControl
+    public partial class VotingConfirmation : Window
     {
-        public ElectionboardVotingOptions()
+        public VotingConfirmation()
         {
             InitializeComponent();
+        }
+
+        private void Homepage_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow();
+            mw.Show();
         }
     }
 }

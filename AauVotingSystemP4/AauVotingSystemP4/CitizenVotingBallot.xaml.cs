@@ -15,25 +15,19 @@ using System.Windows.Shapes;
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for ElectionboardVotingBallot.xaml
+    /// Interaction logic for CitizenVotingBallot.xaml
     /// </summary>
-    public partial class ElectionboardVotingBallot : Window
+    public partial class CitizenVotingBallot : Window
     {
-        public ElectionboardVotingBallot()
+        public CitizenVotingBallot()
         {
             InitializeComponent();
         }
 
-
-        private void Add_Click(object sender, RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
-            AddVotingOption avo = new AddVotingOption();
-            avo.Show();
-        }
-
-        private void Delete_Click(object sender, RoutedEventArgs e)
-        {
-
+            CitizenAboutToVote catv = new CitizenAboutToVote();
+            catv.Show();
         }
     }
 }

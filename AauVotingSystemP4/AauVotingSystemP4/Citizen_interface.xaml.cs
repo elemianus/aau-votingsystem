@@ -40,5 +40,12 @@ namespace AauVotingSystemP4
             ElectionboardMainWindow emw = new ElectionboardMainWindow();
             emw.Show();
         }
+
+        private void VoteButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Denne knap fører til CitizenVotingBallot
+            CitizenVotingBallot cvb = new CitizenVotingBallot();
+            cvb.Show();
+        }
     }
 }

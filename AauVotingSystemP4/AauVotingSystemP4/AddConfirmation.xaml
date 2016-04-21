@@ -1,0 +1,23 @@
+﻿<Window x:Class="AauVotingSystemP4.AddConfirmation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AauVotingSystemP4"
+        mc:Ignorable="d"
+        Title="AddConfirmation" Height="300" Width="449.038">
+    <DockPanel Margin="0,0,-0.4,-83.6">
+        <local:HeaderUserControl x:Name="HeaderUserControl" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2"/>
+        <StackPanel Orientation="Vertical" Margin="0,0.4,0,74.6" Width="309">
+            <StackPanel Margin="-65,25.4,-84.2,20" Width="458" HorizontalAlignment="Center" Height="40">
+                <TextBlock HorizontalAlignment="Center" Margin="-17,0,-14.8,0" Width="439">
+                "Typed voting option" has been added to "selected candidate or party". <LineBreak/>
+                You can return to the homepage by clicking the button bellow.
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Height="35" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="Homepage" Content="Homepage" Height="27" Width="94" Click="Homepage_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
+</Window>

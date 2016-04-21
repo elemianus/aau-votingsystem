@@ -15,25 +15,25 @@ using System.Windows.Shapes;
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for ElectionboardVotingBallot.xaml
+    /// Interaction logic for ConfirmDeleteVotingOption.xaml
     /// </summary>
-    public partial class ElectionboardVotingBallot : Window
+    public partial class ConfirmDeleteVotingOption : Window
     {
-        public ElectionboardVotingBallot()
+        public ConfirmDeleteVotingOption()
         {
             InitializeComponent();
         }
 
-
-        private void Add_Click(object sender, RoutedEventArgs e)
+        private void No_Click(object sender, RoutedEventArgs e)
         {
-            AddVotingOption avo = new AddVotingOption();
-            avo.Show();
+            DeleteVotingOption dvo = new DeleteVotingOption();
+            dvo.Show();
         }
 
-        private void Delete_Click(object sender, RoutedEventArgs e)
+        private void Yes_Click(object sender, RoutedEventArgs e)
         {
-
+            ConfirmDeleteVotingOption cdvo = new ConfirmDeleteVotingOption();
+            cdvo.Show();
         }
     }
 }
