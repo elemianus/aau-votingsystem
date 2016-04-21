@@ -18,6 +18,8 @@ namespace AauVotingSystemP4
             this.Cpr = Cpr;
             this.CitZipcode = CitZipcode;
             this.Voteconducted = Voteconducted;
+            Console.WriteLine("Hello world");
+            Console.ReadLine();
         }
     }
 }
