@@ -38,7 +38,8 @@ namespace AauVotingSystemP4
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-
+            ConfirmDeleteVotingOption cdvo = new ConfirmDeleteVotingOption();
+            cdvo.Show();
         }
     }
 }

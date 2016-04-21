@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AddConfirmation" Height="300" Width="449.038">
     <DockPanel Margin="0,0,-0.4,-83.6">
-        <local:HeaderUserControl x:Name="HeaderUserControl" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2"/>
+        <local:HeaderElectionboard x:Name="HeaderElectionboard" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2"/>
         <StackPanel Orientation="Vertical" Margin="0,0.4,0,74.6" Width="309">
             <StackPanel Margin="-65,25.4,-84.2,20" Width="458" HorizontalAlignment="Center" Height="40">
                 <TextBlock HorizontalAlignment="Center" Margin="-17,0,-14.8,0" Width="439">

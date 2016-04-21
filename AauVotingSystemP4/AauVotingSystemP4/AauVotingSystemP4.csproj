@@ -91,6 +91,9 @@
     <Compile Include="ElectionboardVotingBallot.xaml.cs">
       <DependentUpon>ElectionboardVotingBallot.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HeaderElectionboard.xaml.cs">
+      <DependentUpon>HeaderElectionboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HeaderUserControl.xaml.cs">
       <DependentUpon>HeaderUserControl.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ElectionboardVotingBallot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HeaderElectionboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
