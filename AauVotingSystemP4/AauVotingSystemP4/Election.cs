@@ -25,10 +25,9 @@ namespace AauVotingSystemP4 {
             this.ElectionType = ElectionType;
             this.StartDate = StartDate;
             this.EndDate = EndDate;
-            this.Results = Results;
-
-            
+            this.Results = Results; 
         }
+
 
     }
 }

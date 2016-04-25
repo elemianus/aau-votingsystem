@@ -8,8 +8,10 @@ namespace AauVotingSystemP4
 { //we want this to vary depending on the nomination district. 
     class VotingOption : VotingBallot
     {
-        private string votepartyoption;
-        private string votepartymemberoption;
+        /// <param name="candidate">Name of the candidate</param>
+		/// <param name="vote">number of votes casted</param>
+        public string votepartyoption;
+        public string votepartymemberoption;
 
         public VotingOption(string votepartyoption, string votepartymemberoption)
         {

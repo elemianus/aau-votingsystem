@@ -8,19 +8,28 @@ namespace AauVotingSystemP4
 {
     public class NominationDistrict
     {
-        public string NomName
-        public int nomID, nomZipcodes;  //we want this to auto increment
-        public string Make { get; set; }
+        private static const int MAX_Zipcodes = 100;
+        private static bool
+     
+        //public int nomZipcodes { get; set; } //we want this to auto increment
+        //public string Make { get; set; }
 
-        public int NomID {  //when adding zipcodes navnet.add (zipcode)
+
+        /*
+    {  //when adding zipcodes navnet.add (zipcode)--- runes gamle: public int[] NomZipcodes; //when adding zipcodes navnet.add (zipcode)
             get { return nomID; }
-            set { if (value > 0) nomID = value; }
-    }
-        public int NomZipcodes{
+            set { if (value > 0) nomID = value; } 
+        }
+        public int NomZipcodes {
             get { return nomZipcodes; }
             set { if (value > 0) nomZipcodes = value; }
         }
-        public int zipcodesforall
+        public int Zipcodesforall
+        {
+            get { return nomID + nomZipcodes; }
+        }
+        
+    }
 }
 
 
