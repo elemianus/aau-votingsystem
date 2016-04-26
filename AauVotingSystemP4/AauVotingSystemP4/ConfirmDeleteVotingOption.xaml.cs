@@ -26,14 +26,14 @@ namespace AauVotingSystemP4
 
         private void No_Click(object sender, RoutedEventArgs e)
         {
-            DeleteVotingOption dvo = new DeleteVotingOption();
-            dvo.Show();
+            this.Close();
         }
 
         private void Yes_Click(object sender, RoutedEventArgs e)
         {
             ConfirmDeleteVotingOption cdvo = new ConfirmDeleteVotingOption();
             cdvo.Show();
+            this.Close();
         }
     }
 }

@@ -28,6 +28,7 @@ namespace AauVotingSystemP4
         {
             ElectionboardMainWindow emw = new ElectionboardMainWindow();
             emw.Show();
+            this.Close();
         }
     }
 }

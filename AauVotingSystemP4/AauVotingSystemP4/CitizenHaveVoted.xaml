@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AauVotingSystemP4"
         mc:Ignorable="d"
-        Title="CitizenHaveVoted" Height="300" Width="450">
+        Title="CitizenHaveVoted" Height="300" Width="450"
+        WindowState="Maximized">
     <DockPanel>
         <local:HeaderUserControl x:Name="HeaderUserControl" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="40"/>
         <StackPanel Orientation="Vertical" Margin="0,0.4,0,74.6" Width="309">

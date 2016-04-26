@@ -26,14 +26,14 @@ namespace AauVotingSystemP4
 
         private void No_Click(object sender, RoutedEventArgs e)
         {
-            AddVotingOption avo = new AddVotingOption();
-            avo.Show();
+            this.Close();
         }
 
         private void Yes_Click(object sender, RoutedEventArgs e)
         {
             AddConfirmation ac = new AddConfirmation();
             ac.Show();
+            this.Close();
         }
     }
 }

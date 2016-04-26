@@ -28,12 +28,12 @@ namespace AauVotingSystemP4
         {
             CitizenHaveVoted chv = new CitizenHaveVoted();
             chv.Show();
+            this.Close();
         }
 
         private void No_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mw = new MainWindow();
-            mw.Show();
+            this.Close();
         }
     }
 }

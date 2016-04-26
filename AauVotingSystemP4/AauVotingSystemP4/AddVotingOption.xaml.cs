@@ -28,18 +28,21 @@ namespace AauVotingSystemP4
         {
             AddVotingOption avo = new AddVotingOption();
             avo.Show();
+            this.Close();
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             DeleteVotingOption dvo = new DeleteVotingOption();
             dvo.Show();
+            this.Close();
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
             ConfirmAddVotingOption cavo = new ConfirmAddVotingOption();
             cavo.Show();
+            this.Close();
         }
     }
 }

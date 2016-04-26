@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AauVotingSystemP4"
         mc:Ignorable="d"
-        Title="Frontpage" Height="350" Width="525">
+        Title="Frontpage" Height="350" Width="525"
+        WindowState="Maximized">
     <DockPanel Margin="0,0,0,0">
         <local:HeaderUserControl x:Name="HeaderUserControl" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="40"/>
         <Frame x:Name="Main" Margin="0,0,0,0"/>

@@ -28,6 +28,7 @@ namespace AauVotingSystemP4
         {
             MainWindow mw = new MainWindow();
             mw.Show();
+            this.Close();
         }
     }
 }
