@@ -27,17 +27,6 @@ namespace AauVotingSystemP4
             //Main.Content = new Citizen_Homepage();
             Citizen_Homepage c_h = new Citizen_Homepage();
             Main.NavigationService.Navigate(c_h);
-            this.Close();
-        }
-
-        private void VoteButton_Click(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new CitizenVotingBallot();
-        }
-
-        private void SeePreviouslyElections_Click(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new SeePreviouslyElections();
         }
     }
 }
