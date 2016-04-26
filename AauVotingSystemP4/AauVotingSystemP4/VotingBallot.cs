@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace AauVotingSystemP4
 {
     public class VotingBallot {
+
         private List<VotingOption> votingOptions = new List<VotingOption>();
         public bool IsBallotFinalized { get { return isBallotFinalized; } }
         private bool isBallotFinalized = false;
@@ -46,9 +47,9 @@ namespace AauVotingSystemP4
         /// <param name="option">VoteOption to be added</param>
         public void AddVotingOption(VotingOption option) {
             if(IsBallotFinalized)
-                votingOptions.Add(option);
+                votingOptions.Add(option);           
         }
-
+        
         /// <summary>
         /// Finalized the ballot so no more voting options can be added.
         /// </summary>
@@ -56,5 +57,5 @@ namespace AauVotingSystemP4
             isBallotFinalized = true;
         }
     }
-
+    
 }
