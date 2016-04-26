@@ -1,13 +1,14 @@
-﻿<Window x:Class="AauVotingSystemP4.CitizenVotingBallot"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AauVotingSystemP4"
-        mc:Ignorable="d"
-        Title="CitizenVotingBallot" Height="339.423" Width="300">
-    <DockPanel Margin="0,0,0,0">
-        <local:HeaderUserControl x:Name="HeaderUserControl" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2"/>
+﻿<Page x:Class="AauVotingSystemP4.CitizenVotingBallot"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AauVotingSystemP4"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="CitizenVotingBallot">
+
+    <Grid>
         <StackPanel Margin="0,25.4,0,0.4" Width="234" HorizontalAlignment="Center">
             <RadioButton GroupName="CitizenVotingOption" Content="Venstre"/>
             <RadioButton GroupName="CitizenVotingOption" Content="Candidate 1" Margin="23,0,-0.4,0"/>
@@ -15,14 +16,15 @@
             <RadioButton GroupName="CitizenVotingOption" Content="Candidate 3" Margin="23,0,-0.4,0"/>
             <RadioButton GroupName="CitizenVotingOption" Content="Candidate 4" Margin="23,0,-0.4,0"/>
             <RadioButton GroupName="CitizenVotingOption" Content="Candidate 5" Margin="23,0,-0.4,0" Height="25"/>
-            
+
             <RadioButton GroupName="CitizenVotingOption" Content="Socialdemokraterne" Margin="0,0,-0.4,0" Height="18"/>
             <RadioButton GroupName="CitizenVotingOption" Content="Candidate 1" Margin="23,0,-0.4,0"/>
             <RadioButton GroupName="CitizenVotingOption" Content="Candidate 2" Margin="23,0,-0.4,0"/>
             <RadioButton GroupName="CitizenVotingOption" Content="Candidate 3" Margin="23,0,-0.4,0"/>
             <RadioButton GroupName="CitizenVotingOption" Content="Candidate 4" Margin="23,0,-0.4,0"/>
             <RadioButton GroupName="CitizenVotingOption" Content="Candidate 5" Margin="23,0,-0.4,0"/>
-            <Button x:Name="button" Content="Okay" Margin="144,0,-0.4,0" Click="button_Click"/>
-        </StackPanel>
-    </DockPanel>
-</Window>
+        <Button x:Name="button" Content="Okay" Margin="144,0,-0.4,0" Click="button_Click"/>
+    </StackPanel>
+    <Frame Name="Main"/>
+    </Grid>
+</Page>

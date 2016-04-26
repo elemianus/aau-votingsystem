@@ -33,7 +33,8 @@ namespace AauVotingSystemP4
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-
+            DeleteVotingOption dvo = new DeleteVotingOption();
+            dvo.Show();
         }
     }
 }

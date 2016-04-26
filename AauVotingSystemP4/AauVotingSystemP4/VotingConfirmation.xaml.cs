@@ -24,7 +24,13 @@ namespace AauVotingSystemP4
             InitializeComponent();
         }
 
-        private void Homepage_Click(object sender, RoutedEventArgs e)
+        private void Yes_Click(object sender, RoutedEventArgs e)
+        {
+            CitizenHaveVoted chv = new CitizenHaveVoted();
+            chv.Show();
+        }
+
+        private void No_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mw = new MainWindow();
             mw.Show();

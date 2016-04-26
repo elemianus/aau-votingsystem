@@ -22,6 +22,7 @@ namespace AauVotingSystemP4
         public ElectionboardMainWindow()
         {
             InitializeComponent();
+            Main.Content = new Electionboard_Homepage();
         }
     }
 }

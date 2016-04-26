@@ -10,30 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for CitizenAboutToVote.xaml
+    /// Interaction logic for SeePreviouslyElections.xaml
     /// </summary>
-    public partial class CitizenAboutToVote : Window
+    public partial class SeePreviouslyElections : Page
     {
-        public CitizenAboutToVote()
+        public SeePreviouslyElections()
         {
             InitializeComponent();
         }
 
-        private void No_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CitizenVotingBallot cvb = new CitizenVotingBallot();
-            cvb.Show();
-        }
 
-        private void Yes_Click(object sender, RoutedEventArgs e)
-        {
-            VotingConfirmation vc = new VotingConfirmation();
-            vc.Show();
         }
     }
 }

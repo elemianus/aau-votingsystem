@@ -8,6 +8,6 @@
         Title="ElectionboardMainWindow" Height="300" Width="300">
     <DockPanel Margin="0,0,0,0">
         <local:HeaderElectionboard x:Name="HeaderElectionboard" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2"/>
-        <local:ElectionboardOptions x:Name="ElectionboardOptions" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Margin="-131.417,0,-112.832,0" Height="120.945"/>
+        <Frame Name="Main"/>
     </DockPanel>
 </Window>

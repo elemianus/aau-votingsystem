@@ -16,22 +16,13 @@ using System.Windows.Shapes;
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Citizen_Homepage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Citizen_Homepage : Page
     {
-        public MainWindow()
+        public Citizen_Homepage()
         {
             InitializeComponent();
-
-            //Main.Content = new Citizen_Homepage();
-            Citizen_Homepage c_h = new Citizen_Homepage();
-            Main.NavigationService.Navigate(c_h);
-        }
-
-        private void VoteButton_Click(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new CitizenVotingBallot();
         }
 
         private void SeePreviouslyElections_Click(object sender, RoutedEventArgs e)
@@ -39,9 +30,15 @@ namespace AauVotingSystemP4
             Main.Content = new SeePreviouslyElections();
         }
 
+        private void VoteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new CitizenVotingBallot();
+        }
+
         private void SnydeKnap_Click(object sender, RoutedEventArgs e)
         {
-
+            ElectionboardMainWindow emw = new ElectionboardMainWindow();
+            emw.Show();
         }
     }
 }

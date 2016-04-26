@@ -61,14 +61,14 @@
     <Compile Include="AddVotingOption.xaml.cs">
       <DependentUpon>AddVotingOption.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CitizenAboutToVote.xaml.cs">
-      <DependentUpon>CitizenAboutToVote.xaml</DependentUpon>
+    <Compile Include="CitizenHaveVoted.xaml.cs">
+      <DependentUpon>CitizenHaveVoted.xaml</DependentUpon>
     </Compile>
     <Compile Include="CitizenVotingBallot.xaml.cs">
       <DependentUpon>CitizenVotingBallot.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Citizen_interface.xaml.cs">
-      <DependentUpon>Citizen_interface.xaml</DependentUpon>
+    <Compile Include="Citizen_Homepage.xaml.cs">
+      <DependentUpon>Citizen_Homepage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ConfirmAddVotingOption.xaml.cs">
       <DependentUpon>ConfirmAddVotingOption.xaml</DependentUpon>
@@ -85,11 +85,11 @@
     <Compile Include="ElectionboardMainWindow.xaml.cs">
       <DependentUpon>ElectionboardMainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ElectionboardOptions.xaml.cs">
-      <DependentUpon>ElectionboardOptions.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ElectionboardVotingBallot.xaml.cs">
       <DependentUpon>ElectionboardVotingBallot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Electionboard_Homepage.xaml.cs">
+      <DependentUpon>Electionboard_Homepage.xaml</DependentUpon>
     </Compile>
     <Compile Include="HeaderElectionboard.xaml.cs">
       <DependentUpon>HeaderElectionboard.xaml</DependentUpon>
@@ -98,11 +98,8 @@
       <DependentUpon>HeaderUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="NominationDistrict.cs" />
-    <Compile Include="PreviouslyElections.xaml.cs">
-      <DependentUpon>PreviouslyElections.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SeeElections.xaml.cs">
-      <DependentUpon>SeeElections.xaml</DependentUpon>
+    <Compile Include="SeePreviouslyElections.xaml.cs">
+      <DependentUpon>SeePreviouslyElections.xaml</DependentUpon>
     </Compile>
     <Compile Include="VotingBallot.cs" />
     <Compile Include="VotingConfirmation.xaml.cs">
@@ -117,7 +114,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CitizenAboutToVote.xaml">
+    <Page Include="CitizenHaveVoted.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,7 +122,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Citizen_interface.xaml">
+    <Page Include="Citizen_Homepage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,11 +146,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ElectionboardOptions.xaml">
+    <Page Include="ElectionboardVotingBallot.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ElectionboardVotingBallot.xaml">
+    <Page Include="Electionboard_Homepage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,11 +177,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PreviouslyElections.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SeeElections.xaml">
+    <Page Include="SeePreviouslyElections.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

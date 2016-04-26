@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Frontpage" Height="350" Width="525">
     <DockPanel Margin="0,0,0,0">
-        <local:HeaderUserControl x:Name="HeaderUserControl" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2"/>
-        <local:Citizen_interface x:Name="Citizen_interface" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Margin="0,0,-59.414,0" Height="273.6"/>
+        <local:HeaderUserControl x:Name="HeaderUserControl" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="40"/>
+        <Frame x:Name="Main" Margin="0,0,0,0"/>
     </DockPanel>
 </Window>

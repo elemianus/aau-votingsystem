@@ -5,18 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AauVotingSystemP4"
         mc:Ignorable="d"
-        Title="VotingConfirmation" Height="300" Width="416.346">
-    <DockPanel Margin="0,0,-0.4,-83.6">
-        <local:HeaderUserControl x:Name="HeaderUserControl" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2"/>
-        <StackPanel Orientation="Vertical" Margin="0,0.4,0,74.6" Width="309">
-            <StackPanel Margin="-49,25.4,-49.2,20" Width="407" HorizontalAlignment="Center" Height="40">
-                <TextBlock HorizontalAlignment="Center" Margin="51,0,38.2,0" Width="318">
-                "Username" has voted for "selected candidate or party". <LineBreak/>
-                You can return to the homepage by clicking the button bellow.
+        Title="VotingConfirmation" Height="300" Width="391.394">
+    <DockPanel>
+        <local:HeaderUserControl x:Name="HeaderUserControl" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="40"/>
+        <StackPanel Orientation="Vertical" Margin="0,0.4,0,74.6">
+            <StackPanel Margin="0,25.4,0,20" Width="295" HorizontalAlignment="Center" Height="40">
+                <TextBlock HorizontalAlignment="Center">
+                "Username" will vote for "selected candidate or party". <LineBreak/>
+                Do you agree?
                 </TextBlock>
             </StackPanel>
-            <StackPanel Height="35" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="Homepage" Content="Homepage" Height="27" Width="94" Click="Homepage_Click"/>
+            <StackPanel Height="38" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="No" Content="No" Height="27" Width="94" Click="No_Click" Margin="0,0,20,0.8"/>
+                <Button x:Name="Yes" Content="Yes" Height="26" Width="87" Click="Yes_Click"  Margin="20,0,0,0"/>
             </StackPanel>
         </StackPanel>
     </DockPanel>

@@ -16,17 +16,18 @@ using System.Windows.Shapes;
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for ElectionboardOptions.xaml
+    /// Interaction logic for Electionboard_Homepage.xaml
     /// </summary>
-    public partial class ElectionboardOptions : UserControl
+    public partial class Electionboard_Homepage : Page
     {
-        public ElectionboardOptions()
+        public Electionboard_Homepage()
         {
             InitializeComponent();
+
         }
+
         private void ParliamentElection_Click(object sender, RoutedEventArgs e)
         {
-            //Her fører kanppen hen til ElectionsVotingBallot
             ElectionboardVotingBallot evb = new ElectionboardVotingBallot();
             evb.Show();
         }

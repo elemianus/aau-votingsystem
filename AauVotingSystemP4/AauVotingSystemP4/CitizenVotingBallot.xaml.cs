@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AauVotingSystemP4
@@ -17,7 +18,7 @@ namespace AauVotingSystemP4
     /// <summary>
     /// Interaction logic for CitizenVotingBallot.xaml
     /// </summary>
-    public partial class CitizenVotingBallot : Window
+    public partial class CitizenVotingBallot : Page
     {
         public CitizenVotingBallot()
         {
@@ -26,8 +27,8 @@ namespace AauVotingSystemP4
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            CitizenAboutToVote catv = new CitizenAboutToVote();
-            catv.Show();
+            VotingConfirmation vc = new VotingConfirmation();
+            vc.Show();
         }
     }
 }

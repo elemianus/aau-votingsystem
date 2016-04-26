@@ -10,22 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for PreviouslyElections.xaml
+    /// Interaction logic for CitizenHaveVoted.xaml
     /// </summary>
-    public partial class PreviouslyElections : UserControl
+    public partial class CitizenHaveVoted : Window
     {
-        public PreviouslyElections()
+        public CitizenHaveVoted()
         {
             InitializeComponent();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void Homepage_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow mw = new MainWindow();
+            mw.Show();
         }
     }
 }
