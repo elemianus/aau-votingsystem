@@ -6,34 +6,43 @@ using System.Threading.Tasks;
 
 namespace AauVotingSystemP4
 { //we want this to vary depending on the nomination district. 
-    class VotingOption : VotingBallot
+    public class VotingOption : NominationDistrict
     {
-        /// <param name="candidate">Name of the candidate</param>
-		/// <param name="vote">number of votes casted</param>
-        public string votepartyoption;
-        public string votepartymemberoption;
-
-        public VotingOption(string votepartyoption, string votepartymemberoption)
+        //der skal så vidt jeg kan se ikke være en votingBallot, en Votingoption er nok. 
+        //I have done it so that the voting ballot section here contains the voting options.
+        public string votecandidate;
+        public string voteparty;
+        public int vote;
+        
+        public VotingOption(string candidate, string party, int vote)
         {
-            //this. is a constructor that will allow us to call one constructor with a different signature from another within the same class
-            this.votepartyoption = votepartyoption;
-            this.votepartymemberoption = votepartymemberoption;
+            this.votecandidate = candidate;
+            this.voteparty = party;
+            this.vote = vote;
         }
-
-        public string Votepartyoption
+        public string Candidate //the following public strings, get and returns as access methods. This specific is a specific access method for candidate
         {
             get
             {
-                return votepartyoption;
+                return votecandidate;
             }
         }
 
-        public string Votepartymemberoption
+        public string Party //this is an access method for the party you vote for
         {
             get
             {
-                return votepartymemberoption;
+                return voteparty;
+            }
+        }
+        //change delete this
+        public int Votes //access method for the number of votes being cast.
+        {
+            get
+            {
+                return vote;
             }
         }
     }
 }
+

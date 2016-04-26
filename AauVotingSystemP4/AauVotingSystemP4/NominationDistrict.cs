@@ -8,9 +8,23 @@ namespace AauVotingSystemP4
 {
     public class NominationDistrict
     {
-        private static const int MAX_Zipcodes = 100;
-        private static bool
-     
+        public string nomname { get; set; }
+        private static int Zip_codes = 0; //What i have done here is to use a private static property and assigned it to the instance variable in the class.
+        public int NomID { get; set; }
+        public NominationDistrict() //refers to the public class nomination district
+        {
+            this.NomID = System.Threading.Interlocked.Increment(ref Zip_codes); //This specific interlocked.increment increments a specified variable and stores the result
+        }
+
+        public int Nom_ID
+        {
+            get
+            {
+                return NomID;
+            }
+        }
+    }
+}
         //public int nomZipcodes { get; set; } //we want this to auto increment
         //public string Make { get; set; }
 

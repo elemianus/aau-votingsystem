@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AauVotingSystemP4
 {
-    class ElectionBoard 
+    class ElectionBoard : NominationDistrict
     {
         public int EbID;
         public string NomName;
