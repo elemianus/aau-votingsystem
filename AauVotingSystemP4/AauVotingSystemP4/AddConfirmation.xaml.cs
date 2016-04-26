@@ -23,7 +23,7 @@ namespace AauVotingSystemP4
         {
             InitializeComponent();
         }
-
+        //Opens a new window (ElectionboardMainWindow also knowed as the homepage) and close itself
         private void Homepage_Click(object sender, RoutedEventArgs e)
         {
             ElectionboardMainWindow emw = new ElectionboardMainWindow();

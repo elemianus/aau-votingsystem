@@ -23,7 +23,7 @@ namespace AauVotingSystemP4
         {
             InitializeComponent();
         }
-
+        //If the user select the "No"-button they will get back to the VotingBallot, and instead of open a new window, we close this window, becasue the VotingBallot lay underneath
         private void No_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
