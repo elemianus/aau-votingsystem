@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace AauVotingSystemP4
 { //we want this to vary depending on the nomination district. 
-    public class VotingOption : NominationDistrict
+    public class VotingOption
     {
+        public bool IsNationalVotionOption = false;
+        public int VotingOptionId { get { return votingOptionId; } }
+        private int votingOptionId;
+
         //der skal så vidt jeg kan se ikke være en votingBallot, en Votingoption er nok. 
         //I have done it so that the voting ballot section here contains the voting options.
         public string votecandidate;
