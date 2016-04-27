@@ -5,10 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AauVotingSystemP4
-{ //we want this to vary depending on the nomination district. 
-    class VotingOption : VotingBallot 
+{ 
+    public class VotingOption
     {
-        public string votePartyoption;
-        public string votepartymemberoption;
+        public bool IsNationalVotionOption = false;
+        public int VotingOptionId { get { return votingOptionId; } }
+        private int votingOptionId;
+        public string CandidateNominationDistrict { get; set; }
+        public string NameOfVotingOption { get; set; }
+
+        public VotingOption ( bool IsNationalVotionOption, int votingOptionId, string CandidateNominationDistrict, string NameOfVotingOption)
+        {          
+            this.IsNationalVotionOption = IsNationalVotionOption;
+            this.votingOptionId = votingOptionId;
+            this.CandidateNominationDistrict = CandidateNominationDistrict;
+            this.NameOfVotingOption = NameOfVotingOption;
+        }
+       
     }
 }
+
