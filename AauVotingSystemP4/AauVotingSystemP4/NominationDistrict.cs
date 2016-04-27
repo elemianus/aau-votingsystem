@@ -8,7 +8,12 @@ namespace AauVotingSystemP4
 {
     public class NominationDistrict
     {
+        private ZipCode zipcode;
 
+        public NominationDistrict (ZipCode zipcode)
+        {
+            this.zipcode = zipcode;
+        }
         /// <summary>
         /// Private lists from containing the results from votes ensures that the contents of the lists cant be modified. That is what the private is for.
         /// </summary>
@@ -18,6 +23,16 @@ namespace AauVotingSystemP4
         {
             return votesinNomD;
         }
-        
+
+        public List<ZipCode> GetZipCodes()
+        {
+            return zipcode.GetZipCodes();
+        }
+        public bool AddZipCode(int ZipCodeID)
+        {
+            ZipCode identity = new ZipCode(ZipCodeID);
+            return zipcode.AddZipCode(identity);
+        }
+
     }
 }
