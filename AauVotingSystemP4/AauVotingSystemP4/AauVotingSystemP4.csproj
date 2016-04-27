@@ -63,6 +63,7 @@
     <Compile Include="Vote.cs" />
     <Compile Include="VotingBallot.cs" />
     <Compile Include="VotingOption.cs" />
+    <Compile Include="ZipCode.cs" />
     <Page Include="HeaderUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
