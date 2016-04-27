@@ -19,6 +19,12 @@ namespace AauVotingSystemP4
             return seeUserVotes;
         }
 
+        /// <summary>
+        /// These if and for statements checks if the user has voted by checking the votes from the Citizen class (here I mean voteconducted and Cpr).
+        /// </summary>
+        /// <param name="CPR">Cpr of the user who has voted</param>
+        /// <param name="VOTEconducted">Here it checks the boolean value for the conducted voted. True if they have voted</param>
+        /// <returns></returns>
         public bool CheckUserVotes(int CPR, bool VOTEconducted)
         {
             if (HasUserVoted)

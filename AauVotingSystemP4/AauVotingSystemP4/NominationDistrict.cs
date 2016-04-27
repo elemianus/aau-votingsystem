@@ -10,7 +10,7 @@ namespace AauVotingSystemP4
     {
 
         /// <summary>
-        /// Private lists co
+        /// Private lists from containing the results from votes ensures that the contents of the lists cant be modified. That is what the private is for.
         /// </summary>
         private List<Vote> votesinNomD = new List<Vote>();
 
