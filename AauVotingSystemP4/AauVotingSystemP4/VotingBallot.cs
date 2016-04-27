@@ -34,20 +34,24 @@ namespace AauVotingSystemP4
             if (IsBallotFinalized)
                 return false;
             for (int i = 0; i < votingOptions.Count(); i++) {
-                if (votingOptions[i].IsNationalVotionOption == isNationalVotionOption && votingOptions[i].VotingOptionId == votionOptionId)
+                if (votingOptions[i].IsNationalVotingOption == isNationalVotionOption && votingOptions[i].VotingOptionId == votionOptionId)
                     if (votingOptions.Remove(votingOptions[i]))
                         return true; //Vote option exists in this list and has been removed
             }
             return false; //VoteOption Did not exists in this list
         }
 
+
         /// <summary>
         /// Adds a voting option to the ballot if the ballot is not finalized. If the ballot is finalized, no option will be added
         /// </summary>
         /// <param name="option">VoteOption to be added</param>
-        public void AddVotingOption(VotingOption option) {
-            if(IsBallotFinalized)
-                votingOptions.Add(option);           
+        /// <returns>True if succesfully added, otherwise false</returns>
+        public bool AddVotingOption(VotingOption option) {
+            if (!IsBallotFinalized)
+                return false;
+            votingOptions.Add(option);
+            return true;
         }
         
         /// <summary>
