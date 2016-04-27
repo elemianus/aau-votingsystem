@@ -6,17 +6,14 @@ using System.Threading.Tasks;
 
 namespace AauVotingSystemP4
 {
-    class Citizen : NominationDistrict
+    public class Citizen
     {
         public int Cpr { get; set; }
-        public int CitZipcode { get; set; }
         public bool Voteconducted { get; set; } 
 
-        //behold this dope constructor. When making a Cititzen u can use 'Citizen cituser = new Election (Cpr, zipcode, voteconducted);' 
-        public Citizen (int Cpr, int CitZipcode, bool Voteconducted)
+        public Citizen (int Cpr, bool Voteconducted)
         {
             this.Cpr = Cpr;
-            this.CitZipcode = CitZipcode;
             this.Voteconducted = Voteconducted;
         }
     }

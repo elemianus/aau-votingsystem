@@ -38,7 +38,7 @@ namespace AauVotingSystemP4
                     if (votingOptions.Remove(votingOptions[i]))
                         return true; //Vote option exists in this list and has been removed
             }
-            return false; //VoteOption Did no exists in this list
+            return false; //VoteOption Did not exists in this list
         }
 
         /// <summary>
