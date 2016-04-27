@@ -40,12 +40,17 @@ namespace AauVotingSystemP4
             if (IsBallotFinalized)
                 return false;
             partyOption.Add(option);
-                return true;
+            return true;
         }
 
+        /// <summary>
+        /// Here we start the election. We include the start- and end date for the election, and we includes the NominationDestrict_ID, so we know which NominationDestrict there will be in the election
+        /// </summary>
         public class SetUpElection
         {
-            
+            public static DateTime StartOfElection = new DateTime(2016, 09, 01, 09, 00, 00);
+            public static DateTime EndOfElection = new DateTime(2016, 09, 12, 20, 00, 00);
+            public int NominationDestrict_ID { get; set;}
         }
     }
 }
