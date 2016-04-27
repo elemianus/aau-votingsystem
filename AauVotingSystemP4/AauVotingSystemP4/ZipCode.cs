@@ -11,7 +11,7 @@ namespace AauVotingSystemP4
     /// </summary>
     class ZipCode
     {
-        public int ZipCodeId { get; set; }
+        public int ZipCodeId { get; }
         private List<Citizen> citizensInThisZipCode = new List<Citizen>();
         public ZipCode(int ZipCode)
         {
@@ -27,18 +27,22 @@ namespace AauVotingSystemP4
         }
 
         /// <summary>
-        /// Add list of Citizens to this zip code
+        /// Add list of Citizens to this zip code ONLY if the zip codes are the same
         /// </summary>
         /// <param name="input">The citizens to add</param>
         public void AddListOfCitizensToZipCode(List<Citizen> input) {
-            citizensInThisZipCode.AddRange(input);
+            foreach(Citizen item in input) { 
+                if(item.Zipcode == ZipCodeId)
+                    citizensInThisZipCode.AddRange(input);
+            }
         }
 
         /// <summary>
-        /// Add a citizen to zipcode
+        /// Add a citizen to zipcode ONLY IF the zip codes are the same 
         /// </summary>
         /// <param name="input">The citizen to add</param>
         public void AddCitizenToZipCode(Citizen input) {
+            if(ZipCodeId == input.Zipcode)
             citizensInThisZipCode.Add(input);
         }
     }

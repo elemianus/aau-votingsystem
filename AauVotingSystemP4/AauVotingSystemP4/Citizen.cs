@@ -8,16 +8,16 @@ namespace AauVotingSystemP4
 {
     public class Citizen
     {
+        public int Cpr { get; }
+        public bool Voteconducted { get; }
+        private bool voteConducted = false;
+        public int Zipcode { get; }
 
-        public int Cpr { get { return cpr; } }
-        private int cpr;
-        public bool Voteconducted = false;
-
-        public Citizen(int cpr, bool Voteconducted)
+        public Citizen(int Cpr, int Zipcode,bool voteConducted=false)
         {
-
-            this.Voteconducted = Voteconducted;
-            this.cpr = cpr;
+            this.Zipcode = Zipcode;
+            this.voteConducted = voteConducted;
+            this.Cpr = Cpr;
         }
     }
 }
