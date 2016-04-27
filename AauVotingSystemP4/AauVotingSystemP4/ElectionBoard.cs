@@ -14,17 +14,25 @@ namespace AauVotingSystemP4
         public int AssociatedNominationDistrict { get; }
         public string NominationDistrictName { get { return nominationDistrictName; }}
         private string nominationDistrictName;
+        private VotingBallot ballot;
 
 
         /// <summary>
         /// When the electionboard is created it has no associated cip codes
         /// </summary>
         /// <param name="nominationDistrictName">The name of the discrict</param>
-        /// <param name="AssociatedNominationDistrict">The nomination district id surplied - this MUST be the same as in the database</param>
-        public ElectionBoard (string nominationDistrictName, int AssociatedNominationDistrict)
+        /// <param name="AssociatedNominationDistrictId">The nomination district id surplied - this MUST be the same as in the database</param>
+        /// 
+        public ElectionBoard (string nominationDistrictName, int AssociatedNominationDistrictId,VotingBallot ballot)
         {
             this.nominationDistrictName = nominationDistrictName;
-            this.AssociatedNominationDistrict = AssociatedNominationDistrict;
+            this.AssociatedNominationDistrict = AssociatedNominationDistrictId;
+            this.ballot = ballot;
+            
+        }
+
+        public void AddVotingOption(string firstName, string lastName, nominationD) {
+            VotingOption option = new VotingOption(false,0,)
         }
     }
 }

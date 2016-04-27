@@ -8,18 +8,11 @@ namespace AauVotingSystemP4
 { 
     public class VotingOption
     {
-        public bool IsNationalVotionOption = false;
-        public int VotingOptionId { get { return votingOptionId; } }
-        private int votingOptionId;
-        public string CandidateNominationDistrict { get; set; }
-        public string NameOfVotingOption { get; set; }
+        int candidateId,nominationDistrictId,partyId;
+        string FirstName, LastName;
 
-        public VotingOption ( bool IsNationalVotionOption, int votingOptionId, string CandidateNominationDistrict, string NameOfVotingOption)
-        {          
-            this.IsNationalVotionOption = IsNationalVotionOption;
-            this.votingOptionId = votingOptionId;
-            this.CandidateNominationDistrict = CandidateNominationDistrict;
-            this.NameOfVotingOption = NameOfVotingOption;
+        public VotingOption(string FirstName, string LastName, int nominationDistictId, int partyId, int candidateId = 0) {
+
         }
        
     }
