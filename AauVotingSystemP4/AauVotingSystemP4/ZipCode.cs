@@ -9,7 +9,7 @@ namespace AauVotingSystemP4
     /// <summary>
     /// Represents a zipcode and the people in that zip code
     /// </summary>
-    class ZipCode
+    public class ZipCode
     {
         public int ZipCodeId { get; }
         private List<Citizen> citizensInThisZipCode = new List<Citizen>();
