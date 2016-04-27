@@ -25,7 +25,7 @@ namespace AauVotingSystemP4
             int PartyId;
             string PartyName;
 
-            public AddParty(string FirstName, int partyId)
+            public AddParty(string PartyName, int PartyId)
             {
             }
 
