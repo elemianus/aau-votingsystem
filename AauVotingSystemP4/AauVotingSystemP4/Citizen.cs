@@ -8,12 +8,18 @@ namespace AauVotingSystemP4
 {
     public class Citizen
     {
-        public int Cpr { get; }
+        public string Cpr { get; }
         public bool Voteconducted { get; }
         private bool voteConducted = false;
         public int Zipcode { get; }
 
-        public Citizen(int Cpr, int Zipcode,bool voteConducted=false)
+        /// <summary>
+        /// Setup a citizen
+        /// </summary>
+        /// <param name="Cpr">CPR of the citizen</param>
+        /// <param name="Zipcode">The zipcode the citizen they live in</param>
+        /// <param name="voteConducted">(optional) Has the citizen voted</param>
+        public Citizen(string Cpr, int Zipcode,bool voteConducted=false)
         {
             this.Zipcode = Zipcode;
             this.voteConducted = voteConducted;

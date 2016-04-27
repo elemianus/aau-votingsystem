@@ -25,13 +25,13 @@ namespace AauVotingSystemP4
         /// <param name="CPR">Cpr of the user who has voted</param>
         /// <param name="VOTEconducted">Here it checks the boolean value for the conducted voted. True if they have voted</param>
         /// <returns></returns>
-        public bool CheckUserVotes(int CPR, bool VOTEconducted)
+        public bool CheckUserVotes(string CPR, bool VOTEconducted)
         {
             if (HasUserVoted)
                 return false;
             for (int i = 0; i < seeUserVotes.Count(); i++)
             {
-                if (seeUserVotes[i].Voteconducted == VOTEconducted && seeUserVotes[i].Cpr == CPR)
+                if (seeUserVotes[i].Voteconducted == VOTEconducted && seeUserVotes[i].Cpr.Equals(CPR))
 
                     return true; //The user has voted
             }

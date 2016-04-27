@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// This class will generate a list of random citizens
+    /// This class can generate a list of random citizens
     /// </summary>
     class CitizenGenerator
     {
@@ -28,16 +28,19 @@ namespace AauVotingSystemP4
             return citizens;
         }
 
+        /// <summary>
+        /// Generate citizen with a random birthday
+        /// </summary>
+        /// <returns>A Citizen</returns>
         public Citizen GenerateCitizen() {
             int day = random.Next(1, 30);
             int month = random.Next(1, 12);
-            int year = random.Next(1920, 2016);
+            int year = random.Next(1920, 1992);
             int lastDigit = random.Next(0000, 9999);
 
             string name = day + "" + month + "" + year + "" + lastDigit;
-
-            Citizen item = new Citizen(Int32.Parse(name), 9000);
-            return item;
+            
+            return new Citizen(name, 9000);
         }
     }
 }
