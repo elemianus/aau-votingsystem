@@ -26,10 +26,6 @@ namespace AauVotingSystemP4
             this.Cpr = Cpr;
         }
 
-
-        class CitizenModel
-        {
-
             private List<Citizen> seeUserVotes = new List<Citizen>();
             public bool HasUserVoted { get { return hasUserVoted; } }
             private bool hasUserVoted = false;
