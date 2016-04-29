@@ -8,6 +8,9 @@ namespace AauVotingSystemP4
 {
     public class NominationDistrict
     {
+        public int NumberOfMandates { get { return numberOfMandates; } }
+        private int numberOfMandates;
+
         private List<ZipCode> zipCodes = new List<ZipCode>(); 
 
         public NominationDistrict ()
@@ -33,14 +36,44 @@ namespace AauVotingSystemP4
             return zipCodes;
         }
 
+      
         /// <summary>
-        /// Add a zip code to the district
+        /// Adds a zip code by first checking if it's already there, if not it adds the zip code to the list
         /// </summary>
-        /// <param name="ZipCode">The zipcode to add</param>
-        public void AddZipCode(ZipCode ZipCode)
+        /// <param name="ZipCode"></param>
+        /// <param name="ZipCodeId"></param>
+        /// <returns>Returns true if the zip Code has been added</returns>
+        public bool AddZipCode(ZipCode ZipCode, int ZipCodeId)
         {
+            if (IsBallotFinalized)//what do we do with accessing this?
+                return false;
+            for (int i = 0; i < zipCodes.Count(); i++)
+            {
+                if (zipCodes[i].ZipCodeId == ZipCodeId)
+                        return false; //Zip Code exists in this list already
+
+            }
             zipCodes.Add(ZipCode);
+            return true;
         }
 
+        /// <summary>
+        /// Removes a Zip Code from the list, if found.
+        /// </summary>
+        /// <param name="ZipCode"></param>
+        /// <returns>Returns true if the Zip code exists and has been removed</returns>
+        public bool RemoveZipCode(int ZipCode)
+        {
+            if (IsBallotFinalized)//what do we do with accessing this?
+                return false;
+            for (int i = 0; i < zipCodes.Count(); i++)
+            {
+                if (zipCodes[i].ZipCodeId == ZipCode)
+                    if (zipCodes.Remove(zipCodes[i]))
+                        return true; //Zip Code exists in this list and has been removed
+            }
+            return false; //Zip Code Did not exists in this list
+        }
+       
     }
 }
