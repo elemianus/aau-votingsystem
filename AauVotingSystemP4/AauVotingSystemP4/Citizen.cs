@@ -26,6 +26,7 @@ namespace AauVotingSystemP4
             this.Cpr = Cpr;
         }
     }
+}
 
 
 
