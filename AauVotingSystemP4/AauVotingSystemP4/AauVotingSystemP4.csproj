@@ -55,18 +55,114 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddConfirmation.xaml.cs">
+      <DependentUpon>AddConfirmation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddVotingOption.xaml.cs">
+      <DependentUpon>AddVotingOption.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CitizenGenerator.cs" />
-    <Compile Include="CitizenModel.cs" />
+    <Compile Include="CitizenHaveVoted.xaml.cs">
+      <DependentUpon>CitizenHaveVoted.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CitizenVotingBallot.xaml.cs">
+      <DependentUpon>CitizenVotingBallot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Citizen_Homepage.xaml.cs">
+      <DependentUpon>Citizen_Homepage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmAddVotingOption.xaml.cs">
+      <DependentUpon>ConfirmAddVotingOption.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmDeleteVotingOption.xaml.cs">
+      <DependentUpon>ConfirmDeleteVotingOption.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteConfirmation.xaml.cs">
+      <DependentUpon>DeleteConfirmation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteVotingOption.xaml.cs">
+      <DependentUpon>DeleteVotingOption.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ElectionAdministrator.cs" />
+    <Compile Include="ElectionboardMainWindow.xaml.cs">
+      <DependentUpon>ElectionboardMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ElectionboardVotingBallot.xaml.cs">
+      <DependentUpon>ElectionboardVotingBallot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Electionboard_Homepage.xaml.cs">
+      <DependentUpon>Electionboard_Homepage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HeaderElectionboard.xaml.cs">
+      <DependentUpon>HeaderElectionboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HeaderUserControl.xaml.cs">
       <DependentUpon>HeaderUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="NominationDistrict.cs" />
     <Compile Include="ResultCalculator.cs" />
+    <Compile Include="SeePreviouslyElections.xaml.cs">
+      <DependentUpon>SeePreviouslyElections.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vote.cs" />
     <Compile Include="VotingBallot.cs" />
+    <Compile Include="VotingConfirmation.xaml.cs">
+      <DependentUpon>VotingConfirmation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VotingOption.cs" />
     <Compile Include="ZipCode.cs" />
+    <Page Include="AddConfirmation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddVotingOption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CitizenHaveVoted.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CitizenVotingBallot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Citizen_Homepage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConfirmAddVotingOption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConfirmDeleteVotingOption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeleteConfirmation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeleteVotingOption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElectionboardMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElectionboardVotingBallot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Electionboard_Homepage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HeaderElectionboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HeaderUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -86,6 +182,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SeePreviouslyElections.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VotingConfirmation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

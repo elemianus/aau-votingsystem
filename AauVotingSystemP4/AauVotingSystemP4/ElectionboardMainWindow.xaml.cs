@@ -10,23 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ElectionboardMainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ElectionboardMainWindow : Window
     {
-        public MainWindow()
+        //This decides what shold be in the frame which we have in the xaml. In this case it is the Electionboard_Homepage that is showed in the frame
+        public ElectionboardMainWindow()
         {
             InitializeComponent();
-
-            //Main.Content = new Citizen_Homepage();
-            Citizen_Homepage c_h = new Citizen_Homepage();
-            Main.NavigationService.Navigate(c_h);
+            Main.Content = new Electionboard_Homepage();
         }
     }
 }

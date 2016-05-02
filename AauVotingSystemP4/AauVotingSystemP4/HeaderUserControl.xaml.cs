@@ -34,10 +34,11 @@ namespace AauVotingSystemP4
             InitializeComponent();
             DataContext = this;
         }
-
+        //This is the "Back to frontpage"-function, when the user clicks it, they come back to the frontpage, which is the window called "MainWindow"
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("The calculations are complete", "My Application");
+            MainWindow mw = new MainWindow();
+            mw.Show();
         }
     }
 }

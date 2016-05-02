@@ -16,17 +16,19 @@ using System.Windows.Shapes;
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for HeaderElectionboard.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class HeaderElectionboard : UserControl
     {
-        public MainWindow()
+        public HeaderElectionboard()
         {
             InitializeComponent();
+        }
 
-            //Main.Content = new Citizen_Homepage();
-            Citizen_Homepage c_h = new Citizen_Homepage();
-            Main.NavigationService.Navigate(c_h);
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            ElectionboardMainWindow emw = new ElectionboardMainWindow();
+            emw.Show();
         }
     }
 }
