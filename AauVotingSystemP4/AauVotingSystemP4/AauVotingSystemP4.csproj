@@ -110,6 +110,7 @@
       <DependentUpon>VotingConfirmation.xaml</DependentUpon>
     </Compile>
     <Compile Include="VotingOption.cs" />
+    <Compile Include="ZipCode.cs" />
     <Page Include="AddConfirmation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
