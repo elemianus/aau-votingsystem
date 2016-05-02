@@ -8,64 +8,72 @@ namespace AauVotingSystemP4
 {
     public class NominationDistrict
     {
-        public string nomname { get; set; }
-        private static int Zip_codes = 0; //What i have done here is to use a private static property and assigned it to the instance variable in the class.
-        public int NomID { get; set; }
-        public NominationDistrict() //refers to the public class nomination district
+        public int NumberOfMandates { get { return numberOfMandates; } }
+        private int numberOfMandates;
+
+        private List<ZipCode> zipCodes = new List<ZipCode>();
+
+        public NominationDistrict()
         {
-            this.NomID = System.Threading.Interlocked.Increment(ref Zip_codes); //This specific interlocked.increment increments a specified variable and stores the result
+
+        }
+        /// <summary>
+        /// Private lists from containing the results from votes ensures that the contents of the lists cant be modified. That is what the private is for.
+        /// </summary>
+        private List<Vote> votesinNomD = new List<Vote>();
+
+        public List<Vote> GetVotesForNomD()
+        {
+            return votesinNomD;
         }
 
-        public int Nom_ID
+        /// <summary>
+        /// Get all zip codes in the district
+        /// </summary>
+        /// <returns>The zip codes in this district</returns>
+        public List<ZipCode> GetZipCodes()
         {
-            get
+            return zipCodes;
+        }
+
+
+        /// <summary>
+        /// Adds a zip code by first checking if it's already there, if not it adds the zip code to the list
+        /// </summary>
+        /// <param name="ZipCode"></param>
+        /// <param name="ZipCodeId"></param>
+        /// <returns>Returns true if the zip Code has been added</returns>
+        public bool AddZipCode(ZipCode ZipCode, int ZipCodeId)
+        {
+            if (IsBallotFinalized)//what do we do with accessing this?
+                return false;
+            for (int i = 0; i < zipCodes.Count(); i++)
             {
-                return NomID;
+                if (zipCodes[i].ZipCodeId == ZipCodeId)
+                    return false; //Zip Code exists in this list already
+
             }
+            zipCodes.Add(ZipCode);
+            return true;
         }
+
+        /// <summary>
+        /// Removes a Zip Code from the list, if found.
+        /// </summary>
+        /// <param name="ZipCode"></param>
+        /// <returns>Returns true if the Zip code exists and has been removed</returns>
+        public bool RemoveZipCode(int ZipCode)
+        {
+            if (IsBallotFinalized)//what do we do with accessing this?
+                return false;
+            for (int i = 0; i < zipCodes.Count(); i++)
+            {
+                if (zipCodes[i].ZipCodeId == ZipCode)
+                    if (zipCodes.Remove(zipCodes[i]))
+                        return true; //Zip Code exists in this list and has been removed
+            }
+            return false; //Zip Code Did not exists in this list
+        }
+
     }
 }
-        //public int nomZipcodes { get; set; } //we want this to auto increment
-        //public string Make { get; set; }
-
-
-        /*
-    {  //when adding zipcodes navnet.add (zipcode)--- runes gamle: public int[] NomZipcodes; //when adding zipcodes navnet.add (zipcode)
-            get { return nomID; }
-            set { if (value > 0) nomID = value; } 
-        }
-        public int NomZipcodes {
-            get { return nomZipcodes; }
-            set { if (value > 0) nomZipcodes = value; }
-        }
-        public int Zipcodesforall
-        {
-            get { return nomID + nomZipcodes; }
-        }
-        
-    }
-}
-
-
-        
-        
-        //This is where I tried to use the Icomparable method as a way to compare zipcodes with the NomID but it did not work
-
-        /*public NominationsDistrict(string NomName, int NomID, int NomZipcodes)
-        {
-            NomName = nomname; NomID = nomid; NomZipcodes = nomzipcodes;
-        }
-        public override string ToString()
-        {
-            return String.Format("{} {}", NomName, NomID, NomZipcodes);
-        }
-        public int CompareTo(object other)
-        {
-            NominationDistrict c = (NominationDistrict)other;
-            return (int)(this.NomZipcodes - c.NomZipcodes);
-        }
-        //we want something like a dictionary to compare zipcodes with nomID to decide which ballot the user should be able to vote from
-    }
-   
-}
-*/
