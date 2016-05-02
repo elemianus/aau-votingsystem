@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="AauVotingSystemP4.HeaderUserControl"
+﻿<UserControl x:Class="AauVotingSystemP4.HeaderElectionboard"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AauVotingSystemP4"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="300" Background="#FF61A4D6">
+            d:DesignHeight="50" d:DesignWidth="300" Background="#FF61A4D6">
     <Grid>
         <Button x:Name="button" Content="{Binding Path=LogoutText}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="button_Click"/>
         <Button x:Name="button1" Content="Log out" Margin="0,10,10,0" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75"/>

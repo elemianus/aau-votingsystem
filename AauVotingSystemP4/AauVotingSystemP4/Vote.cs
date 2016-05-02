@@ -8,24 +8,13 @@ namespace AauVotingSystemP4
 {
     public class Vote
     {
-        public int VotingOptionId { get; }
-        bool IsNationalVotingOption { get; }
-        /// <summary>
-        /// The nomination district that the vote has been cast in
-        /// </summary>
-        public int NominationDistrictId { get; }
+        public int VotingOptionId { get; set; }
+        public string CandidateNominationDistrict { get; set; }
 
-        /// <summary>
-        /// Creates new vote
-        /// </summary>
-        /// <param name="VotingOptionId">The VotingId</param>
-        /// <param name="NominationDistrictId">The nomination district that the vote has been cast in</param>
-        /// /// <param name="IsNationalVotingOption">Weather or not this is a vote for a national voting option</param>
-        public Vote(int VotingOptionId, bool IsNationalVotingOption, int NominationDistrictId )
+        public Vote(int VotingOptionId, string CandidateNominationDistrict)
         {
             this.VotingOptionId = VotingOptionId;
-            this.NominationDistrictId = NominationDistrictId;
-            this.IsNationalVotingOption = IsNationalVotingOption;
+            this.CandidateNominationDistrict = CandidateNominationDistrict;
         }
     }
 }
