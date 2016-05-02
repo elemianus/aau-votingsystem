@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+<<<<<<< HEAD
     <Compile Include="AddConfirmation.xaml.cs">
       <DependentUpon>AddConfirmation.xaml</DependentUpon>
     </Compile>
@@ -94,18 +95,29 @@
     <Compile Include="HeaderElectionboard.xaml.cs">
       <DependentUpon>HeaderElectionboard.xaml</DependentUpon>
     </Compile>
+=======
+    <Compile Include="CitizenGenerator.cs" />
+    <Compile Include="CitizenModel.cs" />
+    <Compile Include="ElectionAdministrator.cs" />
+>>>>>>> master
     <Compile Include="HeaderUserControl.xaml.cs">
       <DependentUpon>HeaderUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="NominationDistrict.cs" />
+<<<<<<< HEAD
     <Compile Include="SeePreviouslyElections.xaml.cs">
       <DependentUpon>SeePreviouslyElections.xaml</DependentUpon>
     </Compile>
+=======
+    <Compile Include="ResultCalculator.cs" />
+    <Compile Include="Vote.cs" />
+>>>>>>> master
     <Compile Include="VotingBallot.cs" />
     <Compile Include="VotingConfirmation.xaml.cs">
       <DependentUpon>VotingConfirmation.xaml</DependentUpon>
     </Compile>
     <Compile Include="VotingOption.cs" />
+<<<<<<< HEAD
     <Page Include="AddConfirmation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -158,6 +170,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+=======
+    <Compile Include="ZipCode.cs" />
+>>>>>>> master
     <Page Include="HeaderUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -10,6 +10,7 @@ namespace AauVotingSystemP4
     {
         public int NumberOfMandates { get { return numberOfMandates; } }
         private int numberOfMandates;
+<<<<<<< HEAD
 
         private List<ZipCode> zipCodes = new List<ZipCode>();
 
@@ -37,6 +38,35 @@ namespace AauVotingSystemP4
         }
 
 
+=======
+
+        private List<ZipCode> zipCodes = new List<ZipCode>(); 
+
+        public NominationDistrict ()
+        {
+
+        }
+        /// <summary>
+        /// Private lists from containing the results from votes ensures that the contents of the lists cant be modified. That is what the private is for.
+        /// </summary>
+        private List<Vote> votesinNomD = new List<Vote>();
+
+        public List<Vote> GetVotesForNomD()
+        {
+            return votesinNomD;
+        }
+
+        /// <summary>
+        /// Get all zip codes in the district
+        /// </summary>
+        /// <returns>The zip codes in this district</returns>
+        public List<ZipCode> GetZipCodes()
+        {
+            return zipCodes;
+        }
+
+      
+>>>>>>> master
         /// <summary>
         /// Adds a zip code by first checking if it's already there, if not it adds the zip code to the list
         /// </summary>
@@ -50,7 +80,11 @@ namespace AauVotingSystemP4
             for (int i = 0; i < zipCodes.Count(); i++)
             {
                 if (zipCodes[i].ZipCodeId == ZipCodeId)
+<<<<<<< HEAD
                     return false; //Zip Code exists in this list already
+=======
+                        return false; //Zip Code exists in this list already
+>>>>>>> master
 
             }
             zipCodes.Add(ZipCode);
@@ -74,6 +108,10 @@ namespace AauVotingSystemP4
             }
             return false; //Zip Code Did not exists in this list
         }
+<<<<<<< HEAD
 
+=======
+       
+>>>>>>> master
     }
 }

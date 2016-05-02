@@ -37,8 +37,12 @@ namespace AauVotingSystemP4
         {
             if (IsBallotFinalized)
                 return false;
+<<<<<<< HEAD
             for (int i = 0; i < votingOptions.Count(); i++)
             {
+=======
+            for (int i = 0; i < votingOptions.Count(); i++) {
+>>>>>>> master
                 if (votingOptions[i].IsNationalVotingOption == isNationalVotionOption && votingOptions[i].VotingOptionId == votionOptionId)
                     if (votingOptions.Remove(votingOptions[i]))
                         return true; //Vote option exists in this list and has been removed
@@ -52,8 +56,12 @@ namespace AauVotingSystemP4
         /// </summary>
         /// <param name="option">VoteOption to be added</param>
         /// <returns>True if succesfully added, otherwise false</returns>
+<<<<<<< HEAD
         public bool AddVotingOption(VotingOption option)
         {
+=======
+        public bool AddVotingOption(VotingOption option) {
+>>>>>>> master
             if (!IsBallotFinalized)
                 return false;
             votingOptions.Add(option);
