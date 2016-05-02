@@ -10,23 +10,30 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ConfirmDeleteVotingOption.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ConfirmDeleteVotingOption : Window
     {
-        public MainWindow()
+        public ConfirmDeleteVotingOption()
         {
             InitializeComponent();
+        }
 
-            //Main.Content = new Citizen_Homepage();
-            Citizen_Homepage c_h = new Citizen_Homepage();
-            Main.NavigationService.Navigate(c_h);
+        private void No_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Yes_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmDeleteVotingOption cdvo = new ConfirmDeleteVotingOption();
+            cdvo.Show();
+            this.Close();
         }
     }
 }

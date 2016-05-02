@@ -16,17 +16,13 @@ using System.Windows.Shapes;
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CitizenVote.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CitizenVote : UserControl
     {
-        public MainWindow()
+        public CitizenVote()
         {
             InitializeComponent();
-
-            //Main.Content = new Citizen_Homepage();
-            Citizen_Homepage c_h = new Citizen_Homepage();
-            Main.NavigationService.Navigate(c_h);
         }
     }
 }
