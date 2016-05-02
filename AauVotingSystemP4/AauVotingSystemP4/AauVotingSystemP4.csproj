@@ -58,23 +58,12 @@
     <Compile Include="CitizenGenerator.cs" />
     <Compile Include="CitizenModel.cs" />
     <Compile Include="ElectionAdministrator.cs" />
-    <Compile Include="HeaderUserControl.xaml.cs">
-      <DependentUpon>HeaderUserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="NominationDistrict.cs" />
     <Compile Include="ResultCalculator.cs" />
     <Compile Include="Vote.cs" />
     <Compile Include="VotingBallot.cs" />
     <Compile Include="VotingOption.cs" />
     <Compile Include="ZipCode.cs" />
-    <Page Include="HeaderUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -82,10 +71,6 @@
     <Compile Include="Citizen.cs" />
     <Compile Include="Election.cs" />
     <Compile Include="ElectionBoard.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
