@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AauVotingSystemP4
 {
+
     /// <summary>
     /// Represents a zipcode and the people in that zip code
     /// </summary>
@@ -44,6 +45,7 @@ namespace AauVotingSystemP4
         public void AddCitizenToZipCode(Citizen input) {
             if(ZipCodeId == input.Zipcode)
             citizensInThisZipCode.Add(input);
+
         }
     }
 }

@@ -16,17 +16,20 @@ using System.Windows.Shapes;
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Electionboard_Homepage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Electionboard_Homepage : Page
     {
-        public MainWindow()
+        public Electionboard_Homepage()
         {
             InitializeComponent();
 
-            //Main.Content = new Citizen_Homepage();
-            Citizen_Homepage c_h = new Citizen_Homepage();
-            Main.NavigationService.Navigate(c_h);
+        }
+
+        private void ParliamentElection_Click(object sender, RoutedEventArgs e)
+        {
+            ElectionboardVotingBallot evb = new ElectionboardVotingBallot();
+            evb.Show();
         }
     }
 }

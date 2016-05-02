@@ -10,23 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CitizenHaveVoted.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CitizenHaveVoted : Window
     {
-        public MainWindow()
+        public CitizenHaveVoted()
         {
             InitializeComponent();
+        }
 
-            //Main.Content = new Citizen_Homepage();
-            Citizen_Homepage c_h = new Citizen_Homepage();
-            Main.NavigationService.Navigate(c_h);
+        private void Homepage_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            this.Close();
         }
     }
 }

@@ -1,0 +1,25 @@
+﻿<Window x:Class="AauVotingSystemP4.ConfirmDeleteVotingOption"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AauVotingSystemP4"
+        mc:Ignorable="d"
+        Title="ConfirmDeleteVotingOption" Height="300" Width="605.769"
+        WindowState="Maximized">
+    <DockPanel Margin="0,0,-0.4,-83.6">
+        <local:HeaderElectionboard x:Name="HeaderElectionboard" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2"/>
+        <StackPanel Orientation="Vertical" Margin="0,0.4,0,74.6" Width="492">
+            <StackPanel Margin="-66,25.4,-64,20" Width="622" HorizontalAlignment="Center" Height="40">
+                <TextBlock HorizontalAlignment="Center" Margin="55,0,60.4,0" Width="507">
+                You will delete the voting option "selected voting option" to the party-list "selected party-list". <LineBreak/>
+                Do you agree?
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Height="38" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="No" Content="No" Height="27" Width="94" Click="No_Click" Margin="0,0,20,0.8"/>
+                <Button x:Name="Yes" Content="Yes" Height="26" Width="87" Click="Yes_Click"  Margin="20,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
+</Window>
