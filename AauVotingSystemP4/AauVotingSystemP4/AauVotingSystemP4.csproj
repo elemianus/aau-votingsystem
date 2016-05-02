@@ -61,6 +61,7 @@
     <Compile Include="AddVotingOption.xaml.cs">
       <DependentUpon>AddVotingOption.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CitizenGenerator.cs" />
     <Compile Include="CitizenHaveVoted.xaml.cs">
       <DependentUpon>CitizenHaveVoted.xaml</DependentUpon>
     </Compile>
@@ -82,6 +83,7 @@
     <Compile Include="DeleteVotingOption.xaml.cs">
       <DependentUpon>DeleteVotingOption.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ElectionAdministrator.cs" />
     <Compile Include="ElectionboardMainWindow.xaml.cs">
       <DependentUpon>ElectionboardMainWindow.xaml</DependentUpon>
     </Compile>
@@ -98,9 +100,11 @@
       <DependentUpon>HeaderUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="NominationDistrict.cs" />
+    <Compile Include="ResultCalculator.cs" />
     <Compile Include="SeePreviouslyElections.xaml.cs">
       <DependentUpon>SeePreviouslyElections.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vote.cs" />
     <Compile Include="VotingBallot.cs" />
     <Compile Include="VotingConfirmation.xaml.cs">
       <DependentUpon>VotingConfirmation.xaml</DependentUpon>

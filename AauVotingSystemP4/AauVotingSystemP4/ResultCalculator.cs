@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AauVotingSystemP4
 {
-    class Vote
+    class ResultCalculator
     {
     }
 }
