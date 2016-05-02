@@ -5,23 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AauVotingSystemP4
-{ 
+{
     public class VotingOption
     {
-        public bool IsNationalVotionOption = false;
-        public int VotingOptionId { get { return votingOptionId; } }
-        private int votingOptionId;
-        public string CandidateNominationDistrict { get; set; }
-        public string NameOfVotingOption { get; set; }
+        public bool IsNationalVotingOption = false;
+        public int VotingOptionId { get; }
+        public int NominationDistrictId { get; }
+        public int PartyId { get; }
+        public string FirstName { get; }
+        public string LastName { get; }
 
-        public VotingOption ( bool IsNationalVotionOption, int votingOptionId, string CandidateNominationDistrict, string NameOfVotingOption)
-        {          
-            this.IsNationalVotionOption = IsNationalVotionOption;
-            this.votingOptionId = votingOptionId;
-            this.CandidateNominationDistrict = CandidateNominationDistrict;
-            this.NameOfVotingOption = NameOfVotingOption;
+        /// <summary>
+        /// Constructor for the voting option
+        /// </summary>
+        /// <param name="FirstName">Firstname of the candidate</param>
+        /// <param name="LastName">Lastname of the candidate</param>
+        /// <param name="NominationDistrictId">The id of the district</param>
+        /// <param name="PartyId">(optional)The partyid</param>
+        /// <param name="VotingOptionId">(optional) the id of the VotionOption if it is known</param>
+        public VotingOption(string FirstName, string LastName, int NominationDistrictId, int PartyId = -1, int VotingOptionId = -1)
+        {
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.NominationDistrictId = NominationDistrictId;
+            this.PartyId = PartyId;
+            this.VotingOptionId = VotingOptionId;
         }
-       
+
     }
 }
 
