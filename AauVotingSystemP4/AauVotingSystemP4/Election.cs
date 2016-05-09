@@ -13,6 +13,7 @@ namespace AauVotingSystemP4
         public string ElectionName;
         public DateTime StartDate;
         public DateTime EndDate;
+
         public string ElectionType { get; set; }
         private VotingBallot nationalVotingBallot;
         private List<NominationDistrict> nominationDistrictsInElection;

@@ -11,18 +11,20 @@ namespace AauVotingSystemP4
         
         public int NumberOfMandates { get { return numberOfMandates; } }
         private int numberOfMandates;
-
-        private VotingBallot nomDBallot;
-        private List<ZipCode> zipCodes;
+        public int NominationDistrictId {get;}
+        public string Name { get; }
+        private List<ZipCode> zipCodes = new List<ZipCode>();
+		private VotingBallot nomDBallot;
         private Election associatedElection;
-
-        public NominationDistrict (Election associatedElection, VotingBallot nomDBallot, List<ZipCode> zipCodes, int numberOfMandates)
+        
+        public NominationDistrict (Election associatedElection,string name,int numberOfMandates, int nominationDistrictId=-1)
         {
             this.associatedElection = associatedElection;
-            this.nomDBallot = nomDBallot;
-            this.zipCodes = zipCodes;
+            this.Name = name;
             this.numberOfMandates = numberOfMandates;
-        }
+            if(nominationDistrictId!=-1)
+            this.NominationDistrictId = nominationDistrictId;
+		}
 
 
         /// <summary>
@@ -54,6 +56,11 @@ namespace AauVotingSystemP4
         public List<ZipCode> GetZipCodes()
         {
             return zipCodes;
+        }
+
+        public void AddRangeOfZipCodes(List<ZipCode> codes)
+        {
+            zipCodes.AddRange(codes);
         }
 
         
