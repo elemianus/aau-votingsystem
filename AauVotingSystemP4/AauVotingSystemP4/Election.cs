@@ -10,6 +10,7 @@ namespace AauVotingSystemP4
     public class Election
     {
         private int Election_ID { get; set; }
+        public string ElectionName;
         public DateTime StartDate;
         public DateTime EndDate;
         public string ElectionType { get; set; }
@@ -18,9 +19,10 @@ namespace AauVotingSystemP4
         public bool IsBallotFinalized { get { return isBallotFinalized; } }
         private bool isBallotFinalized = false;
 
-        public Election(int Election_ID, DateTime StartDate, DateTime EndDate, string ElectionType, VotingBallot nationalVotingBallot, List<NominationDistrict> nominationDistrictsInElection)
+        public Election(int Election_ID, string ElectionName, DateTime StartDate, DateTime EndDate, string ElectionType, VotingBallot nationalVotingBallot, List<NominationDistrict> nominationDistrictsInElection)
         {
             this.Election_ID = Election_ID;
+            this.ElectionName = ElectionName;
             this.StartDate = StartDate;
             this.EndDate = EndDate;
             this.ElectionType = ElectionType;
@@ -58,6 +60,11 @@ namespace AauVotingSystemP4
             this.ElectionType = ElectionType;
             this.nationalVotingBallot = nationalVotingBallot;
             this.nominationDistrictsInElection = nominationDistrictsInElection;
+        }
+
+        public void UpdateVotingBallot(VotingBallot newVotingBallot)
+        {
+            nationalVotingBallot = newVotingBallot;
         }
     }
 }

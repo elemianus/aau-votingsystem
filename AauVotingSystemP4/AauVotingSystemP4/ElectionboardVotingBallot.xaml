@@ -8,7 +8,7 @@
         Title="ElectionboardVotingBallot" Height="349.039" Width="300"
         WindowState="Maximized">
     <DockPanel Margin="0,0,0,0">
-        <local:HeaderElectionboard x:Name="HeaderElectionboard" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2"/>
+        <local:HeaderElectionboard x:Name="HeaderElectionboard" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2" Loaded="HeaderElectionboard_Loaded"/>
         <StackPanel Orientation="Vertical" Margin="0,0.4,0,-44.4">
             <StackPanel Height="51" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="Add" Content="Add voting option" Height="27" Width="107" Click="Add_Click" Margin="0,5,20,6.4"/>

@@ -38,5 +38,10 @@ namespace AauVotingSystemP4
             dvo.Show();
             this.Close();
         }
+
+        private void HeaderElectionboard_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
