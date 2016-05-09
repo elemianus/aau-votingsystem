@@ -32,12 +32,11 @@ namespace AauVotingSystemP4
             DatabaseConnector conector = new DatabaseConnector();
             VotingOption option = new VotingOption("Øl partiet", "", 2, 2);
             option.IsNationalVotingOption = true;
-            Election election = new Election();
+            Election election = new Election(3,"Something",new DateTime(),new DateTime(),"Something");
             election.Election_ID = 3;
 
             NominationDistrict districts = new NominationDistrict(election, "Aalbrog centrum", 2);
-            conector.AddCitizen(new Citizen("1212901234", 3700));
-            conector.GetAllCitizens();
+            conector.GetVotingOptionForNominationDistrict(1, 3);
         }
     }
 }

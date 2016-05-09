@@ -30,7 +30,16 @@ namespace AauVotingSystemP4
             this.PartyId = PartyId;
             this.VotingOptionId = VotingOptionId;
         }
-        
+        public override string ToString()
+        {
+            string returnSting = "";
+            if (IsNationalVotingOption)
+                returnSting += "National option: ";
+            returnSting += FirstName + " " + LastName + " ";
+            return returnSting;
+        }
+
+
     }
 }
 

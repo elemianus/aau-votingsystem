@@ -40,7 +40,7 @@ namespace AauVotingSystemP4
         }
 
         //This function is only here to provide an example of how to run a query.
-        public static void RunQuery(string query)
+        private static void RunQuery(string query)
         {
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = query;
@@ -54,6 +54,15 @@ namespace AauVotingSystemP4
             }
         }
 
+        public void RegisterVote(string cpr, int electionId)
+        {
+
+        }
+
+        /// <summary>
+        /// Adds a citizen to the list
+        /// </summary>
+        /// <param name="citizenToAdd">The citizen to add</param>
         public void AddCitizen(Citizen citizenToAdd)
         {
             MySqlCommand cmd = new MySqlCommand();
@@ -180,6 +189,31 @@ namespace AauVotingSystemP4
 
             cmd.ExecuteReader();
             cmd.Connection.Close();
+        }
+
+        /// <summary>
+        /// Gets the candidates for a specific nomination district NOT including the national options
+        /// </summary>
+        /// <param name="nominationDistrictId">Id of the nomination district</param>
+        /// <param name="electionId">The election id</param>
+        /// <returns>List of voting options</returns>
+        public List<VotingOption> GetVotingOptionForNominationDistrict(int nominationDistrictId,int electionId)
+        {
+            List<VotingOption> options = new List<VotingOption>();
+
+            //Gets candidates
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = "SELECT * FROM candidates WHERE Election_ID = " + electionId + " AND NominationDistrict_ID="+nominationDistrictId+";";
+            cmd.Connection = GetDefaultConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                options.Add(new VotingOption((string)reader[1], (string)reader[2], (int)reader[3], (int)reader[4], (int)reader[0]));
+            }
+            
+            cmd.Connection.Close();
+
+            return options;
         }
 
         /// <summary>
