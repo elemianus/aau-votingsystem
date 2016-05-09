@@ -14,9 +14,9 @@ namespace AauVotingSystemP4
         public int NominationDistrictId {get;}
         public string Name { get; }
         private List<ZipCode> zipCodes = new List<ZipCode>();
+		private VotingBallot nomDBallot;
         private Election associatedElection;
         
-
         public NominationDistrict (Election associatedElection,string name,int numberOfMandates, int nominationDistrictId=-1)
         {
             this.associatedElection = associatedElection;
@@ -24,6 +24,20 @@ namespace AauVotingSystemP4
             this.numberOfMandates = numberOfMandates;
             if(nominationDistrictId!=-1)
             this.NominationDistrictId = nominationDistrictId;
+		}
+
+
+        /// <summary>
+        /// Adds a voting option to the nomdBallot.
+        /// </summary>
+        /// <param name="option"></param>
+        /// <returns>returns true if added</returns>
+        public bool AddPartyOptionToNomD(VotingOption option)
+        {
+            if (associatedElection.IsBallotFinalized)
+                return false;
+            nomDBallot.AddVotingOption(option);
+            return true;
         }
         /// <summary>
         /// Private lists from containing the results from votes ensures that the contents of the lists cant be modified. That is what the private is for.

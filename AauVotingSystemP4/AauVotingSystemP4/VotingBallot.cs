@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace AauVotingSystemP4
 {
-    public class VotingBallot {
+    public class VotingBallot
+    {
 
-        private List<VotingOption> votingOptions = new List<VotingOption>();
+        private List<VotingOption> votingOptions;
 
 
         /// <summary>

@@ -9,13 +9,18 @@ namespace AauVotingSystemP4
     public class ElectionAdministrator
     {
 
+
+        public Election CreateElection(int Election_ID, DateTime StartDate, DateTime EndDate, string ElectionType, VotingBallot nationalVotingBallot, List<NominationDistrict> nominationDistrictsInElection)
+        {
+            Election myElection = new Election(Election_ID, StartDate, EndDate, ElectionType, nationalVotingBallot, nominationDistrictsInElection);
+            return myElection;
+        }
+
+       
+
     }
     /// <summary>
     /// Here we create the election and for the election we specifically need the election_id and the election type
     /// </summary>
-    public class CreateElection
-    {
-        private int Election_ID { get; set; }
-        public string ElectionType { get; set; }
-    }
+    
 }
