@@ -11,13 +11,19 @@ namespace AauVotingSystemP4
         
         public int NumberOfMandates { get { return numberOfMandates; } }
         private int numberOfMandates;
-
+        public int NominationDistrictId {get;}
+        public string Name { get; }
         private List<ZipCode> zipCodes = new List<ZipCode>();
         private Election associatedElection;
+        
 
-        public NominationDistrict (Election associatedElection)
+        public NominationDistrict (Election associatedElection,string name,int numberOfMandates, int nominationDistrictId=-1)
         {
             this.associatedElection = associatedElection;
+            this.Name = name;
+            this.numberOfMandates = numberOfMandates;
+            if(nominationDistrictId!=-1)
+            this.NominationDistrictId = nominationDistrictId;
         }
         /// <summary>
         /// Private lists from containing the results from votes ensures that the contents of the lists cant be modified. That is what the private is for.
@@ -36,6 +42,11 @@ namespace AauVotingSystemP4
         public List<ZipCode> GetZipCodes()
         {
             return zipCodes;
+        }
+
+        public void AddRangeOfZipCodes(List<ZipCode> codes)
+        {
+            zipCodes.AddRange(codes);
         }
 
         

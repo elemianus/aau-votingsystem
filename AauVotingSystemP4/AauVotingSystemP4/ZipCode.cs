@@ -12,10 +12,12 @@ namespace AauVotingSystemP4
     public class ZipCode
     {
         public int ZipCodeId { get; }
+        public string Name { get; }
         private List<Citizen> citizensInThisZipCode = new List<Citizen>();
-        public ZipCode(int ZipCode)
+        public ZipCode(int ZipCode,string name)
         {
             ZipCodeId = ZipCode;
+            this.Name = name;
         }
 
         /// <summary>

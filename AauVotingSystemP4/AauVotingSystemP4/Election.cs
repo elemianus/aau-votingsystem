@@ -9,7 +9,7 @@ namespace AauVotingSystemP4
 
     public class Election
     {
-        private int Election_ID { get; set; }
+        public int Election_ID { get; set; }
         public static DateTime StartDate = new DateTime(2016, 9, 12, 09, 00, 00);
         public static DateTime EndDate = new DateTime(2016, 9, 12, 20, 00, 00);
         public string ElectionType { get; set; }
