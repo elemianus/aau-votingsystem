@@ -31,7 +31,7 @@ namespace AauVotingSystemP4
             DatabaseConnector conector = new DatabaseConnector();
             VotingOption option = new VotingOption("Øl partiet", "", 2, 2);
             option.IsNationalVotingOption = true;
-            Election election = new Election();
+            Election election = new Election(3,"Something",new DateTime(),new DateTime(),"Something");
             election.Election_ID = 3;
 
             NominationDistrict districts = new NominationDistrict(election, "Aalbrog centrum", 2);
