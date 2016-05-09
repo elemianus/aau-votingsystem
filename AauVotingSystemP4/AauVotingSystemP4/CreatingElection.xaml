@@ -9,11 +9,12 @@
       Title="Page1">
 
     <Grid>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="76,52,0,0" TextWrapping="Wrap" Text="Start Date" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="76,80,0,0" TextWrapping="Wrap" Text="End Date" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox1_Copy" HorizontalAlignment="Left" Height="23" Margin="76,108,0,0" TextWrapping="Wrap" Text="Election Type" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox1_Copy1" HorizontalAlignment="Left" Height="23" Margin="76,24,0,0" TextWrapping="Wrap" Text="Election Name" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="96,192,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="election_Type" HorizontalAlignment="Left" Height="23" Margin="76,52,0,0" TextWrapping="Wrap" Text="Election Type" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="election_Name" HorizontalAlignment="Left" Height="23" Margin="76,24,0,0" TextWrapping="Wrap" Text="Election Name" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="CreateElection" Content="Create Election" HorizontalAlignment="Left" Margin="121,167,0,0" VerticalAlignment="Top" Width="75" Click="CreateElection_Click"/>
+        <DatePicker Name="start_Date" HorizontalAlignment="Left" Margin="94,80,0,0" VerticalAlignment="Top"/>
+        <DatePicker Name="end_Date" HorizontalAlignment="Left" Margin="94,109,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="test_box" HorizontalAlignment="Left" Height="23" Margin="94,244,0,0" TextWrapping="Wrap" Text="TestBox" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Page>

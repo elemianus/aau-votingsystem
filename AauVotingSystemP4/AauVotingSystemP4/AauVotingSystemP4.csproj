@@ -102,6 +102,9 @@
       <DependentUpon>HeaderUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="NominationDistrict.cs" />
+    <Compile Include="CreatingElection.xaml.cs">
+      <DependentUpon>CreatingElection.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ResultCalculator.cs" />
     <Compile Include="SeePreviouslyElections.xaml.cs">
       <DependentUpon>SeePreviouslyElections.xaml</DependentUpon>
@@ -184,6 +187,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="CreatingElection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SeePreviouslyElections.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

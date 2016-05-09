@@ -10,10 +10,10 @@ namespace AauVotingSystemP4
     {
 
 
-        public Election CreateElection(int Election_ID, string ElectionName, DateTime StartDate, DateTime EndDate, string ElectionType, VotingBallot nationalVotingBallot, List<NominationDistrict> nominationDistrictsInElection)
+        public void CreateElection(int Election_ID, string ElectionName, DateTime StartDate, DateTime EndDate, string ElectionType)
         {
-            Election myElection = new Election(Election_ID, ElectionName, StartDate, EndDate, ElectionType, nationalVotingBallot, nominationDistrictsInElection);
-            return myElection;
+            Election myElection = new Election(Election_ID, ElectionName, StartDate, EndDate, ElectionType);
+           
         }
 
        

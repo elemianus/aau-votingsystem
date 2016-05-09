@@ -24,5 +24,11 @@ namespace AauVotingSystemP4
         {
             InitializeComponent();
         }
+
+        private void CreateElection_Click(object sender, RoutedEventArgs e)
+        {
+            ElectionAdministrator myAdministrator = new ElectionAdministrator();
+            myAdministrator.CreateElection(3, Convert.ToString(election_Name), Convert.ToDateTime(start_Date), Convert.ToDateTime(end_Date), Convert.ToString(election_Type));
+        }
     }
 }

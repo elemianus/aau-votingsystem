@@ -23,6 +23,7 @@ namespace AauVotingSystemP4
         public MainWindow()
         {
             InitializeComponent();
+            
 
             //Main.Content = new Citizen_Homepage();
             Citizen_Homepage c_h = new Citizen_Homepage();
