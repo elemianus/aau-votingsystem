@@ -27,6 +27,8 @@ namespace AauVotingSystemP4
 
             public AddParty(string PartyName, int PartyId)
             {
+                this.PartyId = PartyId;
+                this.PartyName = PartyName;
             }
 
         }
