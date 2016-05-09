@@ -9,8 +9,7 @@ namespace AauVotingSystemP4
     public class VotingBallot {
 
         private List<VotingOption> votingOptions = new List<VotingOption>();
-        public bool IsBallotFinalized { get { return isBallotFinalized; } }
-        private bool isBallotFinalized = false;
+
 
         /// <summary>
         /// A ballot can only be inizialised with a voting option. A ballot cannot exist without a voting option
@@ -25,14 +24,12 @@ namespace AauVotingSystemP4
         }
 
         /// <summary>
-        /// Removes a specific voting option if the ballot is not finalized
+        /// Removes a specific voting option
         /// </summary>
         /// <param name="votionOptionId">Id of the option to remove</param>
         /// <param name="isNationalVotionOption">true if the option is a national level option</param>
         /// <returns>True if the VoteOption has been succesfully removed, otherwise false</returns>
         public bool RemoveVotionOption(int votionOptionId, bool isNationalVotionOption) {
-            if (IsBallotFinalized)
-                return false;
             for (int i = 0; i < votingOptions.Count(); i++) {
                 if (votingOptions[i].IsNationalVotingOption == isNationalVotionOption && votingOptions[i].VotingOptionId == votionOptionId)
                     if (votingOptions.Remove(votingOptions[i]))
@@ -43,22 +40,13 @@ namespace AauVotingSystemP4
 
 
         /// <summary>
-        /// Adds a voting option to the ballot if the ballot is not finalized. If the ballot is finalized, no option will be added
+        /// Adds a voting option to the ballot
         /// </summary>
         /// <param name="option">VoteOption to be added</param>
-        /// <returns>True if succesfully added, otherwise false</returns>
+        /// <returns>True if succesfully added</returns>
         public bool AddVotingOption(VotingOption option) {
-            if (!IsBallotFinalized)
-                return false;
             votingOptions.Add(option);
             return true;
-        }
-        
-        /// <summary>
-        /// Finalized the ballot so no more voting options can be added.
-        /// </summary>
-        public void FinalizeBallot() {
-            isBallotFinalized = true;
         }
     }
     

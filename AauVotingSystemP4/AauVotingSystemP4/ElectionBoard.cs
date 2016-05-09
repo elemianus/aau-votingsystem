@@ -33,13 +33,6 @@ namespace AauVotingSystemP4
         }
 
         /// <summary>
-        /// Finalizes the ballot so no more voting options can be added or removed
-        /// </summary>
-        public void FinalizeBallot() {
-            this.ballot.FinalizeBallot();
-        }
-
-        /// <summary>
         /// Get all voting options for ballot.
         /// </summary>
         /// <returns>Returns all the voting option in the ballot</returns>

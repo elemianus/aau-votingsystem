@@ -8,14 +8,16 @@ namespace AauVotingSystemP4
 {
     public class NominationDistrict
     {
+        
         public int NumberOfMandates { get { return numberOfMandates; } }
         private int numberOfMandates;
 
-        private List<ZipCode> zipCodes = new List<ZipCode>(); 
+        private List<ZipCode> zipCodes = new List<ZipCode>();
+        private Election associatedElection;
 
-        public NominationDistrict ()
+        public NominationDistrict (Election associatedElection)
         {
-
+            this.associatedElection = associatedElection;
         }
         /// <summary>
         /// Private lists from containing the results from votes ensures that the contents of the lists cant be modified. That is what the private is for.
@@ -36,7 +38,7 @@ namespace AauVotingSystemP4
             return zipCodes;
         }
 
-      
+        
         /// <summary>
         /// Adds a zip code by first checking if it's already there, if not it adds the zip code to the list
         /// </summary>
@@ -45,7 +47,7 @@ namespace AauVotingSystemP4
         /// <returns>Returns true if the zip Code has been added</returns>
         public bool AddZipCode(ZipCode ZipCode, int ZipCodeId)
         {
-            if (IsBallotFinalized)//what do we do with accessing this?
+            if (associatedElection.IsBallotFinalized)//what do we do with accessing this?
                 return false;
             for (int i = 0; i < zipCodes.Count(); i++)
             {
@@ -64,7 +66,7 @@ namespace AauVotingSystemP4
         /// <returns>Returns true if the Zip code exists and has been removed</returns>
         public bool RemoveZipCode(int ZipCode)
         {
-            if (IsBallotFinalized)//what do we do with accessing this?
+            if (associatedElection.IsBallotFinalized)//what do we do with accessing this?
                 return false;
             for (int i = 0; i < zipCodes.Count(); i++)
             {
