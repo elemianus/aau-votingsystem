@@ -38,9 +38,9 @@ namespace AauVotingSystemP4
             int year = random.Next(1920, 1992);
             int lastDigit = random.Next(0000, 9999);
 
-            string name = day + "" + month + "" + year + "" + lastDigit;
+            string cpr = day + "" + month + "" + year + "" + lastDigit;
             
-            return new Citizen(name, 9000);
+            return new Citizen(cpr, 9000);
         }
     }
 }
