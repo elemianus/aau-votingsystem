@@ -25,6 +25,10 @@ namespace AauVotingSystemP4
             this.voteConducted = voteConducted;
             this.Cpr = Cpr;
         }
+
+        public void SetCitizenHasVoted() {
+            voteConducted = true;
+        }
     }
 }
 

@@ -54,9 +54,92 @@ namespace AauVotingSystemP4
             }
         }
 
-        public void RegisterVote(string cpr, int electionId)
-        {
+        /// <summary>
+        /// Register a vote for a citizen, can be both a national voting option or a candidate. Then it registers that the user has voted.
+        /// </summary>
+        /// <param name="citizen">The citizen that is voting</param>
+        /// <param name="voteOption">The voteoption selected</param>
+        /// <param name="electionId">Id of the election</param>
+        /// <param name="nominationDistrictId">Id of the nominatin district</param>
+        /// <returns>False if the user allready has voted, true otherwise.</returns>
+        public bool RegisterVote(Citizen citizen, VotingOption voteOption,int electionId,int nominationDistrictId) {
+            if (HasCitizenVotedForElection(citizen, electionId))
+            {
+                citizen.SetCitizenHasVoted();
+            }
+            if (citizen.Voteconducted)
+            {//Citizen has allready voted
+                return false;
+            }
+            string sqlString="";
 
+            if (voteOption.IsNationalVotingOption) //Parti
+            {
+                sqlString = String.Format("UPDATE result SET amount = amount + 1 WHERE Election_ID = {0} AND NominationDistrict_ID = {1} AND Party_ID = {2}", electionId, nominationDistrictId, voteOption.PartyId);
+            }
+            else
+            {
+                sqlString = String.Format("UPDATE result SET amount = amount + 1 WHERE Election_ID = {0} AND NominationDistrict_ID = {1} AND Candidate_ID = {2}", electionId, nominationDistrictId, voteOption.VotingOptionId);
+            }
+
+            Console.WriteLine(sqlString);
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = GetDefaultConnection();
+
+            RegisterThatCitizenHasVoted(citizen, electionId);
+
+            cmd.CommandText = sqlString;
+            cmd.ExecuteReader();
+            cmd.Connection.Close();
+
+            return true;
+        }
+
+        /// <summary>
+        /// Checks if the citizen allready has voted in an election
+        /// </summary>
+        /// <param name="citizen">Citizen to check</param>
+        /// <param name="electionId">Election</param>
+        /// <returns>True if allready has voted, otherwise false</returns>
+        public bool HasCitizenVotedForElection(Citizen citizen, int electionId)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = "SELECT COUNT(*) FROM voteconducted WHERE Election_ID = " + electionId + " AND CPR = " + citizen.Cpr + ";";
+            cmd.Connection = GetDefaultConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            Int64 amountOfVotesForElection=0;
+            while (reader.Read())
+            {
+                Console.WriteLine(reader[0]);
+                amountOfVotesForElection = (Int64)reader[0];
+            }
+
+            cmd.Connection.Close();
+            if (amountOfVotesForElection > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }    
+        }
+
+        /// <summary>
+        /// Register that the citizen has voted in an election
+        /// </summary>
+        /// <param name="citizen">Citizen that has voted</param>
+        /// <param name="electionId">id of the election</param>
+        public void RegisterThatCitizenHasVoted(Citizen citizen, int electionId)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = GetDefaultConnection();
+
+            string sqlString = String.Format("INSERT INTO voteconducted(CPR, Election_ID) VALUES('{0}', {1}); ", citizen.Cpr, electionId);
+
+            cmd.CommandText = sqlString;
+            cmd.ExecuteReader();
+            cmd.Connection.Close();
         }
 
         /// <summary>

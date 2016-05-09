@@ -28,15 +28,6 @@ namespace AauVotingSystemP4
             //Main.Content = new Citizen_Homepage();
             Citizen_Homepage c_h = new Citizen_Homepage();
             Main.NavigationService.Navigate(c_h);
-
-            DatabaseConnector conector = new DatabaseConnector();
-            VotingOption option = new VotingOption("Øl partiet", "", 2, 2);
-            option.IsNationalVotingOption = true;
-            Election election = new Election(3,"Something",new DateTime(),new DateTime(),"Something");
-            election.Election_ID = 3;
-
-            NominationDistrict districts = new NominationDistrict(election, "Aalbrog centrum", 2);
-            conector.GetVotingOptionForNominationDistrict(1, 3);
         }
     }
 }
