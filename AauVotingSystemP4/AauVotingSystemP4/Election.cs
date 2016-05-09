@@ -28,7 +28,12 @@ namespace AauVotingSystemP4
             this.nominationDistrictsInElection = nominationDistrictsInElection;
         }
 
-        
+
+        public void FinalizeBallot()
+        {
+            isBallotFinalized = true;
+        }
+
         /// <summary>
         /// Here we see if the VotingBallot is fanalized (it gets finalized i VotingBallot), and if the ballot is not finalized we add the "option" to the "AddParty"-list  
         /// </summary>
@@ -43,13 +48,16 @@ namespace AauVotingSystemP4
         }
 
         /// <summary>
-        /// Here we start the election. We include the start- and end date for the election, and we includes the NominationDestrict_ID, so we know which NominationDestrict there will be in the election
+        /// We can use this method to change the information of the election.
         /// </summary>
-        public class SetUpElection
+        public void SetUpElection(int Election_ID, DateTime StartDate, DateTime EndDate, string ElectionType, VotingBallot nationalVotingBallot, List<NominationDistrict> nominationDistrictsInElection)
         {
-            public static DateTime StartOfElection = new DateTime(2016, 09, 01, 09, 00, 00);
-            public static DateTime EndOfElection = new DateTime(2016, 09, 12, 20, 00, 00);
-            public int NominationDestrict_ID { get; set;}
+            this.Election_ID = Election_ID;
+            this.StartDate = StartDate;
+            this.EndDate = EndDate;
+            this.ElectionType = ElectionType;
+            this.nationalVotingBallot = nationalVotingBallot;
+            this.nominationDistrictsInElection = nominationDistrictsInElection;
         }
     }
 }
