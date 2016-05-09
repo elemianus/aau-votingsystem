@@ -35,8 +35,7 @@ namespace AauVotingSystemP4
             election.Election_ID = 3;
 
             NominationDistrict districts = new NominationDistrict(election, "Aalbrog centrum", 2);
-            conector.AddCitizen(new Citizen("1212901234", 3700));
-            conector.GetAllCitizens();
+            conector.GetVotingOptionForNominationDistrict(1, 3);
         }
     }
 }
