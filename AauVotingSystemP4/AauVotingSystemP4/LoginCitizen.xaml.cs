@@ -29,16 +29,16 @@ namespace AauVotingSystemP4
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
-            //var databaseConector = new DatabaseConnector();
-            //databaseConector.AddVotionOPtion(TypeInUsername, 2);
-            //try
-            //{
-            //    string Query "SQL" + this.TypeInUsername
-            //}
-            //catch (Exception wrongUsername)
-            //{
+            var databaseConector = new DatabaseConnector();
+            databaseConector.AddVotionOPtion(TypeInUsername, 2);
+            try
+            {
+                string Query "SQL" + this.TypeInUsername
+            }
+            catch (Exception wrongUsername)
+            {
 
-            //}
+            }
         }
     }
 }
