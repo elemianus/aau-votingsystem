@@ -19,12 +19,13 @@ namespace AauVotingSystemP4
     /// </summary>
     public partial class CreatingElectionTestWindow : Window
     {
+        ElectionAdministrator myAdmin;
         public CreatingElectionTestWindow(ElectionAdministrator administrator)
         {
-            ElectionAdministrator myAdmin;
+            
             InitializeComponent();
             myAdmin = administrator;
-            myAdmin
+            
         }
 
         private void label1_Loaded(object sender, RoutedEventArgs e)
@@ -35,17 +36,17 @@ namespace AauVotingSystemP4
 
         private void label2_Loaded(object sender, RoutedEventArgs e)
         {
-            label2.Content = "Election Type: " + myAdmin.myElection.ElectionType;
+            //label2.Content = "Election Type: " + myAdmin.myElection.ElectionType;
         }
 
         private void label3_Loaded(object sender, RoutedEventArgs e)
         {
-            label3.Content = "Election start date: " + myAdmin.myElection.StartDate;
+            //label3.Content = "Election start date: " + myAdmin.myElection.StartDate;
         }
 
         private void label4_Loaded(object sender, RoutedEventArgs e)
         {
-            label4.Content = "Election end date: " + myAdmin.myElection.EndDate;
+            //label4.Content = "Election end date: " + myAdmin.myElection.EndDate;
         }
     }
 }

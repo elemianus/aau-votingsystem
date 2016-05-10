@@ -33,11 +33,11 @@ namespace AauVotingSystemP4
         {
            
             
-            MessageBox.Show(Convert.ToString(start_DateTimePicker.SelectedDate.Value));
+           
             ElectionAdministrator myAdministrator = new ElectionAdministrator();
             
             myAdministrator.CreateElection(3, Convert.ToString(election_Name.Text), start_DateTimePicker.SelectedDate.Value, end_DateTimePicker.SelectedDate.Value, Convert.ToString(election_Type.Text));
-            myAdministrator.
+            
             CreatingElectionTestWindow evb = new CreatingElectionTestWindow(myAdministrator);
             evb.Show();
         }
