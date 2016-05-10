@@ -92,6 +92,9 @@
       <DependentUpon>DeleteVotingOption.xaml</DependentUpon>
     </Compile>
     <Compile Include="ElectionAdministrator.cs" />
+    <Compile Include="ElectionAdmin_Homepage.xaml.cs">
+      <DependentUpon>ElectionAdmin_Homepage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ElectionboardMainWindow.xaml.cs">
       <DependentUpon>ElectionboardMainWindow.xaml</DependentUpon>
     </Compile>
@@ -160,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DeleteVotingOption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElectionAdmin_Homepage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
