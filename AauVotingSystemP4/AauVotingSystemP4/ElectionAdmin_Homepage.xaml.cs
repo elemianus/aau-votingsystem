@@ -23,7 +23,7 @@ namespace AauVotingSystemP4
         {
             InitializeComponent();
         }
-
+        //Here is the create election for sending you on 
         private void createElection_Click(object sender, RoutedEventArgs e)
         {
             CreatingElection evb = new CreatingElection();
