@@ -34,11 +34,11 @@ namespace AauVotingSystemP4
            
             
            
-            ElectionAdministrator myAdministrator = new ElectionAdministrator();
+            ElectionAdministrator myAdministrator = new ElectionAdministrator(); // administratoren skal creates når programmet startes og smides i databasen, så at man kan bruge det objekt når man logger ind som admin?
             
             myAdministrator.CreateElection(3, Convert.ToString(election_Name.Text), start_DateTimePicker.SelectedDate.Value, end_DateTimePicker.SelectedDate.Value, Convert.ToString(election_Type.Text));
             
-            CreatingElectionTestWindow evb = new CreatingElectionTestWindow(myAdministrator);
+            CreatingElectionTestWindow evb = new CreatingElectionTestWindow();
             evb.Show();
         }
     }
