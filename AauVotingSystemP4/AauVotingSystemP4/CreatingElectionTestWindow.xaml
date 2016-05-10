@@ -8,6 +8,9 @@
         Title="CreatingElectionTestWindow" Height="300" Width="300">
     <Grid>
         <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" Margin="70,49,0,0" VerticalAlignment="Top" Loaded="label1_Loaded"/>
+        <Label x:Name="label2" Content="Label" HorizontalAlignment="Left" Margin="70,80,0,0" VerticalAlignment="Top" Loaded="label2_Loaded"/>
+        <Label x:Name="label3" Content="Label" HorizontalAlignment="Left" Margin="70,111,0,0" VerticalAlignment="Top" Loaded="label3_Loaded"/>
+        <Label x:Name="label4" Content="Label" HorizontalAlignment="Left" Margin="70,137,0,0" VerticalAlignment="Top" Loaded="label4_Loaded"/>
 
     </Grid>
 </Window>

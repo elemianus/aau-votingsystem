@@ -32,5 +32,20 @@ namespace AauVotingSystemP4
             
              
         }
+
+        private void label2_Loaded(object sender, RoutedEventArgs e)
+        {
+            label2.Content = "Election Type: " + myAdmin.myElection.ElectionType;
+        }
+
+        private void label3_Loaded(object sender, RoutedEventArgs e)
+        {
+            label3.Content = "Election start date: " + myAdmin.myElection.StartDate;
+        }
+
+        private void label4_Loaded(object sender, RoutedEventArgs e)
+        {
+            label4.Content = "Election end date: " + myAdmin.myElection.EndDate;
+        }
     }
 }
