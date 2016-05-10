@@ -27,12 +27,12 @@ namespace AauVotingSystemP4
         /// <summary>
         /// Removes a specific voting option
         /// </summary>
-        /// <param name="votionOptionId">Id of the option to remove</param>
-        /// <param name="isNationalVotionOption">true if the option is a national level option</param>
+        /// <param name="votingOptionId">Id of the option to remove</param>
+        /// <param name="isNationalVotingOption">true if the option is a national level option</param>
         /// <returns>True if the VoteOption has been succesfully removed, otherwise false</returns>
-        public bool RemoveVotionOption(int votionOptionId, bool isNationalVotionOption) {
+        public bool RemoveVotingOption(int votingOptionId, bool isNationalVotingOption) {
             for (int i = 0; i < votingOptions.Count(); i++) {
-                if (votingOptions[i].IsNationalVotingOption == isNationalVotionOption && votingOptions[i].VotingOptionId == votionOptionId)
+                if (votingOptions[i].IsNationalVotingOption == isNationalVotingOption && votingOptions[i].VotingOptionId == votingOptionId)
                     if (votingOptions.Remove(votingOptions[i]))
                         return true; //Vote option exists in this list and has been removed
             }

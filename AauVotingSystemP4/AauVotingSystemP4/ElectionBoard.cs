@@ -59,7 +59,7 @@ namespace AauVotingSystemP4
         /// <param name="isNationalVotingOption">True if this is a nation vide option</param>
         /// <returns>True if succesfully removed, otherwise false</returns>
         public bool RemoveVotingOption(int votingOptionId,bool isNationalVotingOption = false) {
-            return ballot.RemoveVotionOption(votingOptionId, isNationalVotingOption);
+            return ballot.RemoveVotingOption(votingOptionId, isNationalVotingOption);
         }
     }
 }
