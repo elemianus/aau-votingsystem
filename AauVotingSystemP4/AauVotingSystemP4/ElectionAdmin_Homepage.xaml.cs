@@ -23,11 +23,6 @@ namespace AauVotingSystemP4
         {
             InitializeComponent();
         }
-        private void ParliamentElection_Click(object sender, RoutedEventArgs e)
-        {
-            ElectionboardVotingBallot evb = new ElectionboardVotingBallot();
-            evb.Show();
-        }
 
         private void createElection_Click(object sender, RoutedEventArgs e)
         {
