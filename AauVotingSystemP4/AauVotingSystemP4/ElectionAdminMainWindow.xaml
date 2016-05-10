@@ -1,0 +1,15 @@
+﻿<Window x:Class="AauVotingSystemP4.ElectionAdminMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AauVotingSystemP4"
+        mc:Ignorable="d"
+        Title="ElectionAdminMainWindow" Height="300" Width="300"
+        WindowState="Maximized">
+    <DockPanel Margin="0,0,0,0">
+        <local:HeaderElectionAdmin x:Name="HeaderElectionAdmin" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2"/>
+        <Frame Name="Main"/>
+    </DockPanel>
+</Window>
+
