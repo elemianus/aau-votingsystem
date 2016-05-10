@@ -370,7 +370,7 @@ namespace AauVotingSystemP4
         public bool DoesCitizenExist(string cpr)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = String.Format("SELECT COUNT(*) FROM citizen WHERE CPR = {0};", cpr);
+            cmd.CommandText = String.Format("SELECT COUNT(*) FROM citizen WHERE CPR = '{0}';", cpr);
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
             Int64 amountOfVotesForElection = 0;
@@ -390,6 +390,33 @@ namespace AauVotingSystemP4
             }
         }
 
+        /// <summary>
+        /// Checks if electionboard exists.
+        /// </summary>
+        /// <param name="nominationD"></param>
+        /// <returns>True if it founds the nominations destrict, otherwise it returns false</returns>
+        public bool DoesElectionboardExist(string nominationD)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = String.Format("SELECT COUNT(*) FROM nominationdistrict WHERE Name = '{0}';", nominationD);
+            cmd.Connection = GetDefaultConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            Int64 amountOfVotesForElection = 0;
+            while (reader.Read())
+            {
+                amountOfVotesForElection = (Int64)reader[0];
+            }
+
+            cmd.Connection.Close();
+            if (amountOfVotesForElection > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         /// <summary>
         /// Removes the specified option from the database. It can be both a party and a candidate.
         /// </summary>

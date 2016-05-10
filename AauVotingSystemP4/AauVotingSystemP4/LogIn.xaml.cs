@@ -32,7 +32,8 @@ namespace AauVotingSystemP4
 
         private void LogInElectionboard_Click(object sender, RoutedEventArgs e)
         {
-            
+            LoginElectionboard lie = new LoginElectionboard();
+            Main.NavigationService.Navigate(lie);
         }
     }
 }

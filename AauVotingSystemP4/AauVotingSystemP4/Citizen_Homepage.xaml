@@ -9,6 +9,7 @@
       Title="Citizen_Homepage" Width="486.538">
 
     <Grid>
+        <Button VerticalAlignment="Top" Name="testtest" Margin="351,10,0.4,271" Content="LoginTest" Click="testtest_Click"/>
         <Button x:Name="SeePreviouslyElections" Content="See previously elections" HorizontalAlignment="Left" Margin="280,50,0,0" VerticalAlignment="Top" Width="117" Click="SeePreviouslyElections_Click" />
         <Button x:Name="VoteButton" Content="Vote" HorizontalAlignment="Left" Margin="179,50,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.449,1.222" Click="VoteButton_Click"/>
         <Button x:Name="SnydeKnap" Content="Psst tryk på mig og kom til ElectionBoard" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="231" Click="SnydeKnap_Click"/>

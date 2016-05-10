@@ -110,6 +110,15 @@
     <Compile Include="HeaderUserControl.xaml.cs">
       <DependentUpon>HeaderUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LogIn.xaml.cs">
+      <DependentUpon>LogIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoginCitizen.xaml.cs">
+      <DependentUpon>LoginCitizen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoginElectionboard.xaml.cs">
+      <DependentUpon>LoginElectionboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NominationDistrict.cs" />
     <Compile Include="ResultCalculator.cs" />
     <Compile Include="SeePreviouslyElections.xaml.cs">
@@ -187,6 +196,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HeaderUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogIn.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoginCitizen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoginElectionboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

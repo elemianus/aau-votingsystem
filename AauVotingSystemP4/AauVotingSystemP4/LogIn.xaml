@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AauVotingSystemP4"
         mc:Ignorable="d"
-        Title="LogIn" Height="300" Width="300">
+        Title="LogIn" Height="300" Width="300"
+        WindowState="Maximized">
     <Grid>
-        <Button Margin="10,10,169.6,234.4" Name="LogInCitizen" Content="Citezen log-in" Click="LogInCitizen_Click"/>
-        <Button Margin="170,10,9.6,234.4" Name="LogInElectionboard" Content="Electionboard log-in" Click="LogInElectionboard_Click"/>
+        <Button VerticalAlignment="Top" Margin="10,15,169.6,234.4" Name="LogInCitizen" Content="Citezen log-in" Height="20" Width="100" Click="LogInCitizen_Click"/>
+        <Button VerticalAlignment="Top" Margin="170,15,9.6,234.4" Name="LogInElectionboard" Content="Electionboard log-in" Height="20" Width="150" Click="LogInElectionboard_Click"/>
         <Frame Name="Main" Margin="0,50,0,0"/>
     </Grid>
 </Window>

@@ -16,12 +16,11 @@ using System.Windows.Shapes;
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for LoginCitizen.xaml
+    /// Interaction logic for LoginElectionboard.xaml
     /// </summary>
-    public partial class LoginCitizen : Page
+    public partial class LoginElectionboard : Page
     {
-
-        public LoginCitizen()
+        public LoginElectionboard()
         {
             InitializeComponent();
         }
@@ -29,25 +28,17 @@ namespace AauVotingSystemP4
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
             var databaseConector = new DatabaseConnector();
-            if (databaseConector.DoesCitizenExist(TypeInUsername.Text)) {
-                //Citizen exists
+            if (databaseConector.DoesElectionboardExist(TypeInNominationDistrict.Text))
+            {
+                //Nomination district exists
 
-                MainWindow mw = new MainWindow();
-                mw.Show();
+                ElectionboardMainWindow emw = new ElectionboardMainWindow();
+                emw.Show();
             }
             else
             {
-                MessageBox.Show("The CPR-number do not exist. \n Try again.");
+                MessageBox.Show("The name of the electionboard do not exist. \n Try again.");
             }
-            //if (databaseConector.DoesCitizenExist(userInput))
-            //{
-            //MainWindow mw = new MainWindow();
-            //mw.Show();
-            //}
-            //else
-            //{
-            //    Console.WriteLine("CPR-number do not exits. Try again");
-            //}
         }
     }
 }
