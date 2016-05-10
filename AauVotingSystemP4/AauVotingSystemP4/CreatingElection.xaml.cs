@@ -19,10 +19,11 @@ namespace AauVotingSystemP4
     /// </summary>
     public partial class CreatingElection : Window
     {
-
+        public ElectionAdministrator myAdmin;
         
         public CreatingElection()
         {
+            myAdmin = new ElectionAdministrator();
             InitializeComponent();
             
         }
@@ -30,15 +31,11 @@ namespace AauVotingSystemP4
       
         
         private void CreateElection_Click(object sender, RoutedEventArgs e)
-        {
-           
-            
-            MessageBox.Show(Convert.ToString(start_DateTimePicker.SelectedDate.Value));
-            ElectionAdministrator myAdministrator = new ElectionAdministrator();
-            
-            myAdministrator.CreateElection(3, Convert.ToString(election_Name.Text), start_DateTimePicker.SelectedDate.Value, end_DateTimePicker.SelectedDate.Value, Convert.ToString(election_Type.Text));
-            myAdministrator.
-            CreatingElectionTestWindow evb = new CreatingElectionTestWindow(myAdministrator);
+        {      
+                      
+            myAdmin.CreateElection(3, Convert.ToString(election_Name.Text), start_DateTimePicker.SelectedDate.Value, end_DateTimePicker.SelectedDate.Value, Convert.ToString(election_Type.Text));
+            MessageBox.Show(myAdmin.myElection.ElectionName);
+            CreatingElectionTestWindow evb = new CreatingElectionTestWindow(myAdmin);
             evb.Show();
         }
     }

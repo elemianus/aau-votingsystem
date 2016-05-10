@@ -19,18 +19,25 @@ namespace AauVotingSystemP4
     /// </summary>
     public partial class CreatingElectionTestWindow : Window
     {
+
+        ElectionAdministrator myAdmin;
         public CreatingElectionTestWindow(ElectionAdministrator administrator)
         {
-            ElectionAdministrator myAdmin;
+            
             InitializeComponent();
-            myAdmin = administrator;
-            myAdmin
+            this.myAdmin = administrator;
+
         }
+        
 
         private void label1_Loaded(object sender, RoutedEventArgs e)
         {
-            
-             
+
+
+            label1.Content = "Election name: " + myAdmin.myElection.ElectionName;
+                
+
+
         }
     }
 }

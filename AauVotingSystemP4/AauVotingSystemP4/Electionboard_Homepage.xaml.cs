@@ -34,6 +34,7 @@ namespace AauVotingSystemP4
 
         private void createElection_Click(object sender, RoutedEventArgs e)
         {
+            
             CreatingElection evb = new CreatingElection();
             evb.Show();
         }
