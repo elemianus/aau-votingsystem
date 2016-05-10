@@ -10,25 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AauVotingSystemP4
 {
-    //    /// <summary>
-    //    /// Interaction logic for Electionboard_Homepage.xaml
-    //    /// </summary>
-    public partial class Electionboard_Homepage : Page
+    /// <summary>
+    /// Interaction logic for ElectionAdmin_Homepage.xaml
+    /// </summary>
+    public partial class ElectionAdmin_Homepage : Page
     {
-        public Electionboard_Homepage()
+        public ElectionAdmin_Homepage()
         {
             InitializeComponent();
-
         }
-
-        private void ParliamentElection_Click(object sender, RoutedEventArgs e)
+        //Here is the create election for sending you on 
+        private void createElection_Click(object sender, RoutedEventArgs e)
         {
-            ElectionboardVotingBallot evb = new ElectionboardVotingBallot();
+            CreatingElection evb = new CreatingElection();
             evb.Show();
         }
     }

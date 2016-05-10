@@ -1,0 +1,20 @@
+﻿<Window x:Class="AauVotingSystemP4.LogIn"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AauVotingSystemP4"
+        mc:Ignorable="d"
+        Title="LogIn" Height="300" Width="839.241"
+        WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button VerticalAlignment="Top" Margin="159,43,573.8,0" Name="LogInCitizen" Content="Citezen log-in" Height="20" Width="100" Click="LogInCitizen_Click" Grid.ColumnSpan="2"/>
+        <Button VerticalAlignment="Top" Margin="312,43,370.8,0" Name="LogInElectionboard" Content="Electionboard log-in" Height="20" Width="150" Click="LogInElectionboard_Click" Grid.ColumnSpan="2"/>
+        <Button VerticalAlignment="Top" Margin="523,43,159.8,0" Name="GoToAdmin" Content="Go To Admin" Height="20" Width="150" Click="GoToAdmin_Click" Grid.ColumnSpan="2"/>
+        <Frame Name="Main" Margin="0,78,-0.2,0.4" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>

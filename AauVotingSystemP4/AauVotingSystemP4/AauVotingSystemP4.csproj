@@ -78,6 +78,12 @@
     <Compile Include="ConfirmDeleteVotingOption.xaml.cs">
       <DependentUpon>ConfirmDeleteVotingOption.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CreatingElection.xaml.cs">
+      <DependentUpon>CreatingElection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreatingElectionTestWindow.xaml.cs">
+      <DependentUpon>CreatingElectionTestWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseConnector.cs" />
     <Compile Include="DeleteConfirmation.xaml.cs">
       <DependentUpon>DeleteConfirmation.xaml</DependentUpon>
@@ -86,6 +92,9 @@
       <DependentUpon>DeleteVotingOption.xaml</DependentUpon>
     </Compile>
     <Compile Include="ElectionAdministrator.cs" />
+    <Compile Include="ElectionAdmin_Homepage.xaml.cs">
+      <DependentUpon>ElectionAdmin_Homepage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ElectionboardMainWindow.xaml.cs">
       <DependentUpon>ElectionboardMainWindow.xaml</DependentUpon>
     </Compile>
@@ -101,10 +110,16 @@
     <Compile Include="HeaderUserControl.xaml.cs">
       <DependentUpon>HeaderUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NominationDistrict.cs" />
-    <Compile Include="CreatingElection.xaml.cs">
-      <DependentUpon>CreatingElection.xaml</DependentUpon>
+    <Compile Include="LogIn.xaml.cs">
+      <DependentUpon>LogIn.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LoginCitizen.xaml.cs">
+      <DependentUpon>LoginCitizen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoginElectionboard.xaml.cs">
+      <DependentUpon>LoginElectionboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NominationDistrict.cs" />
     <Compile Include="ResultCalculator.cs" />
     <Compile Include="SeePreviouslyElections.xaml.cs">
       <DependentUpon>SeePreviouslyElections.xaml</DependentUpon>
@@ -144,11 +159,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CreatingElection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreatingElectionTestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DeleteConfirmation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DeleteVotingOption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElectionAdmin_Homepage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,6 +199,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="LogIn.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoginCitizen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoginElectionboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -187,10 +226,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="CreatingElection.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="SeePreviouslyElections.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

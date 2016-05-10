@@ -9,10 +9,11 @@ namespace AauVotingSystemP4
     public class ElectionAdministrator
     {
 
-
+        
         public void CreateElection(int Election_ID, string ElectionName, DateTime StartDate, DateTime EndDate, string ElectionType)
         {
             Election myElection = new Election(Election_ID, ElectionName, StartDate, EndDate, ElectionType);
+            //send til database
 
         }
 

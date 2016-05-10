@@ -10,25 +10,36 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AauVotingSystemP4
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for CreatingElection1.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class CreatingElection : Window
     {
-        public Page1()
+
+        
+        public CreatingElection()
         {
             InitializeComponent();
+            
         }
 
+      
+        
         private void CreateElection_Click(object sender, RoutedEventArgs e)
         {
-            ElectionAdministrator myAdministrator = new ElectionAdministrator();
-            myAdministrator.CreateElection(3, Convert.ToString(election_Name), Convert.ToDateTime(start_Date), Convert.ToDateTime(end_Date), Convert.ToString(election_Type));
+           
+            
+           
+            ElectionAdministrator myAdministrator = new ElectionAdministrator(); // administratoren skal creates når programmet startes og smides i databasen, så at man kan bruge det objekt når man logger ind som admin?
+            
+            myAdministrator.CreateElection(3, Convert.ToString(election_Name.Text), start_DateTimePicker.SelectedDate.Value, end_DateTimePicker.SelectedDate.Value, Convert.ToString(election_Type.Text));
+            
+            CreatingElectionTestWindow evb = new CreatingElectionTestWindow();
+            evb.Show();
         }
     }
 }

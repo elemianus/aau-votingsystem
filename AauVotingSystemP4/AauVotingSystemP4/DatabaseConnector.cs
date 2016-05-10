@@ -7,6 +7,11 @@ using MySql.Data.MySqlClient;
 
 namespace AauVotingSystemP4
 {
+    /*
+        Create result table from voting options
+        Remove voting option
+        */
+
     /// <summary>
     /// This class provides all access to the database
     /// </summary>
@@ -62,7 +67,8 @@ namespace AauVotingSystemP4
         /// <param name="electionId">Id of the election</param>
         /// <param name="nominationDistrictId">Id of the nominatin district</param>
         /// <returns>False if the user allready has voted, true otherwise.</returns>
-        public bool RegisterVote(Citizen citizen, VotingOption voteOption,int electionId,int nominationDistrictId) {
+        public bool RegisterVote(Citizen citizen, VotingOption voteOption, int electionId, int nominationDistrictId)
+        {
             if (HasCitizenVotedForElection(citizen, electionId))
             {
                 citizen.SetCitizenHasVoted();
@@ -71,7 +77,7 @@ namespace AauVotingSystemP4
             {//Citizen has allready voted
                 return false;
             }
-            string sqlString="";
+            string sqlString = "";
 
             if (voteOption.IsNationalVotingOption) //Parti
             {
@@ -107,10 +113,9 @@ namespace AauVotingSystemP4
             cmd.CommandText = "SELECT COUNT(*) FROM voteconducted WHERE Election_ID = " + electionId + " AND CPR = " + citizen.Cpr + ";";
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
-            Int64 amountOfVotesForElection=0;
+            Int64 amountOfVotesForElection = 0;
             while (reader.Read())
             {
-                Console.WriteLine(reader[0]);
                 amountOfVotesForElection = (Int64)reader[0];
             }
 
@@ -122,7 +127,7 @@ namespace AauVotingSystemP4
             else
             {
                 return false;
-            }    
+            }
         }
 
         /// <summary>
@@ -196,7 +201,7 @@ namespace AauVotingSystemP4
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                ZipCode zipCode = new ZipCode(int.Parse((string)reader[0]),(string)reader[1]);
+                ZipCode zipCode = new ZipCode(int.Parse((string)reader[0]), (string)reader[1]);
                 list.Add(zipCode);
             }
 
@@ -215,7 +220,7 @@ namespace AauVotingSystemP4
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = GetDefaultConnection();
 
-            string sqlString = String.Format("INSERT INTO nominationdistrict(Name, NumberOfMandates, Election_ID) VALUES('{0}', {1}, {2}); ", nominationDitrict.Name, nominationDitrict.NumberOfMandates,electionId);
+            string sqlString = String.Format("INSERT INTO nominationdistrict(Name, NumberOfMandates, Election_ID) VALUES('{0}', {1}, {2}); ", nominationDitrict.Name, nominationDitrict.NumberOfMandates, electionId);
 
             cmd.CommandText = sqlString;
             cmd.ExecuteReader();
@@ -280,23 +285,30 @@ namespace AauVotingSystemP4
         /// <param name="nominationDistrictId">Id of the nomination district</param>
         /// <param name="electionId">The election id</param>
         /// <returns>List of voting options</returns>
-        public List<VotingOption> GetVotingOptionForNominationDistrict(int nominationDistrictId,int electionId)
+        public List<VotingOption> GetVotingOptionForNominationDistrict(int nominationDistrictId, int electionId)
         {
             List<VotingOption> options = new List<VotingOption>();
 
             //Gets candidates
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = "SELECT * FROM candidates WHERE Election_ID = " + electionId + " AND NominationDistrict_ID="+nominationDistrictId+";";
+            cmd.CommandText = "SELECT * FROM candidates WHERE Election_ID = " + electionId + " AND NominationDistrict_ID=" + nominationDistrictId + ";";
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                options.Add(new VotingOption((string)reader[1], (string)reader[2], (int)reader[3], (int)reader[4], (int)reader[0]));
+                options.Add(VotingOptionFromReader(reader));
             }
-            
+
             cmd.Connection.Close();
 
             return options;
+        }
+
+        private VotingOption VotingOptionFromReader(MySqlDataReader reader) {
+            int partyId = -1;
+            if (!reader.IsDBNull(4))
+                partyId = (int)reader[4];
+            return new VotingOption((string)reader[1], (string)reader[2], (int)reader[3], partyId, (int)reader[0]);
         }
 
         /// <summary>
@@ -315,7 +327,7 @@ namespace AauVotingSystemP4
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                listOfOptions.Add(new VotingOption((string)reader[1], (string)reader[2], (int)reader[3], (int)reader[4], (int)reader[0]));
+                listOfOptions.Add(VotingOptionFromReader(reader));
             }
 
             listOfOptions.AddRange(GetListOfNationalVotionOptions(electionId));
@@ -350,5 +362,143 @@ namespace AauVotingSystemP4
             return listOfOptions;
         }
 
+        /// <summary>
+        /// Checkes if a citizens exists
+        /// </summary>
+        /// <param name="cpr">CPR to check for</param>
+        /// <returns>True if found, otherwise false</returns>
+        public bool DoesCitizenExist(string cpr)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = String.Format("SELECT COUNT(*) FROM citizen WHERE CPR = '{0}';", cpr);
+            cmd.Connection = GetDefaultConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            Int64 amountOfVotesForElection = 0;
+            while (reader.Read())
+            {
+                amountOfVotesForElection = (Int64)reader[0];
+            }
+
+            cmd.Connection.Close();
+            if (amountOfVotesForElection > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Checks if electionboard exists.
+        /// </summary>
+        /// <param name="nominationD"></param>
+        /// <returns>True if it founds the nominations destrict, otherwise it returns false</returns>
+        public bool DoesElectionboardExist(string nominationD)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = String.Format("SELECT COUNT(*) FROM nominationdistrict WHERE Name = '{0}';", nominationD);
+            cmd.Connection = GetDefaultConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            Int64 amountOfVotesForElection = 0;
+            while (reader.Read())
+            {
+                amountOfVotesForElection = (Int64)reader[0];
+            }
+
+            cmd.Connection.Close();
+            if (amountOfVotesForElection > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// Removes the specified option from the database. It can be both a party and a candidate.
+        /// </summary>
+        /// <param name="option">Th option to delete</param>
+        public void DeleteVotionOption(VotingOption option)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = GetDefaultConnection();
+            
+
+            if (option.IsNationalVotingOption)
+            {
+                cmd.CommandText = String.Format("DELETE FROM party WHERE Party_ID = {0} ;", option.PartyId);
+            }
+            else
+            {
+                cmd.CommandText = String.Format("DELETE FROM candidates WHERE Candidate_id = {0} ;", option.VotingOptionId);
+            }
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Console.WriteLine(reader);
+            }
+
+            cmd.Connection.Close();
+
+        }
+
+        /// <summary>
+        /// Removes a specific nomination district from the database.
+        /// </summary>
+        /// <param name="district">The district to remove</param>
+        public void DeleteNominationDistrict(NominationDistrict district)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = GetDefaultConnection();
+            cmd.CommandText = String.Format("DELETE FROM nominationdistrict WHERE NominationDistrict_ID = {0} ;", district.NominationDistrictId);
+            
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Console.WriteLine(reader);
+            }
+
+            cmd.Connection.Close();
+
+        }
+
+        /// <summary>
+        /// Populates the result table with all candidates and national voting options. A result entry is created for every voting option in every nomination district. 
+        /// This command takes a long time to run!
+        /// </summary>
+        /// <param name="election">The election to generate result table</param>
+        public void GenerateResultTable(Election election)
+        {
+            List<NominationDistrict> nominationDistrictsForElection = GetNominationDistrictsForElection(election);
+            List<VotingOption> nationalVotingOptions = GetListOfNationalVotionOptions(election.Election_ID);
+
+            string sqlString="";
+            foreach (var item in nominationDistrictsForElection)
+            {
+                var listOfVotingOptions = GetVotingOptionForNominationDistrict(item.NominationDistrictId, election.Election_ID);
+                foreach (var votingOption in listOfVotingOptions)
+                {
+                    sqlString += String.Format("INSERT INTO result VALUES({0},{1},{3},{2},0);", election.Election_ID, item.NominationDistrictId, votingOption.VotingOptionId,votingOption.PartyId);
+                }
+                foreach (var nationalVotingOption in nationalVotingOptions)
+                {
+                    sqlString += String.Format("INSERT INTO result VALUES({0},{1},{2},NULL,0);", election.Election_ID, item.NominationDistrictId, nationalVotingOption.PartyId);
+                }
+                int count = sqlString.Split(';').Length;
+                sqlString = sqlString.Replace("-1", "NULL");
+                Console.WriteLine(count);
+            }
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = GetDefaultConnection();
+            cmd.CommandText = sqlString;
+
+            cmd.ExecuteReader();
+            cmd.Connection.Close();
+            
+        }
     }
 }

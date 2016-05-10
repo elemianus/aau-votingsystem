@@ -40,5 +40,11 @@ namespace AauVotingSystemP4
             ElectionboardMainWindow emw = new ElectionboardMainWindow();
             emw.Show();
         }
+
+        private void testtest_Click(object sender, RoutedEventArgs e)
+        {
+            LogIn li = new LogIn();
+            li.Show();
+        }
     }
 }
