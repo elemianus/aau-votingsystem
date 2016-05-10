@@ -13,28 +13,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-//namespace AauVotingSystemP4
-//    /// <summary>
-//    /// Interaction logic for Electionboard_Homepage.xaml
-//    /// </summary>
-//    public partial class Electionboard_Homepage : Page
-//    {
-//        public Electionboard_Homepage()
-//        {
-//            InitializeComponent();
+namespace AauVotingSystemP4
+{
+    //    /// <summary>
+    //    /// Interaction logic for Electionboard_Homepage.xaml
+    //    /// </summary>
+    public partial class Electionboard_Homepage : Page
+    {
+        public Electionboard_Homepage()
+        {
+            InitializeComponent();
 
-//        }
+        }
 
-//        private void ParliamentElection_Click(object sender, RoutedEventArgs e)
-//        {
-//            ElectionboardVotingBallot evb = new ElectionboardVotingBallot();
-//            evb.Show();
-//        }
+        private void ParliamentElection_Click(object sender, RoutedEventArgs e)
+        {
+            ElectionboardVotingBallot evb = new ElectionboardVotingBallot();
+            evb.Show();
+        }
+    }
+}
 
-//        private void createElection_Click(object sender, RoutedEventArgs e)
-//        {
-//            CreatingElection evb = new CreatingElection();
-//            evb.Show();
-//        }
-//    }
-//}
