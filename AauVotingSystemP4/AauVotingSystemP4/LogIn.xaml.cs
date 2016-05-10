@@ -38,8 +38,8 @@ namespace AauVotingSystemP4
 
         private void GoToAdmin_Click(object sender, RoutedEventArgs e)
         {
-            //?????? ();
-            //Main.NavigationService.Navigate();
+            ElectionAdminMainWindow eamw = new ElectionAdminMainWindow();
+            eamw.Show();
         }
     }
 }
