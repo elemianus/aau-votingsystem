@@ -35,5 +35,11 @@ namespace AauVotingSystemP4
             LoginElectionboard lie = new LoginElectionboard();
             Main.NavigationService.Navigate(lie);
         }
+
+        private void GoToAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            //?????? ();
+            //Main.NavigationService.Navigate();
+        }
     }
 }
