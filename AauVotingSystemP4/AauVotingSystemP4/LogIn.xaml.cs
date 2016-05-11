@@ -22,6 +22,9 @@ namespace AauVotingSystemP4
         public LogIn()
         {
             InitializeComponent();
+            DatabaseConnector conector = new DatabaseConnector();
+            ResultCalculator calculator = new ResultCalculator(3);
+            calculator.CalculateResult();
         }
 
         private void LogInCitizen_Click(object sender, RoutedEventArgs e)

@@ -131,6 +131,7 @@
       <DependentUpon>SeePreviouslyElections.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vote.cs" />
+    <Compile Include="VoteResult.cs" />
     <Compile Include="VotingBallot.cs" />
     <Compile Include="VotingConfirmation.xaml.cs">
       <DependentUpon>VotingConfirmation.xaml</DependentUpon>
