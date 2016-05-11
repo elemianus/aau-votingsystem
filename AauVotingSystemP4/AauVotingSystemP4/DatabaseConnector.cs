@@ -130,6 +130,7 @@ namespace AauVotingSystemP4
             }
         }
 
+
         /// <summary>
         /// Register that the citizen has voted in an election
         /// </summary>
@@ -328,7 +329,8 @@ namespace AauVotingSystemP4
             return options;
         }
 
-        private VotingOption VotingOptionFromReader(MySqlDataReader reader) {
+        private VotingOption VotingOptionFromReader(MySqlDataReader reader)
+        {
             int partyId = -1;
             if (!reader.IsDBNull(4))
                 partyId = (int)reader[4];
@@ -415,6 +417,35 @@ namespace AauVotingSystemP4
         }
 
         /// <summary>
+        /// Here we check if the ballot is finalized
+        /// </summary>
+        /// <param name="ballotfinalized"></param>
+        public bool IsBallotFinalized(string ballotfinalized)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = String.Format("SELECT COUNT (*) FROM election WHERE Ballotfinalized = '{0}';", ballotfinalized);
+            cmd.Connection = GetDefaultConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            Int64 numberofFinalizedballots = 0;
+            while (reader.Read())
+            {
+                numberofFinalizedballots = (Int64)reader[0];
+            }
+
+            cmd.Connection.Close();
+            if (numberofFinalizedballots > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
+        /// <summary>
         /// Checks if electionboard exists.
         /// </summary>
         /// <param name="nominationD"></param>
@@ -449,7 +480,7 @@ namespace AauVotingSystemP4
         {
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = GetDefaultConnection();
-            
+
 
             if (option.IsNationalVotingOption)
             {
@@ -479,7 +510,7 @@ namespace AauVotingSystemP4
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = GetDefaultConnection();
             cmd.CommandText = String.Format("DELETE FROM nominationdistrict WHERE NominationDistrict_ID = {0} ;", district.NominationDistrictId);
-            
+
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -497,16 +528,16 @@ namespace AauVotingSystemP4
         public List<Election> GetAllElections()
         {
             List<Election> listOfElection = new List<Election>();
-            
+
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = "select * from election;";
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                int electionId = (int) reader[0];
-                DateTime startDate = (DateTime )reader[1];
-                DateTime endDate = (DateTime) reader[2];
+                int electionId = (int)reader[0];
+                DateTime startDate = (DateTime)reader[1];
+                DateTime endDate = (DateTime)reader[2];
                 string typeOfElection = (string)reader[3];
                 bool isBallotFinalized = (bool)reader[4];
 
@@ -529,13 +560,13 @@ namespace AauVotingSystemP4
             List<NominationDistrict> nominationDistrictsForElection = GetNominationDistrictsForElection(election);
             List<VotingOption> nationalVotingOptions = GetListOfNationalVotionOptions(election.Election_ID);
 
-            string sqlString="";
+            string sqlString = "";
             foreach (var item in nominationDistrictsForElection)
             {
                 var listOfVotingOptions = GetVotingOptionForNominationDistrict(item.NominationDistrictId, election.Election_ID);
                 foreach (var votingOption in listOfVotingOptions)
                 {
-                    sqlString += String.Format("INSERT INTO result VALUES({0},{1},{3},{2},0);", election.Election_ID, item.NominationDistrictId, votingOption.VotingOptionId,votingOption.PartyId);
+                    sqlString += String.Format("INSERT INTO result VALUES({0},{1},{3},{2},0);", election.Election_ID, item.NominationDistrictId, votingOption.VotingOptionId, votingOption.PartyId);
                 }
                 foreach (var nationalVotingOption in nationalVotingOptions)
                 {
@@ -551,7 +582,7 @@ namespace AauVotingSystemP4
 
             cmd.ExecuteReader();
             cmd.Connection.Close();
-            
+
         }
     }
 }
