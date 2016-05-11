@@ -8,23 +8,23 @@ namespace AauVotingSystemP4
 {
     public class NominationDistrict
     {
-        
+
         public int NumberOfMandates { get { return numberOfMandates; } }
         private int numberOfMandates;
-        public int NominationDistrictId {get;}
+        public int NominationDistrictId { get; }
         public string Name { get; }
         private List<ZipCode> zipCodes = new List<ZipCode>();
-		private VotingBallot nomDBallot;
+        private VotingBallot nomDBallot;
         private Election associatedElection;
-        
-        public NominationDistrict (Election associatedElection,string name,int numberOfMandates, int nominationDistrictId=-1)
+
+        public NominationDistrict(Election associatedElection, string name, int numberOfMandates, int nominationDistrictId = -1)
         {
             this.associatedElection = associatedElection;
             this.Name = name;
             this.numberOfMandates = numberOfMandates;
-            if(nominationDistrictId!=-1)
-            this.NominationDistrictId = nominationDistrictId;
-		}
+            if (nominationDistrictId != -1)
+                this.NominationDistrictId = nominationDistrictId;
+        }
 
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace AauVotingSystemP4
             zipCodes.AddRange(codes);
         }
 
-        
+
         /// <summary>
         /// Adds a zip code by first checking if it's already there, if not it adds the zip code to the list
         /// </summary>
@@ -77,7 +77,7 @@ namespace AauVotingSystemP4
             for (int i = 0; i < zipCodes.Count(); i++)
             {
                 if (zipCodes[i].ZipCodeId == ZipCodeId)
-                        return false; //Zip Code exists in this list already
+                    return false; //Zip Code exists in this list already
 
             }
             zipCodes.Add(ZipCode);
@@ -101,6 +101,29 @@ namespace AauVotingSystemP4
             }
             return false; //Zip Code Did not exists in this list
         }
-       
+
+
+
+        /// <summary>
+        /// Checks if a citizen actually belongs to the given nominationdistrict
+        /// </summary>
+        /// <param name="zipcode"></param>
+        /// <param name="citizen"></param>
+        /// <param name="nominationdistrict"></param>
+        /// <returns>true if the citizen belongs to the district / false if not </returns>
+        public bool CitizenInNominationDistrict(Citizen citizen, NominationDistrict nominationDistrict)
+        {
+            int citizenZipCode = citizen.Zipcode;
+            foreach (ZipCode number in nominationDistrict.zipCodes)
+            {
+                if (number.ZipCodeId == citizen.Zipcode)
+                {
+                    return true;
+                }
+            }
+          return false;
+
+        }
+
     }
 }
