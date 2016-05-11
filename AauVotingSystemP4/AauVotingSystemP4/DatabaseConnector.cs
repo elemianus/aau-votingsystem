@@ -598,6 +598,7 @@ namespace AauVotingSystemP4
             cmd.Connection.Close();
         }
 
+       /* public Election GetElection(int election_Id)
         {
 
             MySqlCommand cmd = new MySqlCommand();
@@ -620,6 +621,7 @@ namespace AauVotingSystemP4
             cmd.Connection.Close();
             return myElection;
         }
+        */
 
 
     }
