@@ -467,6 +467,35 @@ namespace AauVotingSystemP4
         }
 
         /// <summary>
+        /// Returns a list of all elections
+        /// </summary>
+        /// <returns>A list of elections</returns>
+        public List<Election> GetAllElections()
+        {
+            List<Election> listOfElection = new List<Election>();
+            
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = "select * from election;";
+            cmd.Connection = GetDefaultConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                int electionId = (int) reader[0];
+                DateTime startDate = (DateTime )reader[1];
+                DateTime endDate = (DateTime) reader[2];
+                string typeOfElection = (string)reader[3];
+                bool isBallotFinalized = (bool)reader[4];
+
+                Election election = new Election(electionId, typeOfElection, startDate, endDate, typeOfElection);
+                listOfElection.Add(election);
+            }
+
+            cmd.Connection.Close();
+
+            return listOfElection;
+        }
+
+        /// <summary>
         /// Populates the result table with all candidates and national voting options. A result entry is created for every voting option in every nomination district. 
         /// This command takes a long time to run!
         /// </summary>
