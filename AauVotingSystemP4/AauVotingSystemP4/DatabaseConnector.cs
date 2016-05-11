@@ -420,6 +420,7 @@ namespace AauVotingSystemP4
         /// Here we check if the ballot is finalized
         /// </summary>
         /// <param name="ballotfinalized"></param>
+        /// <returns>True if the votingballot is finalized and if it is not it returns false</returns>
         public bool IsBallotFinalized(string ballotfinalized)
         {
             MySqlCommand cmd = new MySqlCommand();
