@@ -43,5 +43,20 @@ namespace AauVotingSystemP4
         {
 
         }
+
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var databaseConector = new DatabaseConnector();
+            List<VotingOption> votingOption = databaseConector.GetAllVotingOptionsForElection(1);
+        }
+
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var databaseConector = new DatabaseConnector();
+            dataGrid1.ItemsSource = databaseConector.GetAllCitizens();
+
+        }
     }
 }

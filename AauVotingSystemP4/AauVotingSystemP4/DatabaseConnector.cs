@@ -130,6 +130,7 @@ namespace AauVotingSystemP4
             }
         }
 
+
         /// <summary>
         /// Register that the citizen has voted in an election
         /// </summary>
@@ -209,6 +210,30 @@ namespace AauVotingSystemP4
             return list;
 
         }
+
+
+        /// <summary>
+        /// Returns all zip codes registerd for one election 
+        /// </summary>
+        /// <param name="electionId">The election in question</param>
+        /// <returns>A list of ZipCodes</returns>
+        public List<ZipCode> GetAllZipCodesInElection(int electionId)
+        {
+            List<ZipCode> list = new List<ZipCode>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = "SELECT * FROM zipcode WHERE Election_ID = " + electionId + ";";
+
+            cmd.Connection = GetDefaultConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                ZipCode zipCode = new ZipCode(int.Parse((string)reader[0]), (string)reader[1]);
+                list.Add(zipCode);
+            }
+            cmd.Connection.Close();
+            return list;
+        }
+
 
         /// <summary>
         /// Adds a nomination district to the database
@@ -390,6 +415,36 @@ namespace AauVotingSystemP4
                 return false;
             }
         }
+
+        /// <summary>
+        /// Here we check if the ballot is finalized
+        /// </summary>
+        /// <param name="ballotfinalized"></param>
+        /// <returns>True if the votingballot is finalized and if it is not it returns false</returns>
+        public bool IsBallotFinalized(string ballotfinalized)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = String.Format("SELECT COUNT (*) FROM election WHERE Ballotfinalized = '{0}';", ballotfinalized);
+            cmd.Connection = GetDefaultConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            Int64 numberofFinalizedballots = 0;
+            while (reader.Read())
+            {
+                numberofFinalizedballots = (Int64)reader[0];
+            }
+
+            cmd.Connection.Close();
+            if (numberofFinalizedballots > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
 
         /// <summary>
         /// Checks if electionboard exists.
