@@ -611,5 +611,37 @@ namespace AauVotingSystemP4
 
             return votes;
         }
+        /// <summary>
+        /// It get alle the Type_of_election, because the electionboard should have the opotunity to select which one they want to add/remove from
+        /// </summary>
+        /// <returns>Types of elections for all the elections in the database</returns>
+        public List<Election> GetAllElectionsByID()
+        {
+            List<Election> listOfElection = new List<Election>();
+
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = "select Type_of_election from election;";
+            cmd.Connection = GetDefaultConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                int electionId = (int)reader[0];
+                DateTime startDate = (DateTime)reader[1];
+                DateTime endDate = (DateTime)reader[2];
+                string typeOfElection = (string)reader[3];
+                bool isBallotFinalized = (bool)reader[4];
+
+                //Election election = new Election(electionId, typeOfElection, startDate, endDate, typeOfElection);
+                //listOfElection.Add(election);
+                //foreach (Election in listOfElection)
+                //{
+
+                //}
+            }
+
+            cmd.Connection.Close();
+
+            return listOfElection;
+        }
     }
 }
