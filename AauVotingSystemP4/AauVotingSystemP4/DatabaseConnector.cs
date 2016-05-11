@@ -210,6 +210,30 @@ namespace AauVotingSystemP4
 
         }
 
+
+        /// <summary>
+        /// Returns all zip codes registerd for one election 
+        /// </summary>
+        /// <param name="electionId">The election in question</param>
+        /// <returns>A list of ZipCodes</returns>
+        public List<ZipCode> GetAllZipCodesInElection(int electionId)
+        {
+            List<ZipCode> list = new List<ZipCode>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = "SELECT * FROM zipcode WHERE Election_ID = " + electionId + ";";
+
+            cmd.Connection = GetDefaultConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                ZipCode zipCode = new ZipCode(int.Parse((string)reader[0]), (string)reader[1]);
+                list.Add(zipCode);
+            }
+            cmd.Connection.Close();
+            return list;
+        }
+
+
         /// <summary>
         /// Adds a nomination district to the database
         /// </summary>
