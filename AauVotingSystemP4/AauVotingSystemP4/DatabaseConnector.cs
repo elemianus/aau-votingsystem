@@ -585,5 +585,42 @@ namespace AauVotingSystemP4
             cmd.Connection.Close();
 
         }
+
+        public void AddElection(Election election)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = GetDefaultConnection();
+
+            string sqlString = String.Format("INSERT INTO election(Name, Startdate, Enddate, Type_Of_Election) VALUES('{0}', {1}, {2}, {3}); ", election.ElectionName, election.StartDate, election.EndDate, election.ElectionType);
+
+            cmd.CommandText = sqlString;
+            cmd.ExecuteReader();
+            cmd.Connection.Close();
+        }
+
+        {
+
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = String.Format("SELECT FROM election WHERE Election_ID = {0} ;", election_Id);
+            Election myElection;
+            cmd.Connection = GetDefaultConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                int electionId = (int)reader[0];
+                DateTime startDate = (DateTime)reader[1];
+                DateTime endDate = (DateTime)reader[2];
+                string typeOfElection = (string)reader[3];
+                bool isBallotFinalized = (bool)reader[4];
+                
+
+                Election election = new Election(electionId, typeOfElection, startDate, endDate, typeOfElection);
+                myElection = election;
+            }
+            cmd.Connection.Close();
+            return myElection;
+        }
+
+
     }
 }
