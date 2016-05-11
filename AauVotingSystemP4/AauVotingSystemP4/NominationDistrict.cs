@@ -107,23 +107,19 @@ namespace AauVotingSystemP4
         /// <summary>
         /// Checks if a citizen actually belongs to the given nominationdistrict
         /// </summary>
-        /// <param name="zipcode"></param>
-        /// <param name="citizen"></param>
-        /// <param name="nominationdistrict"></param>
-        /// <returns>true if the citizen belongs to the district / false if not </returns>
+        /// <param name="citizen"> the citizen that will be checked</param>
+        /// <param name="nominationdistrict">the named nominationdistrict</param>
+        /// <returns>true if the citizen belongs to the given nominationdistrict / false if not </returns>
         public bool CitizenInNominationDistrict(Citizen citizen, NominationDistrict nominationDistrict)
         {
-            int citizenZipCode = citizen.Zipcode;
             foreach (ZipCode number in nominationDistrict.zipCodes)
             {
                 if (number.ZipCodeId == citizen.Zipcode)
                 {
-                    return true;
+                    return true;    // the citizen live in the given nominationdistrict
                 }
             }
-          return false;
-
+          return false;     // the citizen dose not live in the given nominationdistrict 
         }
-
     }
 }
