@@ -34,17 +34,5 @@ namespace AauVotingSystemP4
         {
             Main.Content = new CitizenVotingBallot();
         }
-
-        private void SnydeKnap_Click(object sender, RoutedEventArgs e)
-        {
-            ElectionboardMainWindow emw = new ElectionboardMainWindow();
-            emw.Show();
-        }
-
-        private void testtest_Click(object sender, RoutedEventArgs e)
-        {
-            LogIn li = new LogIn();
-            li.Show();
-        }
     }
 }

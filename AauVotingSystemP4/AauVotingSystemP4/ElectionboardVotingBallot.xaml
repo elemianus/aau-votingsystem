@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AauVotingSystemP4"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="ElectionboardVotingBallot" Height="349.039" Width="300"
         WindowState="Maximized">
     <DockPanel Margin="0,0,0,0">
         <local:HeaderElectionboard x:Name="HeaderElectionboard" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2" Loaded="HeaderElectionboard_Loaded"/>
         <StackPanel Orientation="Vertical" Margin="0,0.4,0,-44.4">
+            <DataGrid Name="dataGrid1" Height="107"/>
             <StackPanel Height="51" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="Add" Content="Add voting option" Height="27" Width="107" Click="Add_Click" Margin="0,5,20,6.4"/>
                 <Button x:Name="Delete" Content="Delete voting option" Height="26" Width="125" Click="Delete_Click"  Margin="20,6,0,6.4"/>
