@@ -20,6 +20,7 @@ namespace AauVotingSystemP4
     /// </summary>
     public partial class LoginElectionboard : Page
     {
+        public static string LogInNominationdistrict;
         public LoginElectionboard()
         {
             InitializeComponent();
@@ -30,10 +31,14 @@ namespace AauVotingSystemP4
             var databaseConector = new DatabaseConnector();
             if (databaseConector.DoesElectionboardExist(TypeInNominationDistrict.Text))
             {
+
+                //string LogInNominationdistrict = TypeInNominationDistrict.Text;
                 //Nomination district exists
 
                 ElectionboardMainWindow emw = new ElectionboardMainWindow();
                 emw.Show();
+                LogInNominationdistrict = TypeInNominationDistrict.Text;
+                //LogInNominationdistrict = int.Parse(TypeInNominationDistrict.Text);
             }
             else
             {

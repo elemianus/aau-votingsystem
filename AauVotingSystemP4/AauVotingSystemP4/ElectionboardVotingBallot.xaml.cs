@@ -45,18 +45,25 @@ namespace AauVotingSystemP4
         }
 
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var databaseConector = new DatabaseConnector();
-            List<VotingOption> votingOption = databaseConector.GetAllVotingOptionsForElection(1);
-        }
+        //private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    var databaseConector = new DatabaseConnector();
+        //    List<VotingOption> votingOption = databaseConector.GetAllVotingOptionsForElection(1);
+        //}
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var databaseConector = new DatabaseConnector();
-            dataGrid1.ItemsSource = databaseConector.GetAllCitizens();
+            dataGrid1.ItemsSource = databaseConector.GetAllElections();
+        }
 
+        private void SelectElection_Click(object sender, RoutedEventArgs e)
+        {
+            var databaseConector = new DatabaseConnector();
+            //databaseConector.GetListOfNationalVotionOptions
+
+            dataGrid1.ItemsSource = databaseConector.GetVotingOptionForNominationDistrict(3,(int.Parse(TypedInElection.Text)));
         }
     }
 }
