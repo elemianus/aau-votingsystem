@@ -10,6 +10,7 @@ namespace AauVotingSystemP4
     {
         Dictionary<int, VotingOption> votingOptions = new Dictionary<int, VotingOption>();
         public int electionId;
+        
         public ResultCalculator(int electionId)
         {
             this.electionId = electionId;
@@ -18,13 +19,8 @@ namespace AauVotingSystemP4
         public void CalculateResult()
         {
             var conector = new DatabaseConnector();
-            
-            
-            
-            List<VoteResult> voteResult = conector.GetAllVotes(electionId);
-            string derp ="";
-
-            TablulateResultsForParties(voteResult);
+            List<VoteResult> resultsForAllDistricts = conector.GetAllVotes(electionId);
+            TablulateResultsForParties(resultsForAllDistricts);
         }
 
         private void SetUpCandidates()
@@ -36,9 +32,16 @@ namespace AauVotingSystemP4
             }
         }
 
+        
+        /// <summary>
+        /// Calculates the result for the parties based on the input.
+        /// </summary>
+        /// <param name="resultsForAllDistricts"></param>
+        /// <returns></returns>
         public Dictionary<VotingOption, int> TablulateResultsForParties(List<VoteResult> resultsForAllDistricts)
         {
             var conector = new DatabaseConnector();
+            
             List<VotingOption> parties = conector.GetListOfNationalVotionOptions(electionId);
             Dictionary<VotingOption, int> votes = new Dictionary<VotingOption, int>();
             foreach (var party in parties)
