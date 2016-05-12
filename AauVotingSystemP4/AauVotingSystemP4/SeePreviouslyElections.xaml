@@ -17,30 +17,25 @@
         <Border Grid.Column="0" Grid.Row="0" Padding="5" Background="#4E87D4">
             <Label VerticalAlignment="Center" Foreground="White">Choose election</Label>
         </Border>
-        <ListBox Name="electionsListBox" Grid.Column="0" Margin="0,2,0,0" Grid.Row="1"
-                 ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.RowSpan="1" 
-                 ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True">
-            <ListBox.ItemTemplate>
+        <ListView Name="electionsListBox" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible"
+                 IsSynchronizedWithCurrentItem="True">
+            <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock>
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="{}{0} + {1}">
-                                <Binding Path="typeOfElection" />
-                                <Binding Path="startDate" />
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding TypeOfElection}"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding StartDate}"/>
+                    </WrapPanel>
                 </DataTemplate>
-            </ListBox.ItemTemplate>
+            </ListView.ItemTemplate>
+            
+        
 
-            <!--<ListBoxItem>Election 2015</ListBoxItem>
-            <ListBoxItem>EU 2015</ListBoxItem>
-            <ListBoxItem>Election 2011</ListBoxItem>
-            <ListBoxItem>Election 2007</ListBoxItem>-->
-        </ListBox>
+
+
+        </ListView>
         <ListView Name="electionResult" Margin="0,1,0,0" Grid.Row="2" 
-                 ScrollViewer.HorizontalScrollBarVisibility="Auto">
-            <!--Everything below is a placeholder for creating a listview consisting of data pulled from a different location-->
+                 ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Political Party" Width="150" DisplayMemberBinding="{Binding Name}" />
@@ -48,13 +43,10 @@
                     <GridViewColumn Header="Mandates" Width="Auto" DisplayMemberBinding="{Binding Mandates}"/>
                 </GridView>
             </ListView.View>
-            
-
-
-
-
-
 
         </ListView>
+        
+        
+        
     </Grid>
 </Page>
