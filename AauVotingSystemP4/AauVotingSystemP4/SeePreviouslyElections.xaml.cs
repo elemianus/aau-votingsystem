@@ -24,6 +24,7 @@ namespace AauVotingSystemP4
         public SeePreviouslyElections()
         {
             InitializeComponent();
+            //    Placeholder code for the databaseconnector bits
             var databaseConnector = new DatabaseConnector();
             var listOfElections = databaseConnector.GetAllElections();
             var listOfListOfElections = new List<ListOfElections>();
@@ -31,13 +32,12 @@ namespace AauVotingSystemP4
             {
                 listOfListOfElections.Add(new ListOfElections() { TypeOfElection = item.ElectionType, StartDate = item.StartDate.Year.ToString() });
             }
-            var databaseResults = new DatabaseConnector();
-            var listOfResults = 
+      
 
-            //List<Result> items = new List<Result>();
-            //items.Add(new Result() { Name = "Venstre", Votes = 500000, Mandates = 12 });
-            //items.Add(new Result() { Name = "Dansk Folkeparti", Votes = 300000, Mandates = 7 });
-            //items.Add(new Result() { Name = "Alternativet", Votes = 200000, Mandates = 4 });
+            List<Result> items = new List<Result>();
+            items.Add(new Result() { Name = "Venstre", Votes = 500000, Mandates = 12 });
+            items.Add(new Result() { Name = "Dansk Folkeparti", Votes = 300000, Mandates = 7 });
+            items.Add(new Result() { Name = "Alternativet", Votes = 200000, Mandates = 4 });
             electionsListBox.ItemsSource = listOfListOfElections;
             electionResult.ItemsSource = items;
 
