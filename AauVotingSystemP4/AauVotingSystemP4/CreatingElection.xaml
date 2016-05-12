@@ -10,7 +10,6 @@
     <DockPanel>
         <local:HeaderUserControl x:Name="HeaderUserControl" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="40"/>
         <StackPanel Margin="0,0,0,0.4" RenderTransformOrigin="0.5,0.5">
-            <TextBox x:Name="election_Name" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Election Name" VerticalAlignment="Top" Width="120"/>
             <TextBox x:Name="election_Type" HorizontalAlignment="Left" Height="22" Margin="10,10,0,0" TextWrapping="Wrap" Text="Election Type" VerticalAlignment="Top" Width="120"/>
             <DatePicker x:Name="start_DateTimePicker" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
             <DatePicker x:Name="end_DateTimePicker" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>

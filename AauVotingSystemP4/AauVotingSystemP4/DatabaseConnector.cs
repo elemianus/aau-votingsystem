@@ -593,7 +593,7 @@ namespace AauVotingSystemP4
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = GetDefaultConnection();
 
-            string sqlString = String.Format("INSERT INTO election(Startdate, Enddate, Type_Of_Election) VALUES('{0}', {1}, {2}); ", election.StartDate, election.EndDate, election.ElectionType);
+            string sqlString = String.Format("INSERT INTO election(Startdate, Enddate, Type_Of_Election) VALUES('{0}', '{1}', '{2}'); ", election.StartDate.ToString("yyyy-MM-dd h:mm:ss"), election.EndDate.ToString("yyyy-MM-dd h:mm:ss"), election.ElectionType); 
 
             cmd.CommandText = sqlString;
             cmd.ExecuteReader();
