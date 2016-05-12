@@ -39,7 +39,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Political Party" Width="150" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Votes" Width="120" DisplayMemberBinding="{Binding Votes}" />
+                    <GridViewColumn Header="Votes" Width="120" DisplayMemberBinding="{Binding PartyVoteCount}" />
                     <GridViewColumn Header="Mandates" Width="Auto" DisplayMemberBinding="{Binding Mandates}"/>
                 </GridView>
             </ListView.View>
