@@ -22,6 +22,7 @@ namespace AauVotingSystemP4
     /// </summary>
     public partial class AdministrateElectionEdit : Window
     {
+        bool isBallotFinalized;
         Election myElection;
         public AdministrateElectionEdit(int electionId)
         {
@@ -29,11 +30,27 @@ namespace AauVotingSystemP4
             this.myElection =  myConnector.GetElection(electionId);      
             InitializeComponent();
             type_Of_Election.Text = myElection.ElectionType;
+            startdate.SelectedDate = myElection.StartDate;
+            enddate.SelectedDate = myElection.EndDate;
+            this.isBallotFinalized = myElection.IsBallotFinalized;
             
         }
-        
 
+     
 
+        private void saveChanges_Click(object sender, RoutedEventArgs e)
+        {
+            if (finalized.IsChecked == true)
+            {
+                isBallotFinalized = true;
+            }
+            else if (notFinalized.IsChecked == true)
+            {
+                isBallotFinalized = false;
+            }
+
+            MessageBox.Show(isBallotFinalized.ToString());
+        }
     }
 }
 //System.Windows.Controls.Button: Select election
