@@ -55,7 +55,13 @@ namespace AauVotingSystemP4
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var databaseConector = new DatabaseConnector();
-            dataGrid1.ItemsSource = databaseConector.GetAllElections();
+            var elections = databaseConector.GetAllElections();
+            var displayList = new List<ElectionDisplayItem>();
+            foreach (var item in elections)
+            {
+                displayList.Add(new ElectionDisplayItem() { ElectionId = item.Election_ID, Name = item.ElectionType, IsBallotFinalized = item.IsBallotFinalized, StartDate = item.StartDate.Day + "-" + item.StartDate.Month + "-" + item.StartDate.Year });
+            }
+            electionListView.ItemsSource = displayList;
         }
 
         private void SelectElection_Click(object sender, RoutedEventArgs e)
@@ -63,7 +69,25 @@ namespace AauVotingSystemP4
             var databaseConector = new DatabaseConnector();
             //databaseConector.GetListOfNationalVotionOptions
 
-            dataGrid1.ItemsSource = databaseConector.GetVotingOptionForNominationDistrict(3,(int.Parse(TypedInElection.Text)));
+            //dataGrid1.ItemsSource = databaseConector.GetVotingOptionForNominationDistrict(3,(int.Parse(TypedInElection.Text)));
+        }
+
+        public class ElectionDisplayItem
+        {
+            public string Name { get; set; }
+            public bool IsBallotFinalized { get; set; }
+            public string StartDate { get; set; }
+            public int ElectionId { get; set; }
+        }
+
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = sender as ListViewItem;
+            if (item != null && item.IsSelected)
+            {
+                var currentElectoin = item.Content as ElectionDisplayItem;
+                MessageBox.Show(currentElectoin.ElectionId+"");
+            }
         }
     }
 }

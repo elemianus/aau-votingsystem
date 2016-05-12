@@ -54,6 +54,7 @@ namespace AauVotingSystemP4
             Dictionary<VotingOption, int> votes = new Dictionary<VotingOption, int>();
             foreach (var party in parties)
             {
+                votes.Add(party, 0);
                 foreach (var voteresult in resultsForAllDistricts)
                 {
                     if (voteresult.PartyId == party.PartyId)

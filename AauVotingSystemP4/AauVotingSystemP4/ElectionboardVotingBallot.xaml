@@ -11,29 +11,26 @@
     <DockPanel Margin="0,0,0,0">
         <local:HeaderElectionboard x:Name="HeaderElectionboard" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2" Loaded="HeaderElectionboard_Loaded"/>
         <StackPanel Orientation="Vertical" Margin="0,4.4,0,-74.8" RenderTransformOrigin="0.494,0.676">
-            <Label VerticalAlignment="Top"  Name="SelectElection" Content="Type in the ElectionID to the election, which you want to add a voting option to, or delete a voting option from."/>
-            <TextBox VerticalAlignment="Top" Name="TypedInElection" Width="170"/>
-            <Button VerticalAlignment="Top" HorizontalAlignment="Center" Name="SelectedElection" Content="Select election" Width="100" Click="SelectElection_Click"/>
-            <DataGrid x:Name="dataGrid1" Height="240" Width="470"/>
-            <StackPanel Height="51" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="Add" Content="Add voting option" Height="27" Width="107" Click="Add_Click" Margin="0,5,20,6.4"/>
-                <Button x:Name="Delete" Content="Delete voting option" Height="26" Width="125" Click="Delete_Click"  Margin="20,6,0,6.4"/>
-            </StackPanel>
-            <StackPanel Margin="0,25.4,0,0.4" Width="234" HorizontalAlignment="Center">
-                <RadioButton GroupName="CitizenVotingOption" Content="Venstre"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 1" Margin="23,0,-0.4,0"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 2" Margin="23,0,-0.4,0"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 3" Margin="23,0,-0.4,0"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 4" Margin="23,0,-0.4,0"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 5" Margin="23,0,-0.4,0" Height="25"/>
+            <Label VerticalAlignment="Top"  Name="SelectElection" Content="Type in the ElectionID to the election, which you want to add a voting option to, or delete a voting option from." HorizontalAlignment="Center"/>
+                       
 
-                <RadioButton GroupName="CitizenVotingOption" Content="Socialdemokraterne" Margin="0,0,-0.4,0" Height="18"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 1" Margin="23,0,-0.4,0"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 2" Margin="23,0,-0.4,0"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 3" Margin="23,0,-0.4,0"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 4" Margin="23,0,-0.4,0"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 5" Margin="23,0,-0.4,0"/>
-            </StackPanel>
+            <ListView Name="electionListView" Margin="0,1,0,0" Grid.Row="2" Height="300" Width="400"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Type of election" Width="150" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Startdate" Width="120" DisplayMemberBinding="{Binding StartDate}" />
+                        <GridViewColumn Header="Is ballot final" Width="Auto" DisplayMemberBinding="{Binding IsBallotFinalized}"/>
+                    </GridView>
+                </ListView.View>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+
+            
         </StackPanel>
     </DockPanel>
 </Window>
