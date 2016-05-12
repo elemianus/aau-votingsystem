@@ -8,6 +8,7 @@
       d:DesignHeight="300"
         Title="ElectionAdmin_Homepage" Width="575.961">
     <Grid>
-        <Button x:Name="CreateElection" Content="Create Election" HorizontalAlignment="Left" Margin="232,100,0,0" VerticalAlignment="Top" Width="75" Click="createElection_Click"/>
+        <Button x:Name="CreateElection" Content="Create Election" HorizontalAlignment="Left" Margin="199,105,0,0" VerticalAlignment="Top" Width="75" Click="createElection_Click"/>
+        <Button x:Name="admin_election" Content="Administrate election" HorizontalAlignment="Left" Margin="296,105,0,0" VerticalAlignment="Top" Width="75" Click="admin_election_Click"/>
     </Grid>
 </Page>

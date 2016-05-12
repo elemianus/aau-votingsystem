@@ -62,6 +62,12 @@
     <Compile Include="AddVotingOption.xaml.cs">
       <DependentUpon>AddVotingOption.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdministrateElection.xaml.cs">
+      <DependentUpon>AdministrateElection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdministrateElectionEdit.xaml.cs">
+      <DependentUpon>AdministrateElectionEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CitizenGenerator.cs" />
     <Compile Include="CitizenHaveVoted.xaml.cs">
       <DependentUpon>CitizenHaveVoted.xaml</DependentUpon>
@@ -143,6 +149,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddVotingOption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdministrateElection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdministrateElectionEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

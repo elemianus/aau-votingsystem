@@ -29,6 +29,12 @@ namespace AauVotingSystemP4
             CreatingElection evb = new CreatingElection();
             evb.Show();
         }
+
+        private void admin_election_Click(object sender, RoutedEventArgs e)
+        {
+            AdministrateElection evb = new AdministrateElection();
+            evb.Show();
+        }
     }
 }
 
