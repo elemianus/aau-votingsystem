@@ -24,6 +24,10 @@ namespace AauVotingSystemP4
             InitializeComponent();
         }
 
+        private void HeaderElectionboard_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             AddVotingOption avo = new AddVotingOption();
@@ -44,6 +48,41 @@ namespace AauVotingSystemP4
             cavo.Show();
             this.Close();
         }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var databaseConector = new DatabaseConnector();
+            var partycandidateelections = databaseConector.GetAllElections();
+            var displayList = new List<AddVotingOptionDisplay>();
+            foreach (var item in partycandidateelections)
+            {
+                displayList.Add(new AddVotingOptionDisplay() { ElectionId = item.Election_ID, FirstName = item.ElectionType, IsBallotFinalized = item.IsBallotFinalized, });
+            }
+            AddorRemoveListView.ItemsSource = displayList;
+        }
+
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = sender as ListViewItem;
+            if (item != null && item.IsSelected)
+            {
+                
+            }
+        }
+
+        public class AddVotingOptionDisplay
+        {
+            public string FirstName { get; set; }
+            public int Party { get; set; }
+
+            public int ElectionId { get; set; }
+
+            public bool IsBallotFinalized { get; set; }
+
+        }
+
+
+
+
         /// <summary>
         /// This ensures that when you click on the textbox with "Type in candidate" that text will disappear and you can write from the beginning. 
         /// </summary>
@@ -54,6 +93,8 @@ namespace AauVotingSystemP4
             TextBox tb = (TextBox)sender;
             tb.Text = string.Empty;
             tb.GotFocus -= TextBox_GotFocus;
+
         }
+
     }
 }

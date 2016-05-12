@@ -5,32 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AauVotingSystemP4"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="AddVotingOption" Height="423.317" Width="300"
         WindowState="Maximized">
     <DockPanel Margin="0,0,0,0">
-        <local:HeaderElectionboard x:Name="HeaderElectionboard" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2"/>
-        <StackPanel Orientation="Vertical" Margin="0,0.4,0,-44.4">
-            <StackPanel Height="51" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="Add" Content="Add voting option" Height="27" Width="107" Click="Add_Click" Margin="0,5,20,6.4"/>
-                <Button x:Name="Delete" Content="Delete voting option" Height="26" Width="125" Click="Delete_Click"  Margin="20,6,0,6.4"/>
-            </StackPanel>
-            <StackPanel Margin="0,25.4,0,0.4" Width="234" HorizontalAlignment="Center">
-                <RadioButton GroupName="CitizenVotingOption" Content="Venstre"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 1" Margin="23,0,-0.4,0"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 2" Margin="23,0,-0.4,0"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 3" Margin="23,0,-0.4,0"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 4" Margin="23,0,-0.4,0"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 5" Margin="23,0,-0.4,0" Height="18"/>
-                <TextBox Name="TypeInCandidateVenstre" Margin="41,0,-.4,10" Text="Type in the candidate..." GotFocus="TextBox_GotFocus"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Socialdemokraterne" Margin="0,0,-0.4,0" Height="18"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 1" Margin="23,0,-0.4,0"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 2" Margin="23,0,-0.4,0"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 3" Margin="23,0,-0.4,0"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 4" Margin="23,0,-0.4,0"/>
-                <RadioButton GroupName="CitizenVotingOption" Content="Candidate 5" Margin="23,0,-0.4,0"/>
-                <TextBox Name="TypeInCandidateSocialdemokraterne" Text="Type in the candidate..." GotFocus="TextBox_GotFocus"  Margin="41,0,-0.4,10"/>
-                <Button x:Name="button" Content="Confirm" Margin="144,0,-0.4,0" Click="button_Click" Height="20"/>
-            </StackPanel>
+        <local:HeaderElectionboard x:Name="HeaderElectionboard" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2" Loaded="HeaderElectionboard_Loaded"/>
+        <StackPanel Orientation="Vertical" Margin="0,4.4,0,-74.8" RenderTransformOrigin="0.494,0.676">
+            <Label VerticalAlignment="Top"  Name="SelectElection" Content="Add or delete a candidate or party." HorizontalAlignment="Center"/>
+
+
+            <ListView Name="AddorRemoveListView" Margin="0,1,0,0" Grid.Row="2" Height="300" Width="400"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <ListView.View>
+                    
+                    
+                    <GridView>
+                        
+                        <GridViewColumn Header="FirstName" Width="150" DisplayMemberBinding="{Binding FirstName}" />
+                        <GridViewColumn Header="Party" Width="120" DisplayMemberBinding="{Binding Party}" />
+                    </GridView>
+                </ListView.View>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+
+
         </StackPanel>
     </DockPanel>
 </Window>
