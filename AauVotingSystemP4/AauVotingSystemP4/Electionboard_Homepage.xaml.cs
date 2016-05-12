@@ -31,6 +31,12 @@ namespace AauVotingSystemP4
             ElectionboardVotingBallot evb = new ElectionboardVotingBallot();
             evb.Show();
         }
+
+        private void AddRemove_Click(object sender, RoutedEventArgs e)
+        {
+            AddVotingOption avo = new AddVotingOption();
+            avo.Show();
+        }
     }
 }
 
