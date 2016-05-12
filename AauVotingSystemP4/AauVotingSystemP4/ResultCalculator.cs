@@ -24,6 +24,7 @@ namespace AauVotingSystemP4
         {
             var conector = new DatabaseConnector();
             List<VoteResult> resultsForAllDistricts = conector.GetVotesForParties(electionId);
+            resultsForAllDistricts.Sort();
             return TablulateResultsForParties(resultsForAllDistricts);
         }
 
@@ -35,7 +36,7 @@ namespace AauVotingSystemP4
         {
             var cononector = new DatabaseConnector();
             List<VoteResult> candidateResults = cononector.GetVotesForCandidates(electionId);
-
+            candidateResults.Sort();
             return candidateResults;
         }
 

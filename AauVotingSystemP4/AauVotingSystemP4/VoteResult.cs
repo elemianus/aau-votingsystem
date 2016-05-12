@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AauVotingSystemP4
 {
-    class VoteResult
+    class VoteResult : IComparable<VoteResult>
     {
         public string FirstName;
         public string LastName;
@@ -27,6 +27,13 @@ namespace AauVotingSystemP4
             this.NominationDistrictId = nominationDistrictId;
             this.IsNationalVotingOption = isNationalVotingOption;
         }
-        
+
+        public int CompareTo(VoteResult other)
+        {
+            if (this.AmountOfVotes > other.AmountOfVotes)
+                return 1;
+            else
+                return -1;
+        }
     }
 }
