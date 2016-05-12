@@ -717,6 +717,31 @@ namespace AauVotingSystemP4
             return null;
         }
 
+        public bool EditElection(int electionId, string typeOfElection, DateTime startdate, DateTime enddate, bool isBallotFinalized)
+        {
+           
+            string sqlString = "";
+
+            if (isBallotFinalized) 
+            {
+                sqlString = String.Format("UPDATE election SET Startdate = '{0}', Enddate = '{1}', Type_of_election = '{2}', Ballotfinalized = {3} WHERE Election_ID = {4}", startdate.ToString("yyyy-MM-dd hh:mm:ss"), enddate.ToString("yyyy-MM-dd hh:mm:ss"), typeOfElection, 1, electionId);
+            }
+            else
+            {
+                sqlString = String.Format("UPDATE election SET Startdate = '{0}', Enddate = '{1}', Type_of_election = '{2}', Ballotfinalized = {3} WHERE Election_ID = {4}", startdate.ToString("yyyy-MM-dd hh:mm:ss"), enddate.ToString("yyyy-MM-dd hh:mm:ss"), typeOfElection, 0, electionId);
+            }
+            
+            Console.WriteLine(sqlString);
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = GetDefaultConnection();            
+
+            cmd.CommandText = sqlString;
+            cmd.ExecuteReader();
+            cmd.Connection.Close();
+
+            return true;
+        }
+
 
 
     }

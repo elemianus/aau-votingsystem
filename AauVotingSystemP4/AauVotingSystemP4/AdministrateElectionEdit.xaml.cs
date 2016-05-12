@@ -24,9 +24,11 @@ namespace AauVotingSystemP4
     {
         bool isBallotFinalized;
         Election myElection;
+        int electionId;
+        DatabaseConnector myConnector = new DatabaseConnector();
         public AdministrateElectionEdit(int electionId)
         {
-            DatabaseConnector myConnector = new DatabaseConnector();
+            this.electionId = electionId;
             this.myElection =  myConnector.GetElection(electionId);      
             InitializeComponent();
             type_Of_Election.Text = myElection.ElectionType;
@@ -50,6 +52,8 @@ namespace AauVotingSystemP4
             }
 
             MessageBox.Show(isBallotFinalized.ToString());
+            myConnector.EditElection(electionId, type_Of_Election.Text, startdate.SelectedDate.Value, enddate.SelectedDate.Value, isBallotFinalized);
+            
         }
     }
 }
