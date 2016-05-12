@@ -593,7 +593,7 @@ namespace AauVotingSystemP4
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = GetDefaultConnection();
 
-            string sqlString = String.Format("INSERT INTO election(Startdate, Enddate, Type_Of_Election) VALUES('{0}', '{1}', '{2}'); ", election.StartDate.ToString("yyyy-MM-dd h:mm:ss"), election.EndDate.ToString("yyyy-MM-dd h:mm:ss"), election.ElectionType); 
+            string sqlString = String.Format("INSERT INTO election(Startdate, Enddate, Type_Of_Election) VALUES('{0}', '{1}', '{2}'); ", election.StartDate.ToString("yyyy-MM-dd hh:mm:ss"), election.EndDate.ToString("yyyy-MM-dd hh:mm:ss"), election.ElectionType); 
 
             cmd.CommandText = sqlString;
             cmd.ExecuteReader();
@@ -629,7 +629,7 @@ namespace AauVotingSystemP4
         {
 
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = String.Format("SELECT FROM election WHERE Election_ID = {0} ;", election_Id);
+            cmd.CommandText = String.Format("SELECT * FROM election WHERE Election_ID = {0} ;", election_Id);
             
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
