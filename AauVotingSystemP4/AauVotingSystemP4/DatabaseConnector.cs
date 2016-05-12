@@ -540,7 +540,9 @@ namespace AauVotingSystemP4
                 DateTime startDate = (DateTime)reader[1];
                 DateTime endDate = (DateTime)reader[2];
                 string typeOfElection = (string)reader[3];
-                bool isBallotFinalized = (bool)reader[4];
+                bool isBallotFinalized = false;
+                if (!reader.IsDBNull(4))
+                    isBallotFinalized = (bool)reader[4];
 
                 Election election = new Election(electionId, typeOfElection, startDate, endDate, typeOfElection);
                 listOfElection.Add(election);
@@ -598,30 +600,55 @@ namespace AauVotingSystemP4
             cmd.Connection.Close();
         }
 
-       /* public Election GetElection(int election_Id)
+        public List<VoteResult> GetAllVotes(int electionId)
         {
+            List<VoteResult> votes = new List<VoteResult>();
 
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = String.Format("SELECT FROM election WHERE Election_ID = {0} ;", election_Id);
-            Election myElection;
+
+            cmd.CommandText = "SELECT Name,NominationDistrict_ID,result.Party_ID,Candidate_ID,Amount,Name  FROM result join party ON result.Party_ID = party.Party_ID WHERE result.Election_ID =" + electionId + " ORDER BY amount desc; ";
+            Console.WriteLine(cmd.CommandText);
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                int electionId = (int)reader[0];
-                DateTime startDate = (DateTime)reader[1];
-                DateTime endDate = (DateTime)reader[2];
-                string typeOfElection = (string)reader[3];
-                bool isBallotFinalized = (bool)reader[4];
-                
-
-                Election election = new Election(electionId, typeOfElection, startDate, endDate, typeOfElection);
-                myElection = election;
+                int partyId = (int)reader[2];
+                int amount = (int)reader[4];
+                int nominationDistrictId = (int)reader[1];
+                var voteResult = new VoteResult(partyId, amount, nominationDistrictId);
+                votes.Add(voteResult);
             }
+
             cmd.Connection.Close();
-            return myElection;
+
+            return votes;
         }
-        */
+
+
+        /* public Election GetElection(int election_Id)
+         {
+
+             MySqlCommand cmd = new MySqlCommand();
+             cmd.CommandText = String.Format("SELECT FROM election WHERE Election_ID = {0} ;", election_Id);
+             Election myElection;
+             cmd.Connection = GetDefaultConnection();
+             MySqlDataReader reader = cmd.ExecuteReader();
+             while (reader.Read())
+             {
+                 int electionId = (int)reader[0];
+                 DateTime startDate = (DateTime)reader[1];
+                 DateTime endDate = (DateTime)reader[2];
+                 string typeOfElection = (string)reader[3];
+                 bool isBallotFinalized = (bool)reader[4];
+
+
+                 Election election = new Election(electionId, typeOfElection, startDate, endDate, typeOfElection);
+                 myElection = election;
+             }
+             cmd.Connection.Close();
+             return myElection;
+         }
+         */
 
 
     }
