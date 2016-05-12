@@ -19,13 +19,13 @@ namespace AauVotingSystemP4
         public bool IsBallotFinalized { get { return isBallotFinalized; } }
         private bool isBallotFinalized = false;
 
-        public Election(int Election_ID, DateTime StartDate, DateTime EndDate, string ElectionType)
+        public Election(int Election_ID, DateTime StartDate, DateTime EndDate, string ElectionType,bool isBallotFinalized)
         {
             this.Election_ID = Election_ID;           
             this.StartDate = StartDate;
             this.EndDate = EndDate;
             this.ElectionType = ElectionType;
-           
+            this.isBallotFinalized = isBallotFinalized;
         }
 
 

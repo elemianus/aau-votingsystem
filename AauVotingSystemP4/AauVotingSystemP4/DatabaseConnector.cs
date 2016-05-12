@@ -544,7 +544,8 @@ namespace AauVotingSystemP4
                 if (!reader.IsDBNull(4))
                     isBallotFinalized = (bool)reader[4];
 
-                Election election = new Election(electionId, startDate, endDate, typeOfElection);
+                Election election = new Election(electionId, startDate, endDate, typeOfElection,isBallotFinalized);
+                
                 listOfElection.Add(election);
             }
 
@@ -670,10 +671,12 @@ namespace AauVotingSystemP4
                 DateTime startDate = (DateTime)reader[1];
                 DateTime endDate = (DateTime)reader[2];
                 string typeOfElection = (string)reader[3];
-                bool isBallotFinalized = (bool)reader[4];
 
-
-                Election election = new Election(electionId, startDate, endDate, typeOfElection);
+                bool isBallotFinalized = false;
+                if (!reader.IsDBNull(4))
+                    isBallotFinalized = (bool)reader[4];
+                
+                Election election = new Election(electionId, startDate, endDate, typeOfElection,isBallotFinalized);
                 return election;
             }
             cmd.Connection.Close();

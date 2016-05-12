@@ -13,7 +13,7 @@ namespace AauVotingSystemP4
         public void CreateElection(int Election_ID, DateTime StartDate, DateTime EndDate, string ElectionType)
         {
             var databaseConector = new DatabaseConnector();
-            Election myElection = new Election(Election_ID, StartDate, EndDate, ElectionType);
+            Election myElection = new Election(Election_ID, StartDate, EndDate, ElectionType,false);
             databaseConector.AddElection(myElection);
             //send til databasen via metode i DatabaseCOnnector
             
