@@ -211,7 +211,6 @@ namespace AauVotingSystemP4
 
         }
 
-
         /// <summary>
         /// Returns all zip codes registerd for one election 
         /// </summary>
@@ -232,6 +231,41 @@ namespace AauVotingSystemP4
             }
             cmd.Connection.Close();
             return list;
+        }
+
+        public void AddZipCodeToNominationDistrict(int electionId,int nominationDistrict, ZipCode zipCode) {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = GetDefaultConnection();
+
+            string sqlString = String.Format("INSERT INTO zipcode VALUES({0}, '{1}', {2},{3}); ",zipCode.ZipCodeId, zipCode.Name,nominationDistrict, electionId);
+
+            cmd.CommandText = sqlString;
+            cmd.ExecuteReader();
+            cmd.Connection.Close();
+        }
+
+        /// <summary>
+        /// Adds a nomination district to an election, and a series of nominationDistricts to that election
+        /// </summary>
+        /// <param name="election">The election to add to</param>
+        /// <param name="nominationDistrict">The nomination district to add</param>
+        /// <param name="zipCodes">The zipcodes to add to the nomination district</param>
+        public void AddNominationDistrictWithZipCodes(Election election,NominationDistrict nominationDistrict, List<ZipCode> zipCodes)
+        {
+            AddNominationDistrictForElection(nominationDistrict, election.Election_ID);
+            var nominationDistricts = GetNominationDistrictsForElection(election);
+
+            int highestId = 0;
+            foreach (var item in nominationDistricts)
+            {
+                if (item.NominationDistrictId > highestId)
+                    highestId = item.NominationDistrictId;
+            }
+
+            foreach (var item in zipCodes)
+            {
+                AddZipCodeToNominationDistrict(election.Election_ID, highestId, item);
+            }
         }
 
 

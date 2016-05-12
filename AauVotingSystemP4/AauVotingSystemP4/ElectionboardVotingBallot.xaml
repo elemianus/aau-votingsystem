@@ -11,7 +11,7 @@
     <DockPanel Margin="0,0,0,0">
         <local:HeaderElectionboard x:Name="HeaderElectionboard" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2" Loaded="HeaderElectionboard_Loaded"/>
         <StackPanel Orientation="Vertical" Margin="0,4.4,0,-74.8" RenderTransformOrigin="0.494,0.676">
-            <Label VerticalAlignment="Top"  Name="SelectElection" Content="Type in the ElectionID to the election, which you want to add a voting option to, or delete a voting option from." HorizontalAlignment="Center"/>
+            <Label VerticalAlignment="Top"  Name="SelectElection" Content="Double click the election you want to edit" HorizontalAlignment="Center"/>
                        
 
             <ListView Name="electionListView" Margin="0,1,0,0" Grid.Row="2" Height="300" Width="400"
