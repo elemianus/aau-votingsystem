@@ -12,8 +12,7 @@
         <StackPanel Margin="0,0,0,0.4" RenderTransformOrigin="0.5,0.5">
             <TextBox x:Name="election_Type" HorizontalAlignment="Left" Height="22" Margin="10,10,0,0" TextWrapping="Wrap" Text="Election Type" VerticalAlignment="Top" Width="120"/>
             <DatePicker x:Name="start_DateTimePicker" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-            <DatePicker x:Name="end_DateTimePicker" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="test_box" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="TestBox" VerticalAlignment="Top" Width="120"/>
+            <DatePicker x:Name="end_DateTimePicker" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>            
             <Button x:Name="CreateElection" Content="Create Election" HorizontalAlignment="Left" Margin="121,16,0,0" VerticalAlignment="Top" Width="75" Click="CreateElection_Click" RenderTransformOrigin="-0.393,0.812"/>
         </StackPanel>
     </DockPanel>

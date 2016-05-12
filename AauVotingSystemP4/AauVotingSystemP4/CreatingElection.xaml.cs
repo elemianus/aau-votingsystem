@@ -38,7 +38,7 @@ namespace AauVotingSystemP4
             
             myAdministrator.CreateElection(3, start_DateTimePicker.SelectedDate.Value, end_DateTimePicker.SelectedDate.Value, Convert.ToString(election_Type.Text));
             
-            CreatingElectionTestWindow evb = new CreatingElectionTestWindow();
+            CreatingElectionTestWindow evb = new CreatingElectionTestWindow(start_DateTimePicker.SelectedDate.Value, end_DateTimePicker.SelectedDate.Value, Convert.ToString(election_Type.Text));
             evb.Show();
         }
     }

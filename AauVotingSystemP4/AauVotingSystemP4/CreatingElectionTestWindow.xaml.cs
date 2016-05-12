@@ -20,10 +20,16 @@ namespace AauVotingSystemP4
     public partial class CreatingElectionTestWindow : Window
     {
         Election myElection;
+        DateTime startdate;
+        DateTime enddate;
+        string electiontype;
         
         //myElection der er blevet created og sendt til databasen, skal hives ned igen og dens info skrives ud så at man kan rette i den.
-        public CreatingElectionTestWindow()
+        public CreatingElectionTestWindow(DateTime startdate, DateTime enddate, string electiontype)
         {
+            this.startdate = startdate;
+            this.enddate = enddate;
+            this.electiontype = electiontype;
             var databaseConector = new DatabaseConnector();
             InitializeComponent();
             myElection = databaseConector.GetElection(3);        
@@ -36,23 +42,29 @@ namespace AauVotingSystemP4
 
         private void label1_Loaded(object sender, RoutedEventArgs e)
         {
-            label1.Content = "Election Type: " + myElection.ElectionType;
+            label1.Content = "Election created:";
             
         }
 
         private void label2_Loaded(object sender, RoutedEventArgs e)
         {
-            label2.Content = "Election Type: " + myElection.ElectionType;
+            label2.Content = "Election Type: " + electiontype;
         }
 
         private void label3_Loaded(object sender, RoutedEventArgs e)
         {
-            label3.Content = "Election start date: " + myElection.StartDate;
+            label3.Content = "Election start date: " + startdate;
         }
 
         private void label4_Loaded(object sender, RoutedEventArgs e)
         {
-            label4.Content = "Election end date: " + myElection.EndDate;
+            label4.Content = "Election end date: " + enddate;
+        }
+
+        private void goto_list_of_elections_Click(object sender, RoutedEventArgs e)
+        {
+            ElectionboardVotingBallot evb = new ElectionboardVotingBallot();
+            evb.Show();
         }
     }
 }
