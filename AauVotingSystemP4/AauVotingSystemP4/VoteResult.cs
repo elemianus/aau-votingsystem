@@ -8,15 +8,24 @@ namespace AauVotingSystemP4
 {
     class VoteResult
     {
-        public int partyId;
-        public int amountOfVotes;
-        public int nominationDistrictId;
+        public string FirstName;
+        public string LastName;
+        public int CandidateId;
+        public int PartyId;
+        public int AmountOfVotes;
+        public int NominationDistrictId;
+        public bool IsNationalVotingOption;
 
-        public VoteResult(int partyId, int amountOfVotes, int nominationDistrictId)
-        {
-            this.partyId = partyId;
-            this.amountOfVotes = amountOfVotes;
-            this.nominationDistrictId = nominationDistrictId;
+        public VoteResult(string firstName, string lastName, int candidateIdOrPartyId, int amountOfVotes, int nominationDistrictId,bool isNationalVotingOption) {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            if (isNationalVotingOption)
+                this.PartyId = candidateIdOrPartyId;
+            else
+                this.CandidateId = candidateIdOrPartyId;
+            this.AmountOfVotes = amountOfVotes;
+            this.NominationDistrictId = nominationDistrictId;
+            this.IsNationalVotingOption = isNationalVotingOption;
         }
         
     }

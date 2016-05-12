@@ -600,7 +600,36 @@ namespace AauVotingSystemP4
             cmd.Connection.Close();
         }
 
-        public List<VoteResult> GetAllVotes(int electionId)
+        public List<VoteResult> GetVotesForCandidates(int electionId)
+        {
+            var results = new List<VoteResult>();
+            MySqlCommand cmd = new MySqlCommand();
+
+            cmd.CommandText = String.Format("SELECT nominationdistrict.Name, candidates.FirstName, candidates.LastName, result.NominationDistrict_ID, result.Party_ID, result.Candidate_ID, Amount  FROM result join candidates ON result.Candidate_ID = candidates.Candidate_ID join nominationdistrict ON nominationdistrict.NominationDistrict_ID = result.NominationDistrict_ID WHERE result.Election_ID = {0} ORDER BY amount desc;", electionId);
+            Console.WriteLine(cmd.CommandText);
+            cmd.Connection = GetDefaultConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                int partyId = -1;
+                if (!reader.IsDBNull(4))
+                    partyId = (int)reader[2];
+                int amount = (int)reader[6];
+                int nominationDistrictId = (int)reader[3];
+                string firstName = (string)reader[1];
+                string lastName = (string)reader[2];
+                bool isParty = false;
+                var voteResult = new VoteResult(firstName, lastName, partyId, amount, nominationDistrictId,isParty);
+                results.Add(voteResult);
+            }
+
+            cmd.Connection.Close();
+
+            return results;
+
+        }
+
+        public List<VoteResult> GetVotesForParties(int electionId)
         {
             List<VoteResult> votes = new List<VoteResult>();
 
@@ -612,10 +641,12 @@ namespace AauVotingSystemP4
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
+                string name = (string)reader[0];
                 int partyId = (int)reader[2];
                 int amount = (int)reader[4];
                 int nominationDistrictId = (int)reader[1];
-                var voteResult = new VoteResult(partyId, amount, nominationDistrictId);
+                bool isParty = true;
+                var voteResult = new VoteResult(name, "", partyId, amount, nominationDistrictId, isParty);
                 votes.Add(voteResult);
             }
 
