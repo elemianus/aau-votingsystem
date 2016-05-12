@@ -44,5 +44,16 @@ namespace AauVotingSystemP4
             cavo.Show();
             this.Close();
         }
+        /// <summary>
+        /// This ensures that when you click on the textbox with "Type in candidate" that text will disappear and you can write from the beginning. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= TextBox_GotFocus;
+        }
     }
 }

@@ -21,15 +21,15 @@
                 <RadioButton GroupName="CitizenVotingOption" Content="Candidate 3" Margin="23,0,-0.4,0"/>
                 <RadioButton GroupName="CitizenVotingOption" Content="Candidate 4" Margin="23,0,-0.4,0"/>
                 <RadioButton GroupName="CitizenVotingOption" Content="Candidate 5" Margin="23,0,-0.4,0" Height="18"/>
-                <TextBox Name="TypeInCandidateVenstre" Margin="41,0,-.4,10" Text="Type in the candidate..."/>
+                <TextBox Name="TypeInCandidateVenstre" Margin="41,0,-.4,10" Text="Type in the candidate..." GotFocus="TextBox_GotFocus"/>
                 <RadioButton GroupName="CitizenVotingOption" Content="Socialdemokraterne" Margin="0,0,-0.4,0" Height="18"/>
                 <RadioButton GroupName="CitizenVotingOption" Content="Candidate 1" Margin="23,0,-0.4,0"/>
                 <RadioButton GroupName="CitizenVotingOption" Content="Candidate 2" Margin="23,0,-0.4,0"/>
                 <RadioButton GroupName="CitizenVotingOption" Content="Candidate 3" Margin="23,0,-0.4,0"/>
                 <RadioButton GroupName="CitizenVotingOption" Content="Candidate 4" Margin="23,0,-0.4,0"/>
                 <RadioButton GroupName="CitizenVotingOption" Content="Candidate 5" Margin="23,0,-0.4,0"/>
-                <TextBox Name="TypeInCandidateSocialdemokraterne" Text="Type in the candidate..." Margin="41,0,-0.4,10"/>
-                <Button x:Name="button" Content="Okay" Margin="144,0,-0.4,0" Click="button_Click" Height="20"/>
+                <TextBox Name="TypeInCandidateSocialdemokraterne" Text="Type in the candidate..." GotFocus="TextBox_GotFocus"  Margin="41,0,-0.4,10"/>
+                <Button x:Name="button" Content="Confirm" Margin="144,0,-0.4,0" Click="button_Click" Height="20"/>
             </StackPanel>
         </StackPanel>
     </DockPanel>
