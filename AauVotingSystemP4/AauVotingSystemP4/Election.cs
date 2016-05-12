@@ -9,8 +9,7 @@ namespace AauVotingSystemP4
 
     public class Election
     {
-        public int Election_ID { get; set; }
-        public string ElectionName;
+        public int Election_ID { get; set; }       
         public DateTime StartDate;
         public DateTime EndDate;
 
@@ -20,10 +19,9 @@ namespace AauVotingSystemP4
         public bool IsBallotFinalized { get { return isBallotFinalized; } }
         private bool isBallotFinalized = false;
 
-        public Election(int Election_ID, string ElectionName, DateTime StartDate, DateTime EndDate, string ElectionType)
+        public Election(int Election_ID, DateTime StartDate, DateTime EndDate, string ElectionType)
         {
-            this.Election_ID = Election_ID;
-            this.ElectionName = ElectionName;
+            this.Election_ID = Election_ID;           
             this.StartDate = StartDate;
             this.EndDate = EndDate;
             this.ElectionType = ElectionType;
