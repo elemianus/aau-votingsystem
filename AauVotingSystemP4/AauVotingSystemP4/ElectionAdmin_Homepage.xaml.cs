@@ -45,6 +45,11 @@ namespace AauVotingSystemP4
             nominationDistrictListView.ItemsSource = nominationDistricts;
         }
 
+        private void ListAllCandidatesForNominationDistrict() {
+            var databaseConector = new DatabaseConnector();
+            CandidatesListview.ItemsSource = databaseConector.GetVotingOptionForNominationDistrict(currentNominationDistrict.NominationDistrictId, election.Election_ID);
+        }
+
         //Here is the create election for sending you on 
         private void createElection_Click(object sender, RoutedEventArgs e)
         {
@@ -73,6 +78,7 @@ namespace AauVotingSystemP4
             if (currentNominationDistrict != null)
             {
                 ListZipCodes(currentNominationDistrict.NominationDistrictId);
+                ListAllCandidatesForNominationDistrict();
             }
         }
 

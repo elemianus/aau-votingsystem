@@ -5,12 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AauVotingSystemP4"
       mc:Ignorable="d"
-        Title="ElectionAdmin_Homepage" Width="575.961" Height="544.011">
+        Title="ElectionAdmin_Homepage" Width="1360.961" Height="544.011">
     <Grid Margin="0,0,0,-94">
         <Button x:Name="CreateElection" Content="Create Election" HorizontalAlignment="Left" Margin="197,25,0,0" VerticalAlignment="Top" Width="75" Click="createElection_Click"/>
         <Button x:Name="admin_election" Content="Administrate election" HorizontalAlignment="Left" Margin="289,25,0,0" VerticalAlignment="Top" Width="75" Click="admin_election_Click"/>
 
-        <ListView Name="nominationDistrictListView" Margin="50,50,50,402"
+        <ListView Name="nominationDistrictListView" Margin="50,50,835,402"
                  ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="NominationDistrictSelectionChanged">
             <ListView.View>
                 <GridView>
@@ -20,7 +20,7 @@
             </ListView.View>
         </ListView>
 
-        <ListView Name="ZipDistrictListView" Margin="50,274,50,0"
+        <ListView Name="ZipDistrictListView" Margin="50,274,835,0"
                  ScrollViewer.VerticalScrollBarVisibility="Auto" Height="168" VerticalAlignment="Top" SelectionChanged="ZipDistrictListView_SelectionChanged">
             <ListView.View>
                 <GridView>
@@ -36,5 +36,18 @@
         <Button x:Name="createNominationDistrictButton" Content="Create Nomination district" HorizontalAlignment="Left" Height="25" Margin="50,241,0,0" VerticalAlignment="Top" Width="157" Click="createNominationDistrictButton_Click"/>
         <Button x:Name="editNominationDistrictButton" Content="Edit nomination district" HorizontalAlignment="Left" Height="25" Margin="212,241,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.505,0.462" Click="editNominationDistrictButton_Click"/>
         <Button x:Name="removeNominationDistrictButton" Content="Remove nomination district" HorizontalAlignment="Left" Height="25" Margin="369,241,0,0" VerticalAlignment="Top" Width="157" Click="removeNominationDistrictButton_Click"/>
+        
+        
+        <ListView x:Name="CandidatesListview" Margin="834,274,50,0"
+        	ScrollViewer.VerticalScrollBarVisibility="Auto" Height="168" VerticalAlignment="Top">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Firstname" Width="150" DisplayMemberBinding="{Binding FirstName}" />
+                    <GridViewColumn Header="Lastname" Width="150" DisplayMemberBinding="{Binding LastName}" />
+                    <GridViewColumn Header="Party" Width="150" DisplayMemberBinding="{Binding PartyId}" />
+                    
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>
