@@ -68,9 +68,6 @@
     <Compile Include="AddZipCodeElectionAdmin.xaml.cs">
       <DependentUpon>AddZipCodeElectionAdmin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdministrateElection.xaml.cs">
-      <DependentUpon>AdministrateElection.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AdministrateElectionEdit.xaml.cs">
       <DependentUpon>AdministrateElectionEdit.xaml</DependentUpon>
     </Compile>
@@ -164,10 +161,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddZipCodeElectionAdmin.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AdministrateElection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
