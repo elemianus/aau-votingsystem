@@ -19,26 +19,48 @@ namespace AauVotingSystemP4
     /// </summary>
     public partial class AdministrateElection : Window
     {
-        
+       
         public AdministrateElection()
         {
             InitializeComponent();
             
         }
-
+      
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var databaseConector = new DatabaseConnector();
-            dataGrid1.ItemsSource = databaseConector.GetAllElections();
+            var elections = databaseConector.GetAllElections();
+            var displayList = new List<ElectionDisplayItem>();
+            foreach (var item in elections)
+            {
+                displayList.Add(new ElectionDisplayItem() { ElectionId = item.Election_ID, Name = item.ElectionType, IsBallotFinalized = item.IsBallotFinalized, StartDate = item.StartDate.Day + "-" + item.StartDate.Month + "-" + item.StartDate.Year });
+            }
+            electionListView.ItemsSource = displayList;
         }
 
-        private void SelectedElection_Click(object sender, RoutedEventArgs e)
+        public class ElectionDisplayItem
         {
-            AdministrateElectionEdit evb = new AdministrateElectionEdit(int.Parse(TypedInElection.Text));
-            evb.Show();
-
+            public string Name { get; set; }
+            public bool IsBallotFinalized { get; set; }
+            public string StartDate { get; set; }
+            public int ElectionId { get; set; }
         }
 
-       
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = sender as ListViewItem;
+            if (item != null && item.IsSelected)
+            {
+                var currentElectoin = item.Content as ElectionDisplayItem;
+                AdministrateElectionEdit evb = new AdministrateElectionEdit(currentElectoin.ElectionId);
+                evb.Show();
+                this.Close();
+            }
+        }
+
+        private void HeaderElectionAdmin_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -6,17 +6,32 @@
         xmlns:local="clr-namespace:AauVotingSystemP4"
         Loaded="Window_Loaded"
         mc:Ignorable="d"
-        Title="AdministrateElection" Height="300" Width="300">
-    
+        Title="AdministrateElection" Height="414.552" Width="568.949">
+
 
     <DockPanel Margin="0,0,0,0">
-        <local:HeaderElectionAdmin x:Name="HeaderElectionAdmin" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2" />
-        <StackPanel Orientation="Vertical" Margin="0,4.4,0,-74.8" RenderTransformOrigin="0.494,0.676">
-            <Label VerticalAlignment="Top"  Name="SelectElection" Content="Type in the ElectionID to the election, which you want to edit"/>
-            <TextBox VerticalAlignment="Top" Name="TypedInElection" Width="170"/>
-            <Button VerticalAlignment="Top" HorizontalAlignment="Center" Name="SelectedElection" Content="Select election" Width="100" Click="SelectedElection_Click"/>
-            <DataGrid x:Name="dataGrid1" Height="240" Width="291"/>
-           
+        <local:HeaderElectionAdmin x:Name="HeaderElectionAdmin" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2" Loaded="HeaderElectionAdmin_Loaded"/>
+        <StackPanel Orientation="Vertical" Margin="0,4.4,0,-0.2" RenderTransformOrigin="0.494,0.676">
+            <Label VerticalAlignment="Top"  Name="SelectElection" Content="Double click the election you want to edit" HorizontalAlignment="Center"/>
+
+
+            <ListView Name="electionListView" Margin="0,0,0,0" Grid.Row="2" Height="300" Width="400"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Type of election" Width="150" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Startdate" Width="120" DisplayMemberBinding="{Binding StartDate}" />
+                        <GridViewColumn Header="Is ballot final" Width="Auto" DisplayMemberBinding="{Binding IsBallotFinalized}"/>
+                    </GridView>
+                </ListView.View>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+
+
         </StackPanel>
     </DockPanel>
 

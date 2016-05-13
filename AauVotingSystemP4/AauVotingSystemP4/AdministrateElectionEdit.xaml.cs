@@ -51,8 +51,16 @@ namespace AauVotingSystemP4
                 isBallotFinalized = false;
             }
 
-            MessageBox.Show(isBallotFinalized.ToString());
-            myConnector.EditElection(electionId, type_Of_Election.Text, startdate.SelectedDate.Value, enddate.SelectedDate.Value, isBallotFinalized);
+            if (myConnector.EditElection(electionId, type_Of_Election.Text, startdate.SelectedDate.Value, enddate.SelectedDate.Value, isBallotFinalized))
+            {
+                MessageBox.Show("Changes saved");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Couldn't reach database");
+            }
+            
             
         }
     }
