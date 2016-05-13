@@ -1,0 +1,32 @@
+﻿<Window x:Class="AauVotingSystemP4.Addpartyvotingoption"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AauVotingSystemP4"
+      mc:Ignorable="d" 
+      
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="Addpartyvotingoption" Height="423.317" Width="300">
+    <DockPanel Margin="0,0,0,0">
+
+        <StackPanel Orientation="Vertical" Margin="0,4.4,0,-74.8" RenderTransformOrigin="0.494,0.676" Background="White">
+            <Label VerticalAlignment="Top"  Name="AddToList" Content="Add a political party to the list of voting options." HorizontalAlignment="Center"/>
+            <TextBox x:Name="PartyInput" Width="120" Height="15" Margin="0,0,0,5" HorizontalAlignment="Center"/>
+            <Button x:Name="partyAdd" Content="Add" Width="50" Height="15" Click="partyAdd_Click"/>
+
+            <ListView Width="130" Height="300" Name="ListOfParties" Margin="0,7,0,0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding PartyName}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        </StackPanel>
+
+    </DockPanel>
+
+
+</Window>

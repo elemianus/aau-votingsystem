@@ -59,6 +59,9 @@
     <Compile Include="AddConfirmation.xaml.cs">
       <DependentUpon>AddConfirmation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Addpartyvotingoption.xaml.cs">
+      <DependentUpon>Addpartyvotingoption.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddVotingOption.xaml.cs">
       <DependentUpon>AddVotingOption.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,10 @@
     <Compile Include="VotingOption.cs" />
     <Compile Include="ZipCode.cs" />
     <Page Include="AddConfirmation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Addpartyvotingoption.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
