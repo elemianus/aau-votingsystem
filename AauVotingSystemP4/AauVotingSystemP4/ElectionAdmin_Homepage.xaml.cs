@@ -14,29 +14,37 @@ using System.Windows.Shapes;
 
 namespace AauVotingSystemP4
 {
+    public interface ElectionAdminRefreshInterface
+    {
+        void ListZipCodes(int nominationDistrictId);
+        void ListAllNominationDistricts();
+    }
+
     /// <summary>
     /// Interaction logic for ElectionAdmin_Homepage.xaml
     /// </summary>
-    public partial class ElectionAdmin_Homepage : Page
+    public partial class ElectionAdmin_Homepage : Page ,ElectionAdminRefreshInterface
     {
         private Election election;
-        private int currentNominationDistrictId;
+        private NominationDistrict currentNominationDistrict;
+        private List<NominationDistrict> nominationDistricts;
+        private ZipCode curentZipCode;
         public ElectionAdmin_Homepage()
         {
             InitializeComponent();
+            ListAllNominationDistricts();
 
+        }
+
+        public void ListAllNominationDistricts()
+        {
             var databaseConector = new DatabaseConnector();
             election = databaseConector.GetElection(3);
-            var nominationDistrict = databaseConector.GetNominationDistrictsForElection(election);
-            var items = new List<NominationDistrictDisplayItem>();
+            nominationDistricts = databaseConector.GetNominationDistrictsForElection(election);
 
-            foreach (var item in nominationDistrict)
-            {
-                items.Add(new NominationDistrictDisplayItem() { Name = item.Name, Mandates = item.NumberOfMandates, NominationDistrictId = item.NominationDistrictId });
-            }
-
-            nominationDistrictListView.ItemsSource = items;
+            nominationDistrictListView.ItemsSource = nominationDistricts;
         }
+
         //Here is the create election for sending you on 
         private void createElection_Click(object sender, RoutedEventArgs e)
         {
@@ -50,45 +58,85 @@ namespace AauVotingSystemP4
             evb.Show();
         }
 
-        public class NominationDistrictDisplayItem
-        {
-            public string Name { get; set; }
-            public int Mandates { get; set; }
-            public int NominationDistrictId { get; set; }
-        }
-
-        public class ZipCodeDisplayItem
-        {
-            public int ZipCode { get; set; }
-            public string Name { get; set; }
-        }
-
-
-        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var item = sender as ListViewItem;
-            if (item != null && item.IsSelected)
-            {
-                var currentNominationDistrict = item.Content as NominationDistrictDisplayItem;
-                currentNominationDistrictId = currentNominationDistrict.NominationDistrictId;
-                ListZipCodes(currentNominationDistrictId);
-            }
-        }
-
-        private void NominationDistrictClick_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var item = sender as ListViewItem;
-            if (item != null && item.IsSelected)
-            {
-                
-            }
-        }
-
-        private void ListZipCodes(int nominationId)
+        public void ListZipCodes(int nominationId)
         {
             var databaseConector = new DatabaseConnector();
             List<ZipCode> zipCodes = databaseConector.GetAllZipCodesForNominationDistrict(nominationId, election.Election_ID);
             ZipDistrictListView.ItemsSource = zipCodes;
+        }
+
+        void NominationDistrictSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var listBox = sender as ListBox;
+            var selectedItem = listBox.SelectedItem as NominationDistrict;
+            currentNominationDistrict = selectedItem;
+            if (currentNominationDistrict != null)
+            {
+                ListZipCodes(currentNominationDistrict.NominationDistrictId);
+            }
+        }
+
+        private void createNominationDistrictButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddNominationDistrict addNominationDistrict = new AddNominationDistrict(election,this);
+            addNominationDistrict.Show();
+        }
+
+        private void editNominationDistrictButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentNominationDistrict != null) //Check if nomination district is selected
+            {
+                AddNominationDistrict addNominationDistrict = new AddNominationDistrict(election,this, currentNominationDistrict.NominationDistrictId);
+                addNominationDistrict.Show();
+            }
+        }
+
+        private void removeNominationDistrictButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentNominationDistrict != null) //Check if nomination district is selected
+            {
+                var dbConector = new DatabaseConnector();
+
+                if (currentNominationDistrict != null)
+                {
+                    dbConector.DeleteNominationDistrict(currentNominationDistrict);
+                    ListAllNominationDistricts();
+                }
+                currentNominationDistrict = null;
+            }
+            
+        }
+
+        private void createZipCodeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentNominationDistrict != null) { 
+            var window = new AddZipCodeElectionAdmin(election, currentNominationDistrict, this);
+            window.Show();
+            }
+        }
+
+        private void editZipCodeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentNominationDistrict != null && curentZipCode != null) {
+                var window = new AddZipCodeElectionAdmin(election, currentNominationDistrict, this, curentZipCode);
+                window.Show();
+            }
+        }
+
+        private void ZipDistrictListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var listBox = sender as ListBox;
+            var selectedItem = listBox.SelectedItem as ZipCode;
+            curentZipCode = selectedItem;
+        }
+
+        private void removeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (curentZipCode != null) {
+                var dbConector = new DatabaseConnector();
+                dbConector.DeleteZipCode(curentZipCode, currentNominationDistrict);
+                ListZipCodes(currentNominationDistrict.NominationDistrictId);
+            }
         }
     }
 }

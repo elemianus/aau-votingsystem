@@ -311,6 +311,63 @@ namespace AauVotingSystemP4
         }
 
         /// <summary>
+        /// Gets a nomination district for a specific election 
+        /// </summary>
+        /// <param name="election">The associated election</param>
+        /// <param name="nominationDistrictId">Nomination distric id</param>
+        /// <returns>The nomination dsitrict if found, otherwise null</returns>
+        public NominationDistrict GetNominationDistrictForElection(Election election,int nominationDistrictId)
+        {
+
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = "SELECT * FROM nominationdistrict WHERE Election_ID = " + election.Election_ID + " AND NominationDistrict_ID="+nominationDistrictId+";";
+
+            cmd.Connection = GetDefaultConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                NominationDistrict district = new NominationDistrict(election, (string)reader[1], (int)reader[2], (int)reader[0]);
+                return district;
+            }
+
+            cmd.Connection.Close();
+            return null;
+        }
+
+        public void UpdateZipcodeForNominationDistrict(ZipCode newZipCode,ZipCode oldZipCode, NominationDistrict nominationDistrictId)
+        {
+            string sqlString = "";
+
+            sqlString = String.Format("UPDATE zipcode SET ZipCode = '{0}', Name = '{1}' WHERE NominationDistrict_ID = {2} AND ZipCode='{3}'", newZipCode.ZipCodeId, newZipCode.Name, nominationDistrictId.NominationDistrictId,oldZipCode.ZipCodeId);
+            
+            Console.WriteLine(sqlString);
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = GetDefaultConnection();
+
+            cmd.CommandText = sqlString;
+            cmd.ExecuteReader();
+            cmd.Connection.Close();
+
+        }
+
+        public void UpdateNominationDistrictForElection(NominationDistrict nominationDistrictId)
+        {
+            string sqlString = "";
+            
+            sqlString = String.Format("UPDATE election SET Name = '{0}', NumberOfMandates = '{1}' WHERE NominationDistrict_ID = {2}", nominationDistrictId.Name,nominationDistrictId.NumberOfMandates,nominationDistrictId.NominationDistrictId);
+            
+
+            Console.WriteLine(sqlString);
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = GetDefaultConnection();
+
+            cmd.CommandText = sqlString;
+            cmd.ExecuteReader();
+            cmd.Connection.Close();
+            
+        }
+
+        /// <summary>
         /// Adds a voting option for a specific election. The methods can add both parties and candidates
         /// </summary>
         /// <param name="option">Voting option to be added</param>
@@ -479,7 +536,6 @@ namespace AauVotingSystemP4
         }
 
 
-
         /// <summary>
         /// Checks if electionboard exists.
         /// </summary>
@@ -553,7 +609,26 @@ namespace AauVotingSystemP4
             }
 
             cmd.Connection.Close();
+        }
 
+        /// <summary>
+        /// Removes a specific zipcode from the database.
+        /// </summary>
+        /// /// <param name="zipCode">The zipCode to remove</param>
+        /// <param name="district">The district to remove</param>
+        public void DeleteZipCode(ZipCode zipCode,NominationDistrict district)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = GetDefaultConnection();
+            cmd.CommandText = String.Format("DELETE FROM zipcode WHERE NominationDistrict_ID = {0} AND ZipCode = '{1}';", district.NominationDistrictId,zipCode.ZipCodeId);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Console.WriteLine(reader);
+            }
+
+            cmd.Connection.Close();
         }
 
         /// <summary>

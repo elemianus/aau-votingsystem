@@ -59,8 +59,14 @@
     <Compile Include="AddConfirmation.xaml.cs">
       <DependentUpon>AddConfirmation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddNominationDistrict.xaml.cs">
+      <DependentUpon>AddNominationDistrict.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddVotingOption.xaml.cs">
       <DependentUpon>AddVotingOption.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddZipCodeElectionAdmin.xaml.cs">
+      <DependentUpon>AddZipCodeElectionAdmin.xaml</DependentUpon>
     </Compile>
     <Compile Include="AdministrateElection.xaml.cs">
       <DependentUpon>AdministrateElection.xaml</DependentUpon>
@@ -149,7 +155,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddNominationDistrict.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddVotingOption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddZipCodeElectionAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

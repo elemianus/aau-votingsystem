@@ -4,44 +4,37 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AauVotingSystemP4"
-      mc:Ignorable="d" 
-      d:DesignHeight="300"
-        Title="ElectionAdmin_Homepage" Width="575.961">
+      mc:Ignorable="d"
+        Title="ElectionAdmin_Homepage" Width="575.961" Height="544.011">
     <Grid Margin="0,0,0,-94">
-        <Button x:Name="CreateElection" Content="Create Election" HorizontalAlignment="Left" Margin="199,105,0,0" VerticalAlignment="Top" Width="75" Click="createElection_Click"/>
-        <Button x:Name="admin_election" Content="Administrate election" HorizontalAlignment="Left" Margin="296,105,0,0" VerticalAlignment="Top" Width="75" Click="admin_election_Click"/>
+        <Button x:Name="CreateElection" Content="Create Election" HorizontalAlignment="Left" Margin="197,25,0,0" VerticalAlignment="Top" Width="75" Click="createElection_Click"/>
+        <Button x:Name="admin_election" Content="Administrate election" HorizontalAlignment="Left" Margin="289,25,0,0" VerticalAlignment="Top" Width="75" Click="admin_election_Click"/>
 
-        <ListView Name="nominationDistrictListView" Margin="88,130,88,155" Width="400"
-                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <ListView Name="nominationDistrictListView" Margin="50,50,50,402"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="NominationDistrictSelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name of nomination district" Width="150" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Number of mandates" Width="120" DisplayMemberBinding="{Binding Mandates}" />
+                    <GridViewColumn Header="Number of mandates" Width="120" DisplayMemberBinding="{Binding NumberOfMandates}" />
                 </GridView>
             </ListView.View>
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
-                </Style>
-            </ListView.ItemContainerStyle>
         </ListView>
 
-        <ListView Name="ZipDistrictListView" Margin="88,260,88,24" Width="400"
-                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <ListView Name="ZipDistrictListView" Margin="50,274,50,0"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto" Height="168" VerticalAlignment="Top" SelectionChanged="ZipDistrictListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Zipcode" Width="120" DisplayMemberBinding="{Binding ZipCodeId}" />
                 </GridView>
             </ListView.View>
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="NominationDistrictClick_PreviewMouseLeftButtonDown" />
-                </Style>
-            </ListView.ItemContainerStyle>
         </ListView>
-        <Button x:Name="editZipCodeButton" Content="Edit zipcode" HorizontalAlignment="Left" Height="25" Margin="233,375,0,-6" VerticalAlignment="Top" Width="119"/>
-        <Button x:Name="createZipCodeButton" Content="Create zipcode" HorizontalAlignment="Left" Height="25" Margin="88,375,0,-6" VerticalAlignment="Top" Width="119"/>
-        <Button x:Name="removeButton" Content="Remove zipcode" HorizontalAlignment="Left" Height="25" Margin="369,375,0,-6" VerticalAlignment="Top" Width="119"/>
+        <Button x:Name="editZipCodeButton" Content="Edit zipcode" HorizontalAlignment="Left" Height="25" Margin="212,447,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.505,0.462" Click="editZipCodeButton_Click"/>
+        <Button x:Name="createZipCodeButton" Content="Create zipcode" HorizontalAlignment="Left" Height="25" Margin="50,447,0,0" VerticalAlignment="Top" Width="157" Click="createZipCodeButton_Click"/>
+        <Button x:Name="removeButton" Content="Remove zipcode" HorizontalAlignment="Left" Height="25" Margin="369,447,0,0" VerticalAlignment="Top" Width="157" Click="removeButton_Click"/>
+
+        <Button x:Name="createNominationDistrictButton" Content="Create Nomination district" HorizontalAlignment="Left" Height="25" Margin="50,241,0,0" VerticalAlignment="Top" Width="157" Click="createNominationDistrictButton_Click"/>
+        <Button x:Name="editNominationDistrictButton" Content="Edit nomination district" HorizontalAlignment="Left" Height="25" Margin="212,241,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.505,0.462" Click="editNominationDistrictButton_Click"/>
+        <Button x:Name="removeNominationDistrictButton" Content="Remove nomination district" HorizontalAlignment="Left" Height="25" Margin="369,241,0,0" VerticalAlignment="Top" Width="157" Click="removeNominationDistrictButton_Click"/>
     </Grid>
 </Page>
