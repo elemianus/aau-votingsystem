@@ -915,5 +915,23 @@ namespace AauVotingSystemP4
             cmd.Connection.Close();
             return null;
         }
+
+        public int GetNomDFromCPR(int citizenCPR)
+        {
+            
+            int zipCode;
+         
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = String.Format("Select * FROM citizen JOIN zipcode ON citizen.ZipCode = zipcode.ZipCode JOIN relation ON citizen.ZipCode = relation.ZipCode WHERE citizen.CPR = {0}; ", citizenCPR);
+            cmd.Connection = GetDefaultConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                zipCode = (int)reader[4];
+                return zipCode;
+            }           
+            cmd.Connection.Close();
+            return -1;
+        }
     }
 }

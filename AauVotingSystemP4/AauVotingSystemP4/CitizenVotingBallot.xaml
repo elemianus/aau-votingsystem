@@ -7,24 +7,27 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="CitizenVotingBallot">
-
+    <Page.Resources>
+        <Style x:Key="radioListBoxItem" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <RadioButton Content="{TemplateBinding Content}"
+                                 IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
     <Grid>
-        <StackPanel Margin="0,25.4,0,0.4" Width="234" HorizontalAlignment="Center">
-            <RadioButton GroupName="CitizenVotingOption" Content="Venstre"/>
-            <RadioButton GroupName="CitizenVotingOption" Content="Candidate 1" Margin="23,0,-0.4,0"/>
-            <RadioButton GroupName="CitizenVotingOption" Content="Candidate 2" Margin="23,0,-0.4,0"/>
-            <RadioButton GroupName="CitizenVotingOption" Content="Candidate 3" Margin="23,0,-0.4,0"/>
-            <RadioButton GroupName="CitizenVotingOption" Content="Candidate 4" Margin="23,0,-0.4,0"/>
-            <RadioButton GroupName="CitizenVotingOption" Content="Candidate 5" Margin="23,0,-0.4,0" Height="25"/>
-
-            <RadioButton GroupName="CitizenVotingOption" Content="Socialdemokraterne" Margin="0,0,-0.4,0" Height="18"/>
-            <RadioButton GroupName="CitizenVotingOption" Content="Candidate 1" Margin="23,0,-0.4,0"/>
-            <RadioButton GroupName="CitizenVotingOption" Content="Candidate 2" Margin="23,0,-0.4,0"/>
-            <RadioButton GroupName="CitizenVotingOption" Content="Candidate 3" Margin="23,0,-0.4,0"/>
-            <RadioButton GroupName="CitizenVotingOption" Content="Candidate 4" Margin="23,0,-0.4,0"/>
-            <RadioButton GroupName="CitizenVotingOption" Content="Candidate 5" Margin="23,0,-0.4,0"/>
-        <Button x:Name="button" Content="Okay" Margin="144,0,-0.4,0" Click="button_Click"/>
-    </StackPanel>
-    <Frame Name="Main"/>
+        <ListBox Margin="20,20,27.6,33.4" Name="myListbox" ItemContainerStyle="{StaticResource radioListBoxItem}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=FirstName}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Page>

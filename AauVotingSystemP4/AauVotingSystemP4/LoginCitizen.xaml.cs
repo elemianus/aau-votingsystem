@@ -20,7 +20,7 @@ namespace AauVotingSystemP4
     /// </summary>
     public partial class LoginCitizen : Page
     {
-
+        public static int CitizenCPR;
         public LoginCitizen()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace AauVotingSystemP4
             var databaseConector = new DatabaseConnector();
             if (databaseConector.DoesCitizenExist(TypeInUsername.Text)) {
                 //Citizen exists
-
+                CitizenCPR = Int32.Parse(TypeInUsername.Text);
                 MainWindow mw = new MainWindow();
                 mw.Show();
             }
