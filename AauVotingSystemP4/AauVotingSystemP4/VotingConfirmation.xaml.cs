@@ -28,8 +28,8 @@ namespace AauVotingSystemP4
 
         private void Yes_Click(object sender, RoutedEventArgs e)
         {
-            CitizenHaveVoted chv = new CitizenHaveVoted(citizenCPR);
-            chv.Show();
+            //CitizenHaveVoted chv = new CitizenHaveVoted(citizenCPR);
+            //chv.Show();
             this.Close();
         }
 

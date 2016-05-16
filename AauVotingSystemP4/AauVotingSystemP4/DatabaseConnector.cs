@@ -315,7 +315,6 @@ namespace AauVotingSystemP4
         }
 
         /// <summary>
-<<<<<<< HEAD
         /// Gets a nomination district for a specific election 
         /// </summary>
         /// <param name="election">The associated election</param>
@@ -388,8 +387,26 @@ namespace AauVotingSystemP4
         }
 
         /// <summary>
-=======
->>>>>>> origin/master
+        /// Removes a specific zipcode from the database.
+        /// </summary>
+        /// /// <param name="zipCode">The zipCode to remove</param>
+        /// <param name="district">The district to remove</param>
+        public void DeleteZipCode(ZipCode zipCode, NominationDistrict district)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = GetDefaultConnection();
+            cmd.CommandText = String.Format("DELETE FROM zipcode WHERE NominationDistrict_ID = {0} AND ZipCode = '{1}';", district.NominationDistrictId, zipCode.ZipCodeId);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Console.WriteLine(reader);
+            }
+
+            cmd.Connection.Close();
+        }
+
+        /// <summary>
         /// Adds a voting option for a specific election. The methods can add both parties and candidates
         /// </summary>
         /// <param name="option">Voting option to be added</param>

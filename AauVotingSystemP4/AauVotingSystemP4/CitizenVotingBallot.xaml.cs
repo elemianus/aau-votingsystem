@@ -27,8 +27,8 @@ namespace AauVotingSystemP4
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            VotingConfirmation vc = new VotingConfirmation();
-            vc.Show();
+            //VotingConfirmation vc = new VotingConfirmation();
+            //vc.Show();
         }
     }
 }
