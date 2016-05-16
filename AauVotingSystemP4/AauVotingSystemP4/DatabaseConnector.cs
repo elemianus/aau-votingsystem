@@ -220,7 +220,8 @@ namespace AauVotingSystemP4
         {
             List<ZipCode> list = new List<ZipCode>();
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = "SELECT * FROM zipcode WHERE Election_ID = " + electionId + ";";
+            cmd.CommandText = "SELECT zipcode.ZipCode, zipcode.Name FROM zipcode INNER JOIN relation on relation.ZipCode = zipcode.ZipCode LEFT JOIN nominationdistrict on nominationdistrict.NominationDistrict_ID = relation.NominationDistrict_ID WHERE nominationdistrict.Election_ID = 3;";  
+// old      // cmd.CommandText = "SELECT * FROM zipcode WHERE Election_ID = " + electionId + ";"; 
 
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
@@ -233,11 +234,14 @@ namespace AauVotingSystemP4
             return list;
         }
 
-        public void AddZipCodeToNominationDistrict(int electionId,int nominationDistrict, ZipCode zipCode) {
+
+        public void AddZipCodeToNominationDistrict(int electionId, int nominationDistrict, ZipCode zipCode)
+        {
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = GetDefaultConnection();
 
-            string sqlString = String.Format("INSERT INTO zipcode VALUES({0}, '{1}', {2},{3}); ",zipCode.ZipCodeId, zipCode.Name,nominationDistrict, electionId);
+            string sqlString = String.Format("INSERT INTO relation VALUES({0},'{1}'); ", nominationDistrict, zipCode.ZipCodeId);
+//Old       //string sqlString = String.Format("INSERT INTO zipcode VALUES({0}, '{1}', {2},{3}); ", zipCode.ZipCodeId, zipCode.Name, nominationDistrict, electionId);
 
             cmd.CommandText = sqlString;
             cmd.ExecuteReader();
@@ -311,6 +315,7 @@ namespace AauVotingSystemP4
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets a nomination district for a specific election 
         /// </summary>
         /// <param name="election">The associated election</param>
@@ -383,6 +388,8 @@ namespace AauVotingSystemP4
         }
 
         /// <summary>
+=======
+>>>>>>> origin/master
         /// Adds a voting option for a specific election. The methods can add both parties and candidates
         /// </summary>
         /// <param name="option">Voting option to be added</param>
@@ -577,6 +584,7 @@ namespace AauVotingSystemP4
         }
 
 
+
         /// <summary>
         /// Checks if electionboard exists.
         /// </summary>
@@ -650,26 +658,7 @@ namespace AauVotingSystemP4
             }
 
             cmd.Connection.Close();
-        }
 
-        /// <summary>
-        /// Removes a specific zipcode from the database.
-        /// </summary>
-        /// /// <param name="zipCode">The zipCode to remove</param>
-        /// <param name="district">The district to remove</param>
-        public void DeleteZipCode(ZipCode zipCode,NominationDistrict district)
-        {
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = GetDefaultConnection();
-            cmd.CommandText = String.Format("DELETE FROM zipcode WHERE NominationDistrict_ID = {0} AND ZipCode = '{1}';", district.NominationDistrictId,zipCode.ZipCodeId);
-
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                Console.WriteLine(reader);
-            }
-
-            cmd.Connection.Close();
         }
 
         /// <summary>

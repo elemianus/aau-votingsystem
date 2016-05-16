@@ -61,6 +61,18 @@
     </Compile>
     <Compile Include="AddZipCodeElectionAdmin.xaml.cs">
       <DependentUpon>AddZipCodeElectionAdmin.xaml</DependentUpon>
+	</Compile>
+    <Compile Include="AddConfirmation.xaml.cs">
+      <DependentUpon>AddConfirmation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Addpartyvotingoption.xaml.cs">
+      <DependentUpon>Addpartyvotingoption.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddVotingOption.xaml.cs">
+      <DependentUpon>AddVotingOption.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdministrateElection.xaml.cs">
+      <DependentUpon>AdministrateElection.xaml</DependentUpon>
     </Compile>
     <Compile Include="AdministrateElectionEdit.xaml.cs">
       <DependentUpon>AdministrateElectionEdit.xaml</DependentUpon>
@@ -141,6 +153,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddZipCodeElectionAdmin.xaml">
+	  <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Addpartyvotingoption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddVotingOption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdministrateElection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
