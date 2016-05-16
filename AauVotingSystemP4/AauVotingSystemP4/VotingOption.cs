@@ -39,13 +39,6 @@ namespace AauVotingSystemP4
             returnSting += FirstName + " " + LastName + " ";
             return returnSting;
         }
-
-        public List<NominationDistrict> OptionNominationDistrict(ZipCode zipcode)
-        {
-            List<NominationDistrict> listOfNominationDistrict = new List<NominationDistrict>();
-
-            listOfNominationDistrict = GetVotingOptionForNominationDistrict(zipcode)
-        }
     }
 }
 
