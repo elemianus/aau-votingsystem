@@ -62,9 +62,6 @@
     <Compile Include="AddZipCodeElectionAdmin.xaml.cs">
       <DependentUpon>AddZipCodeElectionAdmin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Addpartyvotingoption.xaml.cs">
-      <DependentUpon>Addpartyvotingoption.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AdministrateElectionEdit.xaml.cs">
       <DependentUpon>AdministrateElectionEdit.xaml</DependentUpon>
     </Compile>
@@ -91,6 +88,9 @@
     <Compile Include="ElectionAdministrator.cs" />
     <Compile Include="ElectionAdminMainWindow.xaml.cs">
       <DependentUpon>ElectionAdminMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ElectionAdmin_AddEditParty.xaml.cs">
+      <DependentUpon>ElectionAdmin_AddEditParty.xaml</DependentUpon>
     </Compile>
     <Compile Include="ElectionAdmin_Homepage.xaml.cs">
       <DependentUpon>ElectionAdmin_Homepage.xaml</DependentUpon>
@@ -147,10 +147,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Addpartyvotingoption.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="AdministrateElectionEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -180,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ElectionAdminMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElectionAdmin_AddEditParty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

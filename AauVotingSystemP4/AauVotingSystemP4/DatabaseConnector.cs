@@ -192,17 +192,17 @@ namespace AauVotingSystemP4
         /// <param name="nominationDistrictId">The nomination distric id</param>
         /// <param name="electionId">The election id</param>
         /// <returns>A list of zipcodes associated with </returns>
-        public List<ZipCode> GetAllZipCodesForNominationDistrict(int nominationDistrictId, int electionId)
+        public List<ZipCode> GetAllZipCodesForNominationDistrict(int nominationDistrictId)
         {
             List<ZipCode> list = new List<ZipCode>();
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = "SELECT * FROM zipcode WHERE Election_ID = " + electionId + " AND NominationDistrict_ID = " + nominationDistrictId + ";";
+            cmd.CommandText = "SELECT * FROM relation natural join zipcode where NominationDistrict_ID = " + nominationDistrictId + ";";
 
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                ZipCode zipCode = new ZipCode(int.Parse((string)reader[0]), (string)reader[1]);
+                ZipCode zipCode = new ZipCode(int.Parse((string)reader[0]), (string)reader[2]);
                 list.Add(zipCode);
             }
 
@@ -220,8 +220,8 @@ namespace AauVotingSystemP4
         {
             List<ZipCode> list = new List<ZipCode>();
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = "SELECT zipcode.ZipCode, zipcode.Name FROM zipcode INNER JOIN relation on relation.ZipCode = zipcode.ZipCode LEFT JOIN nominationdistrict on nominationdistrict.NominationDistrict_ID = relation.NominationDistrict_ID WHERE nominationdistrict.Election_ID = 3;";  
-// old      // cmd.CommandText = "SELECT * FROM zipcode WHERE Election_ID = " + electionId + ";"; 
+            cmd.CommandText = "SELECT zipcode.ZipCode, zipcode.Name FROM zipcode INNER JOIN relation on relation.ZipCode = zipcode.ZipCode LEFT JOIN nominationdistrict on nominationdistrict.NominationDistrict_ID = relation.NominationDistrict_ID WHERE nominationdistrict.Election_ID = 3;";
+            // old      // cmd.CommandText = "SELECT * FROM zipcode WHERE Election_ID = " + electionId + ";"; 
 
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
@@ -241,7 +241,7 @@ namespace AauVotingSystemP4
             cmd.Connection = GetDefaultConnection();
 
             string sqlString = String.Format("INSERT INTO relation VALUES({0},'{1}'); ", nominationDistrict, zipCode.ZipCodeId);
-//Old       //string sqlString = String.Format("INSERT INTO zipcode VALUES({0}, '{1}', {2},{3}); ", zipCode.ZipCodeId, zipCode.Name, nominationDistrict, electionId);
+            //Old       //string sqlString = String.Format("INSERT INTO zipcode VALUES({0}, '{1}', {2},{3}); ", zipCode.ZipCodeId, zipCode.Name, nominationDistrict, electionId);
 
             cmd.CommandText = sqlString;
             cmd.ExecuteReader();
@@ -254,7 +254,7 @@ namespace AauVotingSystemP4
         /// <param name="election">The election to add to</param>
         /// <param name="nominationDistrict">The nomination district to add</param>
         /// <param name="zipCodes">The zipcodes to add to the nomination district</param>
-        public void AddNominationDistrictWithZipCodes(Election election,NominationDistrict nominationDistrict, List<ZipCode> zipCodes)
+        public void AddNominationDistrictWithZipCodes(Election election, NominationDistrict nominationDistrict, List<ZipCode> zipCodes)
         {
             AddNominationDistrictForElection(nominationDistrict, election.Election_ID);
             var nominationDistricts = GetNominationDistrictsForElection(election);
@@ -320,11 +320,11 @@ namespace AauVotingSystemP4
         /// <param name="election">The associated election</param>
         /// <param name="nominationDistrictId">Nomination distric id</param>
         /// <returns>The nomination dsitrict if found, otherwise null</returns>
-        public NominationDistrict GetNominationDistrictForElection(Election election,int nominationDistrictId)
+        public NominationDistrict GetNominationDistrictForElection(Election election, int nominationDistrictId)
         {
 
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = "SELECT * FROM nominationdistrict WHERE Election_ID = " + election.Election_ID + " AND NominationDistrict_ID="+nominationDistrictId+";";
+            cmd.CommandText = "SELECT * FROM nominationdistrict WHERE Election_ID = " + election.Election_ID + " AND NominationDistrict_ID=" + nominationDistrictId + ";";
 
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
@@ -338,12 +338,12 @@ namespace AauVotingSystemP4
             return null;
         }
 
-        public void UpdateZipcodeForNominationDistrict(ZipCode newZipCode,ZipCode oldZipCode, NominationDistrict nominationDistrictId)
+        public void UpdateZipcodeForNominationDistrict(ZipCode newZipCode, ZipCode oldZipCode, NominationDistrict nominationDistrictId)
         {
             string sqlString = "";
 
-            sqlString = String.Format("UPDATE zipcode SET ZipCode = '{0}', Name = '{1}' WHERE NominationDistrict_ID = {2} AND ZipCode='{3}'", newZipCode.ZipCodeId, newZipCode.Name, nominationDistrictId.NominationDistrictId,oldZipCode.ZipCodeId);
-            
+            sqlString = String.Format("UPDATE zipcode SET ZipCode = '{0}', Name = '{1}' WHERE NominationDistrict_ID = {2} AND ZipCode='{3}'", newZipCode.ZipCodeId, newZipCode.Name, nominationDistrictId.NominationDistrictId, oldZipCode.ZipCodeId);
+
             Console.WriteLine(sqlString);
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = GetDefaultConnection();
@@ -357,24 +357,34 @@ namespace AauVotingSystemP4
         public void UpdateNominationDistrictForElection(NominationDistrict nominationDistrictId)
         {
             string sqlString = "";
-            
-            sqlString = String.Format("UPDATE election SET Name = '{0}', NumberOfMandates = '{1}' WHERE NominationDistrict_ID = {2}", nominationDistrictId.Name,nominationDistrictId.NumberOfMandates,nominationDistrictId.NominationDistrictId);
-            
+
+            sqlString = String.Format("UPDATE election SET Name = '{0}', NumberOfMandates = '{1}' WHERE NominationDistrict_ID = {2}", nominationDistrictId.Name, nominationDistrictId.NumberOfMandates, nominationDistrictId.NominationDistrictId);
+
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = GetDefaultConnection();
 
             cmd.CommandText = sqlString;
             cmd.ExecuteReader();
             cmd.Connection.Close();
-            
+
         }
 
+        /// <summary>
+        /// Update the voting option, can be either a party or a candidate
+        /// </summary>
+        /// <param name="option">The VO to update</param>
         public void UpdateVotingOption(VotingOption option)
         {
             string sqlString = "";
 
-            sqlString = String.Format("UPDATE candidates SET FirstName = '{0}', LastName = '{1}', Party_ID = {2} WHERE Candidate_ID = {3}", option.FirstName, option.LastName , option.PartyId,option.VotingOptionId);
-
+            if (option.IsNationalVotingOption)
+            {
+                sqlString = String.Format("UPDATE party SET Name ='{0}' WHERE Party_ID = {1}", option.FirstName, option.PartyId);
+            }
+            else
+            {
+                sqlString = String.Format("UPDATE candidates SET FirstName = '{0}', LastName = '{1}', Party_ID = {2} WHERE Candidate_ID = {3}", option.FirstName, option.LastName, option.PartyId, option.VotingOptionId);
+            }
 
             Console.WriteLine(sqlString);
             MySqlCommand cmd = new MySqlCommand();
@@ -579,19 +589,20 @@ namespace AauVotingSystemP4
         /// </summary>
         /// <param name="electionBoardId">nomination district id</param>
         /// <returns>An assosiated electionbaord</returns>
-        public ElectionBoard GetElectionBoardForId(int electionBoardId) {
+        public ElectionBoard GetElectionBoardForId(int electionBoardId)
+        {
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = String.Format("SELECT * FROM nominationdistrict WHERE NominationDistrict_ID = '{0}';", electionBoardId);
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
-            
+
 
             while (reader.Read())
             {
                 int electionId = (int)reader[3];
                 string ebName = (string)reader[1];
-                
-                var board = new ElectionBoard(ebName, electionBoardId,electionId);
+
+                var board = new ElectionBoard(ebName, electionBoardId, electionId);
                 cmd.Connection.Close();
                 return board;
             }
@@ -700,8 +711,8 @@ namespace AauVotingSystemP4
                 if (!reader.IsDBNull(4))
                     isBallotFinalized = (bool)reader[4];
 
-                Election election = new Election(electionId, startDate, endDate, typeOfElection,isBallotFinalized);
-                
+                Election election = new Election(electionId, startDate, endDate, typeOfElection, isBallotFinalized);
+
                 listOfElection.Add(election);
             }
 
@@ -750,7 +761,7 @@ namespace AauVotingSystemP4
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = GetDefaultConnection();
 
-            string sqlString = String.Format("INSERT INTO election(Startdate, Enddate, Type_Of_Election, Ballotfinalized) VALUES('{0}', '{1}', '{2}', {3}); ", election.StartDate.ToString("yyyy-MM-dd hh:mm:ss"), election.EndDate.ToString("yyyy-MM-dd hh:mm:ss"), election.ElectionType, 0); 
+            string sqlString = String.Format("INSERT INTO election(Startdate, Enddate, Type_Of_Election, Ballotfinalized) VALUES('{0}', '{1}', '{2}', {3}); ", election.StartDate.ToString("yyyy-MM-dd hh:mm:ss"), election.EndDate.ToString("yyyy-MM-dd hh:mm:ss"), election.ElectionType, 0);
 
             cmd.CommandText = sqlString;
             cmd.ExecuteReader();
@@ -776,7 +787,7 @@ namespace AauVotingSystemP4
                 string firstName = (string)reader[1];
                 string lastName = (string)reader[2];
                 bool isParty = false;
-                var voteResult = new VoteResult(firstName, lastName, partyId, amount, nominationDistrictId,isParty);
+                var voteResult = new VoteResult(firstName, lastName, partyId, amount, nominationDistrictId, isParty);
                 results.Add(voteResult);
             }
 
@@ -818,7 +829,7 @@ namespace AauVotingSystemP4
 
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = String.Format("SELECT * FROM election WHERE Election_ID = {0} ;", election_Id);
-            
+
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -831,8 +842,8 @@ namespace AauVotingSystemP4
                 bool isBallotFinalized = false;
                 if (!reader.IsDBNull(4))
                     isBallotFinalized = (bool)reader[4];
-                
-                Election election = new Election(electionId, startDate, endDate, typeOfElection,isBallotFinalized);
+
+                Election election = new Election(electionId, startDate, endDate, typeOfElection, isBallotFinalized);
                 return election;
             }
             cmd.Connection.Close();
@@ -841,10 +852,10 @@ namespace AauVotingSystemP4
 
         public bool EditElection(int electionId, string typeOfElection, DateTime startdate, DateTime enddate, bool isBallotFinalized)
         {
-           
+
             string sqlString = "";
 
-            if (isBallotFinalized) 
+            if (isBallotFinalized)
             {
                 sqlString = String.Format("UPDATE election SET Startdate = '{0}', Enddate = '{1}', Type_of_election = '{2}', Ballotfinalized = {3} WHERE Election_ID = {4}", startdate.ToString("yyyy-MM-dd hh:mm:ss"), enddate.ToString("yyyy-MM-dd hh:mm:ss"), typeOfElection, 1, electionId);
             }
@@ -852,10 +863,10 @@ namespace AauVotingSystemP4
             {
                 sqlString = String.Format("UPDATE election SET Startdate = '{0}', Enddate = '{1}', Type_of_election = '{2}', Ballotfinalized = {3} WHERE Election_ID = {4}", startdate.ToString("yyyy-MM-dd hh:mm:ss"), enddate.ToString("yyyy-MM-dd hh:mm:ss"), typeOfElection, 0, electionId);
             }
-            
+
             Console.WriteLine(sqlString);
             MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = GetDefaultConnection();            
+            cmd.Connection = GetDefaultConnection();
 
             cmd.CommandText = sqlString;
             cmd.ExecuteReader();
@@ -883,7 +894,7 @@ namespace AauVotingSystemP4
 
                 List<string> listOfPartiesInElection = new List<string>();
                 listOfPartiesInElection.Add(party);
-                return listOfPartiesInElection; 
+                return listOfPartiesInElection;
             }
             cmd.Connection.Close();
             return null;
@@ -903,7 +914,7 @@ namespace AauVotingSystemP4
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                string firstName= (string)reader[0];
+                string firstName = (string)reader[0];
                 string lastName = (string)reader[1];
 
                 var CandidatesInNominationDistrict = new List<Tuple<string, string>>();

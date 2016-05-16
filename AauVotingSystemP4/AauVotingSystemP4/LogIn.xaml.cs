@@ -41,10 +41,5 @@ namespace AauVotingSystemP4
             ElectionAdminMainWindow eamw = new ElectionAdminMainWindow();
             eamw.Show();
         }
-        private void AddParty_Click(object sender, RoutedEventArgs e)
-        {
-            Addpartyvotingoption apvo = new Addpartyvotingoption();
-            apvo.Show();
-        }
     }
 }

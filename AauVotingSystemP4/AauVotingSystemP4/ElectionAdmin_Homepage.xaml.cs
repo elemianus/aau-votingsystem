@@ -29,6 +29,7 @@ namespace AauVotingSystemP4
         private NominationDistrict currentNominationDistrict;
         private List<NominationDistrict> nominationDistricts;
         private ZipCode curentZipCode;
+        private VotingOption currentParty;
         public ElectionAdmin_Homepage()
         {
             InitializeComponent();
@@ -51,6 +52,13 @@ namespace AauVotingSystemP4
 
                 nominationDistrictListView.ItemsSource = nominationDistricts;
             }
+        }
+
+        public void UpdateListOfNationalVotingOptions()
+        {
+            var databaseConector = new DatabaseConnector();
+            PartiesListView.ItemsSource = databaseConector.GetListOfNationalVotionOptions(currentElection.Election_ID);
+
         }
 
         private void ListAllCandidatesForNominationDistrict()
@@ -78,7 +86,7 @@ namespace AauVotingSystemP4
         public void ListZipCodes(int nominationId)
         {
             var databaseConector = new DatabaseConnector();
-            List<ZipCode> zipCodes = databaseConector.GetAllZipCodesForNominationDistrict(nominationId, currentElection.Election_ID);
+            List<ZipCode> zipCodes = databaseConector.GetAllZipCodesForNominationDistrict(nominationId);
             ZipDistrictListView.ItemsSource = zipCodes;
         }
 
@@ -174,6 +182,42 @@ namespace AauVotingSystemP4
             if (currentElection != null)
             {
                 ListAllNominationDistricts();
+                UpdateListOfNationalVotingOptions();
+            }
+        }
+
+        private void PartiesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var listBox = sender as ListBox;
+            var selectedItem = listBox.SelectedItem as VotingOption;
+            currentParty = selectedItem;
+        }
+
+        private void createNationalVotingOptionButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentElection != null)
+            {
+                var window = new ElectionAdmin_AddEditParty(this, currentNominationDistrict, currentElection.Election_ID);
+                window.Show();
+            }
+        }
+
+        private void editNationalVotingOptionButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentElection != null && currentParty != null)
+            {
+                var window = new ElectionAdmin_AddEditParty(this, currentNominationDistrict, currentElection.Election_ID, currentParty);
+                window.Show();
+            }
+        }
+
+        private void removeNationalVotingOptionButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentParty != null)
+            {
+                var db = new DatabaseConnector();
+                db.DeleteVotionOption(currentParty);
+                UpdateListOfNationalVotingOptions();
             }
         }
     }

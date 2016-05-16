@@ -47,9 +47,17 @@
         <Button x:Name="editNominationDistrictButton" Content="Edit nomination district" HorizontalAlignment="Left" Height="25" Margin="212,305,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.505,0.462" Click="editNominationDistrictButton_Click"/>
         <Button x:Name="removeNominationDistrictButton" Content="Remove nomination district" HorizontalAlignment="Left" Height="25" Margin="369,305,0,0" VerticalAlignment="Top" Width="157" Click="removeNominationDistrictButton_Click"/>
 
+        <ListView x:Name="PartiesListView" Margin="831,194,53,0"
+        	ScrollViewer.VerticalScrollBarVisibility="Auto" Height="111" VerticalAlignment="Top" SelectionChanged="PartiesListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Party name" Width="Auto" DisplayMemberBinding="{Binding FirstName}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
 
-        <ListView x:Name="CandidatesListview" Margin="831,338,53,0"
-        	ScrollViewer.VerticalScrollBarVisibility="Auto" Height="168" VerticalAlignment="Top">
+        <ListView x:Name="CandidatesListview" Margin="831,340,53,0"
+        	ScrollViewer.VerticalScrollBarVisibility="Auto" Height="166" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Firstname" Width="150" DisplayMemberBinding="{Binding FirstName}" />
@@ -59,8 +67,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label x:Name="label" HorizontalAlignment="Left" Margin="889,273,0,0" VerticalAlignment="Top">
-            <Label x:Name="label1" Content="NATIONAL VOTING OPTIONS WILL GO HERE"/>
-        </Label>
+        <Label x:Name="label" HorizontalAlignment="Left" Margin="889,273,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="createNationalVotingOptionButton" Content="Add national option" HorizontalAlignment="Left" Height="25" Margin="831,310,0,0" VerticalAlignment="Top" Width="157" Click="createNationalVotingOptionButton_Click" />
+        <Button x:Name="editNationalVotingOptionButton" Content="Edit national option" HorizontalAlignment="Left" Height="25" Margin="994,310,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.505,0.462" Click="editNationalVotingOptionButton_Click" />
+        <Button x:Name="removeNationalVotingOptionButton" Content="Remove national option" HorizontalAlignment="Left" Height="25" Margin="1151,310,0,0" VerticalAlignment="Top" Width="157" Click="removeNationalVotingOptionButton_Click" />
     </Grid>
 </Page>
