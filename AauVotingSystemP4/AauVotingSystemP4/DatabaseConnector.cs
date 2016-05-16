@@ -234,17 +234,6 @@ namespace AauVotingSystemP4
             return list;
         }
 
-        /*public void AddZipCodeToNominationDistrict(int electionId,int nominationDistrict, ZipCode zipCode) {
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = GetDefaultConnection();
-                
-            string sqlString = String.Format("INSERT INTO zipcode VALUES({0}, '{1}', {2},{3}); ",zipCode.ZipCodeId, zipCode.Name, nominationDistrict, electionId);
-
-            cmd.CommandText = sqlString;
-            cmd.ExecuteReader();
-            cmd.Connection.Close();
-        }*/
-
 
         public void AddZipCodeToNominationDistrict(int electionId, int nominationDistrict, ZipCode zipCode)
         {
