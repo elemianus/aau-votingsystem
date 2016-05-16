@@ -22,7 +22,7 @@
             </ListView.View>
         </ListView>
         <Button x:Name="addCandidateButton" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" Width="175" Click="addCandidateButton_Click" Height="20" Content="Add candidate" />
-        <Button x:Name="removeCandidateButton" Content="Remove candidate" HorizontalAlignment="Left" Margin="391,266,0,0" VerticalAlignment="Top" Width="175"/>
+        <Button x:Name="removeCandidateButton" Content="Remove candidate" HorizontalAlignment="Left" Margin="391,266,0,0" VerticalAlignment="Top" Width="175" Click="removeCandidateButton_Click"/>
         <Button x:Name="editCandidateButton" Content="Edit candidate" HorizontalAlignment="Left" Margin="204,266,0,0" VerticalAlignment="Top" Width="175" Click="editCandidateButton_Click"/>
         <Label x:Name="electionboardName" Content="Election board: " HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" Width="556"/>
     </Grid>

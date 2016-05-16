@@ -9,7 +9,6 @@
     <Grid>
         <TextBox x:Name="firstNameTextBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="First name" VerticalAlignment="Top" Width="272"/>
         <TextBox x:Name="lastNameTextBox" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" Text="Last name" VerticalAlignment="Top" Width="272"/>
-        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Width="272"/>
 
         <ListView x:Name="PartiesListView" Margin="10,92,10,0"
         	ScrollViewer.VerticalScrollBarVisibility="Auto" Height="177" VerticalAlignment="Top" SelectionChanged="PartiesListView_SelectionChanged">

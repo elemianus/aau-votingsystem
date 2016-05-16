@@ -115,6 +115,13 @@ namespace AauVotingSystemP4
                 }
             }
         }
+
+        private void removeCandidateButton_Click(object sender, RoutedEventArgs e)
+        {
+            var db = new DatabaseConnector();
+            db.DeleteVotionOption(currentVotingOption);
+            UpdateListOfCandidates();
+        }
     }
 }
 

@@ -36,6 +36,15 @@ namespace AauVotingSystemP4
 
             if (currentVotingOption != null)
             {
+                for (int i = 0; i < partys.Count; i++)
+                {
+                    if (partys[i].PartyId == currentVotingOption.PartyId) { 
+                        PartiesListView.SelectedIndex = i;
+                        currentParty = partys[i];
+                        break;
+                    }
+                }
+                
                 firstNameTextBox.Text = currentVotingOption.FirstName;
                 lastNameTextBox.Text = currentVotingOption.LastName;
             }
@@ -59,7 +68,10 @@ namespace AauVotingSystemP4
             }
             else //Existing voting option
             {
-                var vo = new VotingOption(firstNameTextBox.Text, lastNameTextBox.Text, currentVotingOption.NominationDistrictId, currentVotingOption.PartyId, currentVotingOption.VotingOptionId);
+                int partyId = -1;
+                if(currentParty!=null)
+                    partyId = currentParty.PartyId;
+                var vo = new VotingOption(firstNameTextBox.Text, lastNameTextBox.Text, currentVotingOption.NominationDistrictId, partyId, currentVotingOption.VotingOptionId);
                 dbConector.UpdateVotingOption(vo);
                 launchWindow.UpdateListOfCandidates();
                 Close();
