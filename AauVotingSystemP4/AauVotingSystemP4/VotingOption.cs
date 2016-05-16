@@ -23,7 +23,8 @@ namespace AauVotingSystemP4
         /// <param name="NominationDistrictId">The id of the district</param>
         /// <param name="PartyId">(optional)The partyid</param>
         /// <param name="VotingOptionId">(optional) the id of the VotionOption if it is known</param>
-        public VotingOption(string FirstName, string LastName, int NominationDistrictId, int PartyId = -1,int VotingOptionId = -1) {
+        public VotingOption(string FirstName, string LastName, int NominationDistrictId, int PartyId = -1, int VotingOptionId = -1)
+        {
             this.FirstName = FirstName;
             this.LastName = LastName;
             this.NominationDistrictId = NominationDistrictId;
@@ -38,8 +39,6 @@ namespace AauVotingSystemP4
             returnSting += FirstName + " " + LastName + " ";
             return returnSting;
         }
-
-
     }
 }
 

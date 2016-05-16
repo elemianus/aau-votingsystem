@@ -26,16 +26,22 @@ namespace AauVotingSystemP4
         Election myElection;
         int electionId;
         DatabaseConnector myConnector = new DatabaseConnector();
-        public AdministrateElectionEdit(int electionId)
+        ElectionAdmin_Homepage launchingWindow;
+        public AdministrateElectionEdit(Election election, ElectionAdmin_Homepage launchingWindow)
         {
-            this.electionId = electionId;
-            this.myElection =  myConnector.GetElection(electionId);      
+            this.launchingWindow = launchingWindow;
+            this.electionId = election.Election_ID;
+            this.myElection = election;
             InitializeComponent();
             type_Of_Election.Text = myElection.ElectionType;
             startdate.SelectedDate = myElection.StartDate;
             enddate.SelectedDate = myElection.EndDate;
             this.isBallotFinalized = myElection.IsBallotFinalized;
-            
+
+            if (isBallotFinalized)
+                finalized.IsChecked = true;
+            else
+                notFinalized.IsChecked = true;
         }
 
      
@@ -51,8 +57,17 @@ namespace AauVotingSystemP4
                 isBallotFinalized = false;
             }
 
-            MessageBox.Show(isBallotFinalized.ToString());
-            myConnector.EditElection(electionId, type_Of_Election.Text, startdate.SelectedDate.Value, enddate.SelectedDate.Value, isBallotFinalized);
+            if (myConnector.EditElection(electionId, type_Of_Election.Text, startdate.SelectedDate.Value, enddate.SelectedDate.Value, isBallotFinalized))
+            {
+                MessageBox.Show("Changes saved");
+                launchingWindow.ListAllElections();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Couldn't reach database");
+            }
+            
             
         }
     }
