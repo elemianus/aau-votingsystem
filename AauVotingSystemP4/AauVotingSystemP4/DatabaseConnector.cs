@@ -220,7 +220,8 @@ namespace AauVotingSystemP4
         {
             List<ZipCode> list = new List<ZipCode>();
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = "SELECT * FROM zipcode WHERE Election_ID = " + electionId + ";";
+            cmd.CommandText = "SELECT zipcode.ZipCode, zipcode.Name FROM zipcode INNER JOIN relation on relation.ZipCode = zipcode.ZipCode LEFT JOIN nominationdistrict on nominationdistrict.NominationDistrict_ID = relation.NominationDistrict_ID WHERE nominationdistrict.Election_ID = 3;";  
+// old      // cmd.CommandText = "SELECT * FROM zipcode WHERE Election_ID = " + electionId + ";"; 
 
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
@@ -233,11 +234,25 @@ namespace AauVotingSystemP4
             return list;
         }
 
-        public void AddZipCodeToNominationDistrict(int electionId,int nominationDistrict, ZipCode zipCode) {
+        /*public void AddZipCodeToNominationDistrict(int electionId,int nominationDistrict, ZipCode zipCode) {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = GetDefaultConnection();
+                
+            string sqlString = String.Format("INSERT INTO zipcode VALUES({0}, '{1}', {2},{3}); ",zipCode.ZipCodeId, zipCode.Name, nominationDistrict, electionId);
+
+            cmd.CommandText = sqlString;
+            cmd.ExecuteReader();
+            cmd.Connection.Close();
+        }*/
+
+
+        public void AddZipCodeToNominationDistrict(int electionId, int nominationDistrict, ZipCode zipCode)
+        {
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = GetDefaultConnection();
 
-            string sqlString = String.Format("INSERT INTO zipcode VALUES({0}, '{1}', {2},{3}); ",zipCode.ZipCodeId, zipCode.Name,nominationDistrict, electionId);
+            string sqlString = String.Format("INSERT INTO relation VALUES({0},'{1}'); ", nominationDistrict, zipCode.ZipCodeId);
+//Old       //string sqlString = String.Format("INSERT INTO zipcode VALUES({0}, '{1}', {2},{3}); ", zipCode.ZipCodeId, zipCode.Name, nominationDistrict, electionId);
 
             cmd.CommandText = sqlString;
             cmd.ExecuteReader();
