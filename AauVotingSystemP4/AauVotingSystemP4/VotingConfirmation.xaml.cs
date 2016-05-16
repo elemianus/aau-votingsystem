@@ -19,14 +19,16 @@ namespace AauVotingSystemP4
     /// </summary>
     public partial class VotingConfirmation : Window
     {
-        public VotingConfirmation()
+        int citizenCPR;
+        public VotingConfirmation(int citizenCPR)
         {
             InitializeComponent();
+            this.citizenCPR = citizenCPR;
         }
 
         private void Yes_Click(object sender, RoutedEventArgs e)
         {
-            CitizenHaveVoted chv = new CitizenHaveVoted();
+            CitizenHaveVoted chv = new CitizenHaveVoted(citizenCPR);
             chv.Show();
             this.Close();
         }
