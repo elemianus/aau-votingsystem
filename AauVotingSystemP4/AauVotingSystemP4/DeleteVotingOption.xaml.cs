@@ -26,9 +26,9 @@ namespace AauVotingSystemP4
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            AddVotingOption avo = new AddVotingOption();
+            /*AddVotingOption avo = new AddVotingOption();
             avo.Show();
-            this.Close();
+            this.Close();*/
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -40,9 +40,9 @@ namespace AauVotingSystemP4
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            ConfirmDeleteVotingOption cdvo = new ConfirmDeleteVotingOption();
+            /*ConfirmDeleteVotingOption cdvo = new ConfirmDeleteVotingOption();
             cdvo.Show();
-            this.Close();
+            this.Close();*/
         }
     }
 }

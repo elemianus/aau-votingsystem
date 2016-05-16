@@ -9,12 +9,13 @@ namespace AauVotingSystemP4
     /// <summary>
     /// This class is allows the election board to add, remove and finalize a ballot for a specific nomination district.
     /// </summary>
-    class ElectionBoard 
+    public class ElectionBoard 
     {
         public int NominationDistrictId { get; }
         public string NominationDistrictName { get { return nominationDistrictName; }}
         private string nominationDistrictName;
         private VotingBallot ballot;
+        public int ElectionId { get; }
 
 
         /// <summary>
@@ -22,13 +23,12 @@ namespace AauVotingSystemP4
         /// </summary>
         /// <param name="nominationDistrictName">The name of the discrict</param>
         /// <param name="AssociatedNominationDistrictId">The nomination district id surplied - this MUST be the same as in the database</param>
-        /// <param name="ballot">The ballot the nominationDistrict should use</param>
         /// 
-        public ElectionBoard (string nominationDistrictName, int AssociatedNominationDistrictId,VotingBallot ballot)
+        public ElectionBoard (string nominationDistrictName, int AssociatedNominationDistrictId,int electionId)
         {
             this.nominationDistrictName = nominationDistrictName;
             this.NominationDistrictId = AssociatedNominationDistrictId;
-            this.ballot = ballot;
+            this.ElectionId = electionId;
             
         }
 

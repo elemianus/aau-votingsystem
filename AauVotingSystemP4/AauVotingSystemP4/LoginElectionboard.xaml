@@ -10,7 +10,7 @@
 
     <Grid>
         <Label VerticalAlignment="Top" Name="Username" Content="Username:" Margin="27,49,197,223" Width="100"/>
-        <TextBox VerticalAlignment="Top" Name="TypeInNominationDistrict" Margin="108,49,27,223" Width="170" Text="logintest"/>
+        <TextBox VerticalAlignment="Top" Name="TypeInNominationDistrict" Margin="108,49,27,223" Width="170" Text="4"/>
         <Label VerticalAlignment="Top" Name="Password" Content="Password:" Margin="27,83,207,188" Width="100"/>
         <TextBox VerticalAlignment="Top" Name="TypeInPassword" Margin="108,83,27,189" Width="170"/>
         <Button VerticalAlignment="Top" HorizontalAlignment="Center" Name="LogIn" Content="Okay" Margin="108,116,90,0" Width="102" Click="LogIn_Click"/>

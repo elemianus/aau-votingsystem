@@ -356,6 +356,21 @@ namespace AauVotingSystemP4
             
             sqlString = String.Format("UPDATE election SET Name = '{0}', NumberOfMandates = '{1}' WHERE NominationDistrict_ID = {2}", nominationDistrictId.Name,nominationDistrictId.NumberOfMandates,nominationDistrictId.NominationDistrictId);
             
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = GetDefaultConnection();
+
+            cmd.CommandText = sqlString;
+            cmd.ExecuteReader();
+            cmd.Connection.Close();
+            
+        }
+
+        public void UpdateVotingOption(VotingOption option)
+        {
+            string sqlString = "";
+
+            sqlString = String.Format("UPDATE candidates SET FirstName = '{0}', LastName = '{1}', Party_ID = {2} WHERE Candidate_ID = {3}", option.FirstName, option.LastName , option.PartyId,option.VotingOptionId);
+
 
             Console.WriteLine(sqlString);
             MySqlCommand cmd = new MySqlCommand();
@@ -364,7 +379,7 @@ namespace AauVotingSystemP4
             cmd.CommandText = sqlString;
             cmd.ExecuteReader();
             cmd.Connection.Close();
-            
+
         }
 
         /// <summary>
@@ -535,26 +550,52 @@ namespace AauVotingSystemP4
             }
         }
 
+        /// <summary>
+        /// Gets the electionboard for a specific id
+        /// </summary>
+        /// <param name="electionBoardId">nomination district id</param>
+        /// <returns>An assosiated electionbaord</returns>
+        public ElectionBoard GetElectionBoardForId(int electionBoardId) {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = String.Format("SELECT * FROM nominationdistrict WHERE NominationDistrict_ID = '{0}';", electionBoardId);
+            cmd.Connection = GetDefaultConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            
+
+            while (reader.Read())
+            {
+                int electionId = (int)reader[3];
+                string ebName = (string)reader[1];
+                
+                var board = new ElectionBoard(ebName, electionBoardId,electionId);
+                cmd.Connection.Close();
+                return board;
+            }
+            cmd.Connection.Close();
+            return null; //If no result found
+
+        }
+
 
         /// <summary>
         /// Checks if electionboard exists.
         /// </summary>
-        /// <param name="nominationD"></param>
-        /// <returns>True if it founds the nominations destrict, otherwise it returns false</returns>
-        public bool DoesElectionboardExist(string nominationD)
+        /// <param name="nominationD">the nomination district id</param>
+        /// <returns>True if the nomination district is found, otherwise it returns false</returns>
+        public bool DoesElectionboardExist(int nomDId)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = String.Format("SELECT COUNT(*) FROM nominationdistrict WHERE Name = '{0}';", nominationD);
+            cmd.CommandText = String.Format("SELECT COUNT(*) FROM nominationdistrict WHERE NominationDistrict_ID = '{0}';", nomDId);
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
-            Int64 amountOfVotesForElection = 0;
+            Int64 amountOfNominationDistrictsForId = 0;
             while (reader.Read())
             {
-                amountOfVotesForElection = (Int64)reader[0];
+                amountOfNominationDistrictsForId = (Int64)reader[0];
             }
 
             cmd.Connection.Close();
-            if (amountOfVotesForElection > 0)
+            if (amountOfNominationDistrictsForId > 0)
             {
                 return true;
             }

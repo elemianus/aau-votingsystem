@@ -56,14 +56,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddConfirmation.xaml.cs">
-      <DependentUpon>AddConfirmation.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AddNominationDistrict.xaml.cs">
       <DependentUpon>AddNominationDistrict.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AddVotingOption.xaml.cs">
-      <DependentUpon>AddVotingOption.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddZipCodeElectionAdmin.xaml.cs">
       <DependentUpon>AddZipCodeElectionAdmin.xaml</DependentUpon>
@@ -81,12 +75,6 @@
     <Compile Include="Citizen_Homepage.xaml.cs">
       <DependentUpon>Citizen_Homepage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ConfirmAddVotingOption.xaml.cs">
-      <DependentUpon>ConfirmAddVotingOption.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ConfirmDeleteVotingOption.xaml.cs">
-      <DependentUpon>ConfirmDeleteVotingOption.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CreatingElection.xaml.cs">
       <DependentUpon>CreatingElection.xaml</DependentUpon>
     </Compile>
@@ -94,9 +82,6 @@
       <DependentUpon>CreatingElectionTestWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DatabaseConnector.cs" />
-    <Compile Include="DeleteConfirmation.xaml.cs">
-      <DependentUpon>DeleteConfirmation.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DeleteVotingOption.xaml.cs">
       <DependentUpon>DeleteVotingOption.xaml</DependentUpon>
     </Compile>
@@ -112,6 +97,9 @@
     </Compile>
     <Compile Include="ElectionboardVotingBallot.xaml.cs">
       <DependentUpon>ElectionboardVotingBallot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ElectionBoard_AddVotingOption.xaml.cs">
+      <DependentUpon>ElectionBoard_AddVotingOption.xaml</DependentUpon>
     </Compile>
     <Compile Include="Electionboard_Homepage.xaml.cs">
       <DependentUpon>Electionboard_Homepage.xaml</DependentUpon>
@@ -148,15 +136,7 @@
     </Compile>
     <Compile Include="VotingOption.cs" />
     <Compile Include="ZipCode.cs" />
-    <Page Include="AddConfirmation.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="AddNominationDistrict.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AddVotingOption.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,23 +160,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ConfirmAddVotingOption.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ConfirmDeleteVotingOption.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="CreatingElection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CreatingElectionTestWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DeleteConfirmation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -217,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ElectionboardVotingBallot.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ElectionBoard_AddVotingOption.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

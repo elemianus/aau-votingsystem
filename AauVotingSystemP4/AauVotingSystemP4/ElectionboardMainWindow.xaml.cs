@@ -20,10 +20,10 @@ namespace AauVotingSystemP4
     public partial class ElectionboardMainWindow : Window
     {
         //This decides what shold be in the frame which we have in the xaml. In this case it is the Electionboard_Homepage that is showed in the frame
-        public ElectionboardMainWindow()
+        public ElectionboardMainWindow(int electionBoardId)
         {
             InitializeComponent();
-            Main.Content = new Electionboard_Homepage();
+            Main.Content = new Electionboard_Homepage(electionBoardId);
         }
     }
 }

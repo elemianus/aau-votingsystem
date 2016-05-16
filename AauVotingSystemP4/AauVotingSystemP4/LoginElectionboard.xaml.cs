@@ -29,13 +29,13 @@ namespace AauVotingSystemP4
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
             var databaseConector = new DatabaseConnector();
-            if (databaseConector.DoesElectionboardExist(TypeInNominationDistrict.Text))
+            if (databaseConector.DoesElectionboardExist(int.Parse(TypeInNominationDistrict.Text)))
             {
 
                 //string LogInNominationdistrict = TypeInNominationDistrict.Text;
                 //Nomination district exists
 
-                ElectionboardMainWindow emw = new ElectionboardMainWindow();
+                ElectionboardMainWindow emw = new ElectionboardMainWindow(int.Parse(TypeInNominationDistrict.Text));
                 emw.Show();
                 LogInNominationdistrict = TypeInNominationDistrict.Text;
                 //LogInNominationdistrict = int.Parse(TypeInNominationDistrict.Text);

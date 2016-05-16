@@ -27,9 +27,10 @@ namespace AauVotingSystemP4
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            AddVotingOption avo = new AddVotingOption();
+            /*AddVotingOption avo = new AddVotingOption();
             avo.Show();
             this.Close();
+            */
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
