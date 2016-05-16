@@ -755,7 +755,8 @@ namespace AauVotingSystemP4
         public List<string> ListOfPartiesInElection(int electionId)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = String.Format("SELECT DISTINCT party.Name AS Party FROM party JOIN election WHERE party.Election_ID = 0};", electionId);
+            string sqlComand = String.Format("SELECT DISTINCT party.Name AS Party FROM party JOIN election WHERE party.Election_ID = {0};", electionId);
+            cmd.CommandText = sqlComand;
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
