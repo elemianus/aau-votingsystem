@@ -32,11 +32,11 @@ namespace AauVotingSystemP4
             InitializeComponent();
             myElectionId = ElectionID;
             var databaseConector = new DatabaseConnector();
-            myNomCandidates = databaseConector.GetVotingOptionForNominationDistrict(databaseConector.GetNomDFromCPR(LoginCitizen.CitizenCPR), 3);
+            myNomCandidates = databaseConector.GetVotingOptionForNominationDistrict(databaseConector.GetNomDFromCPR(LoginCitizen.CitizenCPR), myElectionId);
             this.myParties = databaseConector.GetListOfNationalVotionOptions(myElectionId);
             LoginCitizen.myCitizen = new Citizen(LoginCitizen.CitizenCPR, 0000, false);
 
-            for (int i = 0; i < myParties.Count; i++)
+            for (int i = 0; i < myParties.Count; i++) //Add candidate for each party
             {
                 myFinalListForNomD.Add(myParties[i]);
                 foreach (var item in myNomCandidates)
@@ -48,16 +48,12 @@ namespace AauVotingSystemP4
                 }
             }
          
-            for (int i = 0; i < myNomCandidates.Count; i++)
+            for (int i = 0; i < myNomCandidates.Count; i++) //Add candidates without party
             {
-                foreach (var item in myParties)
+                if (myNomCandidates[i].PartyId < 1)
                 {
-                    if (item.PartyId == myNomCandidates[i].PartyId)
-                    {
-                        myFinalListForNomD.Insert(0, myNomCandidates[i]);
-                    }
-                }
-               
+                    myFinalListForNomD.Insert(0, myNomCandidates[i]);
+                } 
             }
             myListbox.ItemsSource = myFinalListForNomD;
             
