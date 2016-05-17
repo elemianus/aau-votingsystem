@@ -68,7 +68,8 @@ namespace AauVotingSystemP4
             var databaseConector = new DatabaseConnector();
             if (databaseConector.RegisterVote(LoginCitizen.myCitizen, myFinalListForNomD[myListbox.SelectedIndex], myElectionId, databaseConector.GetNomDFromCPR(LoginCitizen.CitizenCPR)))
             {
-                MessageBox.Show("SUCCESSSSS!!! You have votes for " + myListbox.SelectedItem.ToString());
+                MessageBox.Show("You have voted for " + myListbox.SelectedItem.ToString());
+                this.Close();
             }
             else
             {

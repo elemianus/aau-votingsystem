@@ -34,7 +34,7 @@ namespace AauVotingSystemP4
             myElections = databaseConector.GetAllElections();
             electionListView.ItemsSource = myElections;
         }
-        
+
         private void electionListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var listBox = sender as ListBox;
@@ -45,7 +45,7 @@ namespace AauVotingSystemP4
                 //DO stuff
             }
         }
-        
+
         private void ChooseElection_Click(object sender, RoutedEventArgs e)
         {
             var databaseConector = new DatabaseConnector();
@@ -54,12 +54,12 @@ namespace AauVotingSystemP4
                 MessageBox.Show("Error: You have already voted in this election");
             }
             else
-            {            
-           // MessageBox.Show(LoginCitizen.myCitizen.Cpr + " " + myElections[electionListView.SelectedIndex].Election_ID);
-            CitizenVotingBallot nw = new CitizenVotingBallot(myElections[electionListView.SelectedIndex].Election_ID);
-            nw.Show();
+            {
+
+                CitizenVotingBallot nw = new CitizenVotingBallot(myElections[electionListView.SelectedIndex].Election_ID);
+                nw.Show();
             }
-            // Main.Content = new CitizenVotingBallot(myElections[electionListView.SelectedIndex].Election_ID);
+
         }
     }
 }
