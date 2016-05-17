@@ -1,4 +1,4 @@
-﻿<Page x:Class="AauVotingSystemP4.ElectionAdmin_Homepage"
+﻿<Window x:Class="AauVotingSystemP4.ElectionAdmin_Homepage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,20 +7,8 @@
       mc:Ignorable="d"
         Title="ElectionAdmin_Homepage" Width="1360.961" Height="544.011">
     <Grid Margin="0,0,0,-14">
-        <ListView Name="electionListView" Margin="250,9,250,402" SelectionChanged="electionListView_SelectionChanged"
-                 ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Type of election" Width="150" DisplayMemberBinding="{Binding ElectionType}" />
-                    <GridViewColumn Header="Startdate" Width="120" DisplayMemberBinding="{Binding StartDate}" />
-                    <GridViewColumn Header="Is ballot final" Width="Auto" DisplayMemberBinding="{Binding IsBallotFinalized}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button x:Name="CreateElection" Content="Create Election" HorizontalAlignment="Left" Margin="464,161,0,0" VerticalAlignment="Top" Width="125" Click="createElection_Click"/>
-        <Button x:Name="admin_election" Content="Edit election" HorizontalAlignment="Left" Margin="789,161,0,0" VerticalAlignment="Top" Width="125" Click="admin_election_Click"/>
 
-        <ListView Name="nominationDistrictListView" Margin="50,194,835,258"
+        <ListView Name="nominationDistrictListView" Margin="50,70,835,287"
                  ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="NominationDistrictSelectionChanged">
             <ListView.View>
                 <GridView>
@@ -30,7 +18,7 @@
             </ListView.View>
         </ListView>
 
-        <ListView Name="ZipDistrictListView" Margin="50,338,835,0"
+        <ListView Name="ZipDistrictListView" Margin="50,278,835,0"
                  ScrollViewer.VerticalScrollBarVisibility="Auto" Height="168" VerticalAlignment="Top" SelectionChanged="ZipDistrictListView_SelectionChanged">
             <ListView.View>
                 <GridView>
@@ -39,16 +27,16 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="editZipCodeButton" Content="Edit zipcode" HorizontalAlignment="Left" Height="25" Margin="212,511,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.505,0.462" Click="editZipCodeButton_Click"/>
-        <Button x:Name="createZipCodeButton" Content="Create zipcode" HorizontalAlignment="Left" Height="25" Margin="50,511,0,0" VerticalAlignment="Top" Width="157" Click="createZipCodeButton_Click"/>
-        <Button x:Name="removeButton" Content="Remove zipcode" HorizontalAlignment="Left" Height="25" Margin="369,511,0,0" VerticalAlignment="Top" Width="157" Click="removeButton_Click"/>
+        <Button x:Name="editZipCodeButton" Content="Edit zipcode" HorizontalAlignment="Left" Height="25" Margin="212,451,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.505,0.462" Click="editZipCodeButton_Click"/>
+        <Button x:Name="createZipCodeButton" Content="Create zipcode" HorizontalAlignment="Left" Height="25" Margin="50,451,0,0" VerticalAlignment="Top" Width="157" Click="createZipCodeButton_Click"/>
+        <Button x:Name="removeButton" Content="Remove zipcode" HorizontalAlignment="Left" Height="25" Margin="369,451,0,0" VerticalAlignment="Top" Width="157" Click="removeButton_Click"/>
 
-        <Button x:Name="createNominationDistrictButton" Content="Create Nomination district" HorizontalAlignment="Left" Height="25" Margin="50,305,0,0" VerticalAlignment="Top" Width="157" Click="createNominationDistrictButton_Click"/>
-        <Button x:Name="editNominationDistrictButton" Content="Edit nomination district" HorizontalAlignment="Left" Height="25" Margin="212,305,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.505,0.462" Click="editNominationDistrictButton_Click"/>
-        <Button x:Name="removeNominationDistrictButton" Content="Remove nomination district" HorizontalAlignment="Left" Height="25" Margin="369,305,0,0" VerticalAlignment="Top" Width="157" Click="removeNominationDistrictButton_Click"/>
+        <Button x:Name="createNominationDistrictButton" Content="Create Nomination district" HorizontalAlignment="Left" Height="25" Margin="50,245,0,0" VerticalAlignment="Top" Width="157" Click="createNominationDistrictButton_Click"/>
+        <Button x:Name="editNominationDistrictButton" Content="Edit nomination district" HorizontalAlignment="Left" Height="25" Margin="212,245,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.505,0.462" Click="editNominationDistrictButton_Click"/>
+        <Button x:Name="removeNominationDistrictButton" Content="Remove nomination district" HorizontalAlignment="Left" Height="25" Margin="369,245,0,0" VerticalAlignment="Top" Width="157" Click="removeNominationDistrictButton_Click"/>
 
-        <ListView x:Name="PartiesListView" Margin="831,194,53,0"
-        	ScrollViewer.VerticalScrollBarVisibility="Auto" Height="111" VerticalAlignment="Top" SelectionChanged="PartiesListView_SelectionChanged">
+        <ListView x:Name="PartiesListView" Margin="831,70,53,0"
+        	ScrollViewer.VerticalScrollBarVisibility="Auto" Height="175" VerticalAlignment="Top" SelectionChanged="PartiesListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Party name" Width="Auto" DisplayMemberBinding="{Binding FirstName}" />
@@ -56,7 +44,7 @@
             </ListView.View>
         </ListView>
 
-        <ListView x:Name="CandidatesListview" Margin="831,340,53,0"
+        <ListView x:Name="CandidatesListview" Margin="831,280,53,0"
         	ScrollViewer.VerticalScrollBarVisibility="Auto" Height="166" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
@@ -67,9 +55,11 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label x:Name="label" HorizontalAlignment="Left" Margin="889,273,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="createNationalVotingOptionButton" Content="Add national option" HorizontalAlignment="Left" Height="25" Margin="831,310,0,0" VerticalAlignment="Top" Width="157" Click="createNationalVotingOptionButton_Click" />
-        <Button x:Name="editNationalVotingOptionButton" Content="Edit national option" HorizontalAlignment="Left" Height="25" Margin="994,310,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.505,0.462" Click="editNationalVotingOptionButton_Click" />
-        <Button x:Name="removeNationalVotingOptionButton" Content="Remove national option" HorizontalAlignment="Left" Height="25" Margin="1151,310,0,0" VerticalAlignment="Top" Width="157" Click="removeNationalVotingOptionButton_Click" />
+        <Label x:Name="label" HorizontalAlignment="Left" Margin="889,149,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="createNationalVotingOptionButton" Content="Add national option" HorizontalAlignment="Left" Height="25" Margin="831,250,0,0" VerticalAlignment="Top" Width="157" Click="createNationalVotingOptionButton_Click" />
+        <Button x:Name="editNationalVotingOptionButton" Content="Edit national option" HorizontalAlignment="Left" Height="25" Margin="994,250,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.505,0.462" Click="editNationalVotingOptionButton_Click" />
+        <Button x:Name="removeNationalVotingOptionButton" Content="Remove national option" HorizontalAlignment="Left" Height="25" Margin="1151,250,0,0" VerticalAlignment="Top" Width="157" Click="removeNationalVotingOptionButton_Click" />
+        <Button x:Name="button" Content="Change election settings" HorizontalAlignment="Left" Margin="1003,29,0,0" VerticalAlignment="Top" Width="297" Click="button_Click"/>
+        <Label x:Name="electionNameLabel" Content="Label" HorizontalAlignment="Left" Margin="50,15,0,0" VerticalAlignment="Top" FontSize="30" Width="899"/>
     </Grid>
-</Page>
+</Window>

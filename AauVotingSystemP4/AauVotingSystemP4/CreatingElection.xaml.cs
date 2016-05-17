@@ -19,27 +19,23 @@ namespace AauVotingSystemP4
     /// </summary>
     public partial class CreatingElection : Window
     {
-
-        
-        public CreatingElection()
+        ElectionAdminMainWindow launchingWindow;
+        public CreatingElection(ElectionAdminMainWindow launchingWindow)
         {
+            this.launchingWindow = launchingWindow;
             InitializeComponent();
             
         }
 
-      
-        
         private void CreateElection_Click(object sender, RoutedEventArgs e)
         {
-           
-            
-           
+
             ElectionAdministrator myAdministrator = new ElectionAdministrator(); // administratoren skal creates når programmet startes og smides i databasen, så at man kan bruge det objekt når man logger ind som admin?
-            
-            myAdministrator.CreateElection(3, start_DateTimePicker.SelectedDate.Value, end_DateTimePicker.SelectedDate.Value, Convert.ToString(election_Type.Text));
-            
-            CreatingElectionTestWindow evb = new CreatingElectionTestWindow(start_DateTimePicker.SelectedDate.Value, end_DateTimePicker.SelectedDate.Value, Convert.ToString(election_Type.Text));
-            evb.Show();
+            var db = new DatabaseConnector();
+            var myElection = new Election(-1, start_DateTimePicker.SelectedDate.Value, end_DateTimePicker.SelectedDate.Value, Convert.ToString(election_Type.Text), false);
+            db.AddElection(myElection);
+            launchingWindow.ListAllElections();
+            this.Close();
         }
     }
 }

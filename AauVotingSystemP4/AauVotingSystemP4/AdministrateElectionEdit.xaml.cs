@@ -60,7 +60,7 @@ namespace AauVotingSystemP4
             if (myConnector.EditElection(electionId, type_Of_Election.Text, startdate.SelectedDate.Value, enddate.SelectedDate.Value, isBallotFinalized))
             {
                 MessageBox.Show("Changes saved");
-                launchingWindow.ListAllElections();
+                //launchingWindow.ListAllElections();
                 this.Close();
             }
             else

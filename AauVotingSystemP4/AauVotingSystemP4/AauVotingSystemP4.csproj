@@ -78,9 +78,6 @@
     <Compile Include="CreatingElection.xaml.cs">
       <DependentUpon>CreatingElection.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CreatingElectionTestWindow.xaml.cs">
-      <DependentUpon>CreatingElectionTestWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DatabaseConnector.cs" />
     <Compile Include="DeleteVotingOption.xaml.cs">
       <DependentUpon>DeleteVotingOption.xaml</DependentUpon>
@@ -164,10 +161,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CreatingElection.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CreatingElectionTestWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

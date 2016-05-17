@@ -14,34 +14,26 @@ using System.Windows.Shapes;
 
 namespace AauVotingSystemP4
 {
-    public interface ElectionAdminRefreshInterface
-    {
-        void ListZipCodes(int nominationDistrictId);
-        void ListAllNominationDistricts();
-    }
 
     /// <summary>
     /// Interaction logic for ElectionAdmin_Homepage.xaml
     /// </summary>
-    public partial class ElectionAdmin_Homepage : Page, ElectionAdminRefreshInterface
+    public partial class ElectionAdmin_Homepage : Window
     {
         private Election currentElection;
         private NominationDistrict currentNominationDistrict;
         private List<NominationDistrict> nominationDistricts;
         private ZipCode curentZipCode;
         private VotingOption currentParty;
-        public ElectionAdmin_Homepage()
+        public ElectionAdmin_Homepage(Election currentElection)
         {
             InitializeComponent();
-            ListAllElections();
+            this.currentElection = currentElection;
+            electionNameLabel.Content = currentElection.ElectionType + " "+ currentElection.StartDate;
+            ListAllNominationDistricts();
+            UpdateListOfNationalVotingOptions();
         }
 
-        public void ListAllElections()
-        {
-            var databaseConector = new DatabaseConnector();
-            var elections = databaseConector.GetAllElections();
-            electionListView.ItemsSource = elections;
-        }
 
         public void ListAllNominationDistricts()
         {
@@ -67,21 +59,7 @@ namespace AauVotingSystemP4
             CandidatesListview.ItemsSource = databaseConector.GetVotingOptionForNominationDistrict(currentNominationDistrict.NominationDistrictId, currentElection.Election_ID);
         }
 
-        //Here is the create election for sending you on 
-        private void createElection_Click(object sender, RoutedEventArgs e)
-        {
-            CreatingElection evb = new CreatingElection();
-            evb.Show();
-        }
 
-        private void admin_election_Click(object sender, RoutedEventArgs e)
-        {
-            if (currentElection != null)
-            {
-                AdministrateElectionEdit evb = new AdministrateElectionEdit(currentElection, this);
-                evb.Show();
-            }
-        }
 
         public void ListZipCodes(int nominationId)
         {
@@ -174,17 +152,6 @@ namespace AauVotingSystemP4
             }
         }
 
-        private void electionListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var listBox = sender as ListBox;
-            var selectedItem = listBox.SelectedItem as Election;
-            currentElection = selectedItem;
-            if (currentElection != null)
-            {
-                ListAllNominationDistricts();
-                UpdateListOfNationalVotingOptions();
-            }
-        }
 
         private void PartiesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -223,6 +190,15 @@ namespace AauVotingSystemP4
                 else {
                     MessageBox.Show("This party stil has members, you cannot delete it");
                 }
+            }
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentElection != null)
+            {
+                AdministrateElectionEdit evb = new AdministrateElectionEdit(currentElection, this);
+                evb.Show();
             }
         }
     }

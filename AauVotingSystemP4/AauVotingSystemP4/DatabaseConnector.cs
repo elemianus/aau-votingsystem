@@ -644,6 +644,7 @@ namespace AauVotingSystemP4
         /// Removes the specified option from the database. It can be both a party and a candidate.
         /// </summary>
         /// <param name="option">Th option to delete</param>
+        /// <returns>True if succesfully deleted, otherwise false</returns>
         public bool DeleteVotionOption(VotingOption option)
         {
             try

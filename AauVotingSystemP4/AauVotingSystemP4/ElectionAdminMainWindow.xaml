@@ -5,11 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AauVotingSystemP4"
         mc:Ignorable="d"
-        Title="ElectionAdminMainWindow" Height="300" Width="300"
-        WindowState="Maximized">
-    <DockPanel Margin="0,0,0,0">
-        <local:HeaderElectionAdmin x:Name="HeaderElectionAdmin" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2"/>
-        <Frame Name="Main"/>
-    </DockPanel>
+        Title="ElectionAdminMainWindow" Height="429.362" Width="1041.949">
+    <Grid Margin="0,0,0,0">
+        <local:HeaderElectionAdmin x:Name="HeaderElectionAdmin" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2" Margin="0,-0.2,0,751"/>
+        <ListView Name="electionListView" SelectionChanged="electionListView_SelectionChanged"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto" Height="195" VerticalAlignment="Top" Margin="338,46,289,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Type of election" Width="150" DisplayMemberBinding="{Binding ElectionType}" />
+                    <GridViewColumn Header="Startdate" Width="120" DisplayMemberBinding="{Binding StartDate}" />
+                    <GridViewColumn Header="Is ballot final" Width="Auto" DisplayMemberBinding="{Binding IsBallotFinalized}"/>
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+        <Button x:Name="CreateElection" Content="Create Election" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Click="createElection_Click" Margin="410,246,0,0"/>
+        <Button x:Name="admin_election" Content="Edit election" HorizontalAlignment="Left" VerticalAlignment="Top" Width="124" Click="admin_election_Click" Margin="568,246,0,0"/>
+    </Grid>
 </Window>
 
