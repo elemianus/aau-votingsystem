@@ -935,7 +935,7 @@ namespace AauVotingSystemP4
             return null;
         }
 
-        public int GetNomDFromCPR(int citizenCPR)
+        public int GetNomDFromCPR(string citizenCPR)
         {
 
             int zipCode;

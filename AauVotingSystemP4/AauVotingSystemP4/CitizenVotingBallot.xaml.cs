@@ -24,12 +24,14 @@ namespace AauVotingSystemP4
         public List<VotingOption> myNomCandidates;
         public List<VotingOption> myTempListNomD = new List<VotingOption>();
         public List<VotingOption> myFinalListForNomD = new List<VotingOption>();
+        public Citizen myCitizen;
         public CitizenVotingBallot()
         {
             InitializeComponent();
             var databaseConector = new DatabaseConnector();
             myNomCandidates = databaseConector.GetVotingOptionForNominationDistrict(databaseConector.GetNomDFromCPR(LoginCitizen.CitizenCPR), 3);
             this.myParties = databaseConector.GetListOfNationalVotionOptions(3);
+            myCitizen = new Citizen(LoginCitizen.CitizenCPR, 0000, false);
 
             for (int i = 0; i < myParties.Count; i++)
             {
@@ -38,21 +40,38 @@ namespace AauVotingSystemP4
                 {
                     if (item.PartyId == myParties[i].PartyId)
                     {
-                        myFinalListForNomD.Add(item);
-                        myTempListNomD.Add(item);
+                        myFinalListForNomD.Add(item);                       
                     }
                 }
             }
          
             for (int i = 0; i < myNomCandidates.Count; i++)
             {
-                myFinalListForNomD.Insert(0, myNomCandidates[i]);
+                foreach (var item in myParties)
+                {
+                    if (item.PartyId == myNomCandidates[i].PartyId)
+                    {
+                        myFinalListForNomD.Insert(0, myNomCandidates[i]);
+                    }
+                }
+               
             }
-
-
-
             myListbox.ItemsSource = myFinalListForNomD;
+            
         }
 
-    }
+        private void VoteButton_Click(object sender, RoutedEventArgs e)
+        {                              
+            var databaseConector = new DatabaseConnector();
+            if (databaseConector.RegisterVote(myCitizen, myFinalListForNomD[myListbox.SelectedIndex], 3, databaseConector.GetNomDFromCPR(LoginCitizen.CitizenCPR)))
+            {
+                MessageBox.Show("SUCCESSSSS!!! You have votes for " + myListbox.SelectedItem.ToString());
+            }
+            else
+            {
+                MessageBox.Show("Error: You have already voted in this election");
+            }
+         
+        }
+    }    
 }
