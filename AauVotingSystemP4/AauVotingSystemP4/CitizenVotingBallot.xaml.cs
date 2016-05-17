@@ -18,20 +18,23 @@ namespace AauVotingSystemP4
     /// <summary>
     /// Interaction logic for CitizenVotingBallot.xaml
     /// </summary>
-    public partial class CitizenVotingBallot : Page
+    public partial class CitizenVotingBallot : Window
     {
-        public List<VotingOption> myParties;
-        public List<VotingOption> myNomCandidates;
-        public List<VotingOption> myTempListNomD = new List<VotingOption>();
-        public List<VotingOption> myFinalListForNomD = new List<VotingOption>();
-        public Citizen myCitizen;
-        public CitizenVotingBallot()
+         List<VotingOption> myParties;
+         List<VotingOption> myNomCandidates;
+         List<VotingOption> myTempListNomD = new List<VotingOption>();
+         List<VotingOption> myFinalListForNomD = new List<VotingOption>();
+         
+         int myElectionId;
+        
+        public CitizenVotingBallot(int ElectionID)
         {
             InitializeComponent();
+            myElectionId = ElectionID;
             var databaseConector = new DatabaseConnector();
             myNomCandidates = databaseConector.GetVotingOptionForNominationDistrict(databaseConector.GetNomDFromCPR(LoginCitizen.CitizenCPR), 3);
-            this.myParties = databaseConector.GetListOfNationalVotionOptions(3);
-            myCitizen = new Citizen(LoginCitizen.CitizenCPR, 0000, false);
+            this.myParties = databaseConector.GetListOfNationalVotionOptions(myElectionId);
+            LoginCitizen.myCitizen = new Citizen(LoginCitizen.CitizenCPR, 0000, false);
 
             for (int i = 0; i < myParties.Count; i++)
             {
@@ -63,7 +66,7 @@ namespace AauVotingSystemP4
         private void VoteButton_Click(object sender, RoutedEventArgs e)
         {                              
             var databaseConector = new DatabaseConnector();
-            if (databaseConector.RegisterVote(myCitizen, myFinalListForNomD[myListbox.SelectedIndex], 3, databaseConector.GetNomDFromCPR(LoginCitizen.CitizenCPR)))
+            if (databaseConector.RegisterVote(LoginCitizen.myCitizen, myFinalListForNomD[myListbox.SelectedIndex], myElectionId, databaseConector.GetNomDFromCPR(LoginCitizen.CitizenCPR)))
             {
                 MessageBox.Show("SUCCESSSSS!!! You have votes for " + myListbox.SelectedItem.ToString());
             }

@@ -32,7 +32,7 @@ namespace AauVotingSystemP4
 
         private void VoteButton_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new CitizenVotingBallot();
+            Main.Content = new CitizenVoteChooseElection();
         }
     }
 }

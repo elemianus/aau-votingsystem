@@ -1,0 +1,24 @@
+﻿<Page x:Class="AauVotingSystemP4.CitizenVoteChooseElection"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AauVotingSystemP4"
+      mc:Ignorable="d"
+      Title="CitizenVoteChooseElection" Width="375.6" Height="259.2">
+
+    <Grid Margin="-53,0,0,0.2">
+        
+        <ListView Name="electionListView" SelectionChanged="electionListView_SelectionChanged"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto" Height="195" VerticalAlignment="Top" Margin="-10,41,10,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Type of election" Width="150" DisplayMemberBinding="{Binding ElectionType}" />
+                    <GridViewColumn Header="Startdate" Width="120" DisplayMemberBinding="{Binding StartDate}" />
+                    <GridViewColumn Header="Enddate" Width="Auto" DisplayMemberBinding="{Binding EndDate}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="ChooseElection" Content="Choose election" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Click="ChooseElection_Click" Margin="294,236,0,0"/>
+    </Grid>
+</Page>

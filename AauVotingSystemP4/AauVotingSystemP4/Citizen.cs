@@ -9,7 +9,7 @@ namespace AauVotingSystemP4
     public class Citizen
     {
         public string Cpr { get; }
-        public bool Voteconducted { get; }
+        public bool Voteconducted { get { return voteConducted; } }
         private bool voteConducted = false;
         public int Zipcode { get; }
 
