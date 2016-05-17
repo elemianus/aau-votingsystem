@@ -9,11 +9,13 @@
         WindowState="Maximized">
     <DockPanel>
         <local:HeaderUserControl x:Name="HeaderUserControl" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="40"/>
-        <StackPanel Margin="0,0,0,0.4" RenderTransformOrigin="0.5,0.5">
+        <Grid Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
             <TextBox x:Name="election_Type" HorizontalAlignment="Left" Height="22" Margin="10,10,0,0" TextWrapping="Wrap" Text="Election Type" VerticalAlignment="Top" Width="120"/>
-            <DatePicker x:Name="start_DateTimePicker" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-            <DatePicker x:Name="end_DateTimePicker" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>            
-            <Button x:Name="CreateElection" Content="Create Election" HorizontalAlignment="Left" Margin="121,16,0,0" VerticalAlignment="Top" Width="75" Click="CreateElection_Click" RenderTransformOrigin="-0.393,0.812"/>
-        </StackPanel>
+            <DatePicker x:Name="start_DateTimePicker" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="startTimeTextbox" Height="23" TextWrapping="Wrap" Text="08:00" Width="120" Margin="117,41,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <DatePicker x:Name="end_DateTimePicker" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="CreateElection" Content="Create Election" HorizontalAlignment="Left" Margin="77,152,0,0" VerticalAlignment="Top" Width="138" Click="CreateElection_Click" RenderTransformOrigin="-0.393,0.812"/>
+            <TextBox x:Name="endTimeTextbox" HorizontalAlignment="Left" Height="23" Margin="117,70,0,0" TextWrapping="Wrap" Text="20:00" VerticalAlignment="Top" Width="120"/>
+        </Grid>
     </DockPanel>
 </Window>

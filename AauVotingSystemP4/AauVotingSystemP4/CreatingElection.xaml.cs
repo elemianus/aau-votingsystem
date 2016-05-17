@@ -32,10 +32,20 @@ namespace AauVotingSystemP4
 
             ElectionAdministrator myAdministrator = new ElectionAdministrator(); // administratoren skal creates når programmet startes og smides i databasen, så at man kan bruge det objekt når man logger ind som admin?
             var db = new DatabaseConnector();
-            var myElection = new Election(-1, start_DateTimePicker.SelectedDate.Value, end_DateTimePicker.SelectedDate.Value, Convert.ToString(election_Type.Text), false);
+
+            DateTime startFieldDate = start_DateTimePicker.SelectedDate.Value;
+            DateTime endFieldDate = end_DateTimePicker.SelectedDate.Value;
+            string[] startFieldTime = startTimeTextbox.Text.Split(':');
+            string[] endFieldTime = endTimeTextbox.Text.Split(':');
+
+            DateTime startTime = new DateTime(startFieldDate.Year, startFieldDate.Month, startFieldDate.Day, int.Parse(startFieldTime[0]), int.Parse(startFieldTime[1]), 0);
+            DateTime endTime = new DateTime(endFieldDate.Year, endFieldDate.Month, endFieldDate.Day, int.Parse(endFieldTime[0]), int.Parse(endFieldTime[1]), 0);
+
+
+            var myElection = new Election(-1,startTime , endTime, Convert.ToString(election_Type.Text), false);
             db.AddElection(myElection);
             launchingWindow.ListAllElections();
-            this.Close();
+            Close();
         }
     }
 }

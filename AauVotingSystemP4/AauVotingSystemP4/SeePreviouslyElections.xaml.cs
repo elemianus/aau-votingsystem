@@ -33,7 +33,7 @@ namespace AauVotingSystemP4
                 listOfListOfElections.Add(new ListOfElections() { TypeOfElection = item.ElectionType, StartDate = item.StartDate.Year.ToString() });
             }
 
-            var partyResults = new ResultCalculator(2);
+            var partyResults = new ResultCalculator(3);
             var resultListParty = partyResults.CalculateResultForParties();
             var listOfPartyResults = new List<ListOfPartyResults>();
             foreach (var item in resultListParty)

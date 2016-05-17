@@ -769,7 +769,7 @@ namespace AauVotingSystemP4
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = GetDefaultConnection();
 
-            string sqlString = String.Format("INSERT INTO election(Startdate, Enddate, Type_Of_Election, Ballotfinalized) VALUES('{0}', '{1}', '{2}', {3}); ", election.StartDate.ToString("yyyy-MM-dd hh:mm:ss"), election.EndDate.ToString("yyyy-MM-dd hh:mm:ss"), election.ElectionType, 0);
+            string sqlString = String.Format("INSERT INTO election(Startdate, Enddate, Type_Of_Election, Ballotfinalized) VALUES('{0}', '{1}', '{2}', {3}); ", election.StartDate.ToString("yyyy-MM-dd HH:mm:ss"), election.EndDate.ToString("yyyy-MM-dd HH:mm:ss"), election.ElectionType, 0);
 
             cmd.CommandText = sqlString;
             cmd.ExecuteReader();
@@ -865,11 +865,11 @@ namespace AauVotingSystemP4
 
             if (isBallotFinalized)
             {
-                sqlString = String.Format("UPDATE election SET Startdate = '{0}', Enddate = '{1}', Type_of_election = '{2}', Ballotfinalized = {3} WHERE Election_ID = {4}", startdate.ToString("yyyy-MM-dd hh:mm:ss"), enddate.ToString("yyyy-MM-dd hh:mm:ss"), typeOfElection, 1, electionId);
+                sqlString = String.Format("UPDATE election SET Startdate = '{0}', Enddate = '{1}', Type_of_election = '{2}', Ballotfinalized = {3} WHERE Election_ID = {4}", startdate.ToString("yyyy-MM-dd HH:mm:ss"), enddate.ToString("yyyy-MM-dd HH:mm:ss"), typeOfElection, 1, electionId);
             }
             else
             {
-                sqlString = String.Format("UPDATE election SET Startdate = '{0}', Enddate = '{1}', Type_of_election = '{2}', Ballotfinalized = {3} WHERE Election_ID = {4}", startdate.ToString("yyyy-MM-dd hh:mm:ss"), enddate.ToString("yyyy-MM-dd hh:mm:ss"), typeOfElection, 0, electionId);
+                sqlString = String.Format("UPDATE election SET Startdate = '{0}', Enddate = '{1}', Type_of_election = '{2}', Ballotfinalized = {3} WHERE Election_ID = {4}", startdate.ToString("yyyy-MM-dd HH:mm:ss"), enddate.ToString("yyyy-MM-dd HH:mm:ss"), typeOfElection, 0, electionId);
             }
 
             Console.WriteLine(sqlString);

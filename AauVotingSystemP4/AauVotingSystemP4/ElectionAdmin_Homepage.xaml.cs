@@ -29,11 +29,15 @@ namespace AauVotingSystemP4
         {
             InitializeComponent();
             this.currentElection = currentElection;
-            electionNameLabel.Content = currentElection.ElectionType + " "+ currentElection.StartDate;
+            DisplayElection(currentElection);
             ListAllNominationDistricts();
             UpdateListOfNationalVotingOptions();
         }
 
+        public void DisplayElection(Election election) {
+            currentElection = election;
+            electionNameLabel.Content = currentElection.ElectionType + " " + currentElection.StartDate;
+        }
 
         public void ListAllNominationDistricts()
         {

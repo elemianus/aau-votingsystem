@@ -8,8 +8,8 @@
         Title="ElectionAdmin_Homepage" Width="1360.961" Height="544.011">
     <Grid Margin="0,0,0,-14">
 
-        <ListView Name="nominationDistrictListView" Margin="50,70,835,287"
-                 ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="NominationDistrictSelectionChanged">
+        <ListView Name="nominationDistrictListView" Margin="50,70,0,0"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="NominationDistrictSelectionChanged" HorizontalAlignment="Left" Width="468" Height="170" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name of nomination district" Width="150" DisplayMemberBinding="{Binding Name}" />
@@ -18,8 +18,8 @@
             </ListView.View>
         </ListView>
 
-        <ListView Name="ZipDistrictListView" Margin="50,278,835,0"
-                 ScrollViewer.VerticalScrollBarVisibility="Auto" Height="168" VerticalAlignment="Top" SelectionChanged="ZipDistrictListView_SelectionChanged">
+        <ListView Name="ZipDistrictListView" Margin="50,278,0,0"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto" Height="168" VerticalAlignment="Top" SelectionChanged="ZipDistrictListView_SelectionChanged" HorizontalAlignment="Left" Width="468">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Name}" />
@@ -31,12 +31,12 @@
         <Button x:Name="createZipCodeButton" Content="Create zipcode" HorizontalAlignment="Left" Height="25" Margin="50,451,0,0" VerticalAlignment="Top" Width="157" Click="createZipCodeButton_Click"/>
         <Button x:Name="removeButton" Content="Remove zipcode" HorizontalAlignment="Left" Height="25" Margin="369,451,0,0" VerticalAlignment="Top" Width="157" Click="removeButton_Click"/>
 
-        <Button x:Name="createNominationDistrictButton" Content="Create Nomination district" HorizontalAlignment="Left" Height="25" Margin="50,245,0,0" VerticalAlignment="Top" Width="157" Click="createNominationDistrictButton_Click"/>
-        <Button x:Name="editNominationDistrictButton" Content="Edit nomination district" HorizontalAlignment="Left" Height="25" Margin="212,245,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.505,0.462" Click="editNominationDistrictButton_Click"/>
-        <Button x:Name="removeNominationDistrictButton" Content="Remove nomination district" HorizontalAlignment="Left" Height="25" Margin="369,245,0,0" VerticalAlignment="Top" Width="157" Click="removeNominationDistrictButton_Click"/>
+        <Button x:Name="createNominationDistrictButton" Content="Create Nomination district" Margin="50,245,0,0" Click="createNominationDistrictButton_Click" HorizontalAlignment="Left" Width="157" Height="25" VerticalAlignment="Top"/>
+        <Button x:Name="editNominationDistrictButton" Content="Edit nomination district" Height="25" Margin="212,245,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.505,0.462" Click="editNominationDistrictButton_Click" HorizontalAlignment="Left" Width="152"/>
+        <Button x:Name="removeNominationDistrictButton" Content="Remove nomination district" Height="25" Margin="369,245,0,0" VerticalAlignment="Top" Click="removeNominationDistrictButton_Click" HorizontalAlignment="Left" Width="149"/>
 
-        <ListView x:Name="PartiesListView" Margin="831,70,53,0"
-        	ScrollViewer.VerticalScrollBarVisibility="Auto" Height="175" VerticalAlignment="Top" SelectionChanged="PartiesListView_SelectionChanged">
+        <ListView x:Name="PartiesListView" Margin="831,70,0,0"
+        	ScrollViewer.VerticalScrollBarVisibility="Auto" Height="175" VerticalAlignment="Top" SelectionChanged="PartiesListView_SelectionChanged" HorizontalAlignment="Left" Width="469">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Party name" Width="Auto" DisplayMemberBinding="{Binding FirstName}" />
@@ -44,8 +44,8 @@
             </ListView.View>
         </ListView>
 
-        <ListView x:Name="CandidatesListview" Margin="831,280,53,0"
-        	ScrollViewer.VerticalScrollBarVisibility="Auto" Height="166" VerticalAlignment="Top">
+        <ListView x:Name="CandidatesListview" Margin="831,280,0,0"
+        	ScrollViewer.VerticalScrollBarVisibility="Auto" Height="166" VerticalAlignment="Top" HorizontalAlignment="Left" Width="469">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Firstname" Width="150" DisplayMemberBinding="{Binding FirstName}" />
