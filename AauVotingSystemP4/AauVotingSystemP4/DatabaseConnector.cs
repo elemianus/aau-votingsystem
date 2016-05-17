@@ -644,28 +644,35 @@ namespace AauVotingSystemP4
         /// Removes the specified option from the database. It can be both a party and a candidate.
         /// </summary>
         /// <param name="option">Th option to delete</param>
-        public void DeleteVotionOption(VotingOption option)
+        public bool DeleteVotionOption(VotingOption option)
         {
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = GetDefaultConnection();
-
-
-            if (option.IsNationalVotingOption)
+            try
             {
-                cmd.CommandText = String.Format("DELETE FROM party WHERE Party_ID = {0} ;", option.PartyId);
-            }
-            else
-            {
-                cmd.CommandText = String.Format("DELETE FROM candidates WHERE Candidate_id = {0} ;", option.VotingOptionId);
-            }
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = GetDefaultConnection();
 
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                Console.WriteLine(reader);
-            }
+                if (option.IsNationalVotingOption)
+                {
+                    cmd.CommandText = String.Format("DELETE FROM party WHERE Party_ID = {0} ;", option.PartyId);
+                }
+                else
+                {
+                    cmd.CommandText = String.Format("DELETE FROM candidates WHERE Candidate_id = {0} ;", option.VotingOptionId);
+                }
 
-            cmd.Connection.Close();
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Console.WriteLine(reader);
+                }
+
+                cmd.Connection.Close();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException e)
+            {
+                return false;
+            }
+            return true;
 
         }
 
@@ -929,9 +936,9 @@ namespace AauVotingSystemP4
 
         public int GetNomDFromCPR(int citizenCPR)
         {
-            
+
             int zipCode;
-         
+
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = String.Format("Select * FROM citizen JOIN zipcode ON citizen.ZipCode = zipcode.ZipCode JOIN relation ON citizen.ZipCode = relation.ZipCode WHERE citizen.CPR = {0}; ", citizenCPR);
             cmd.Connection = GetDefaultConnection();
@@ -940,7 +947,7 @@ namespace AauVotingSystemP4
             {
                 zipCode = (int)reader[4];
                 return zipCode;
-            }           
+            }
             cmd.Connection.Close();
             return -1;
         }

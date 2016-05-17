@@ -216,8 +216,13 @@ namespace AauVotingSystemP4
             if (currentParty != null)
             {
                 var db = new DatabaseConnector();
-                db.DeleteVotionOption(currentParty);
-                UpdateListOfNationalVotingOptions();
+                if (db.DeleteVotionOption(currentParty))
+                {
+                    UpdateListOfNationalVotingOptions();
+                }
+                else {
+                    MessageBox.Show("This party stil has members, you cannot delete it");
+                }
             }
         }
     }
