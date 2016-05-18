@@ -16,13 +16,12 @@ namespace AauVotingSystemP4
         public int NominationDistrictId;
         public bool IsNationalVotingOption;
 
-        public VoteResult(string firstName, string lastName, int candidateIdOrPartyId, int amountOfVotes, int nominationDistrictId,bool isNationalVotingOption) {
+        public VoteResult(string firstName, string lastName, int candidateId, int partyId, int amountOfVotes, int nominationDistrictId, bool isNationalVotingOption)
+        {
             this.FirstName = firstName;
             this.LastName = lastName;
-            if (isNationalVotingOption)
-                this.PartyId = candidateIdOrPartyId;
-            else
-                this.CandidateId = candidateIdOrPartyId;
+            this.PartyId = partyId;
+            this.CandidateId = candidateId;
             this.AmountOfVotes = amountOfVotes;
             this.NominationDistrictId = nominationDistrictId;
             this.IsNationalVotingOption = isNationalVotingOption;

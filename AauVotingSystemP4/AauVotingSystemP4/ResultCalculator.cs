@@ -74,7 +74,7 @@ namespace AauVotingSystemP4
             List<VoteResult> voteResults = new List<VoteResult>();
             foreach (var item in votes)
             {
-                voteResults.Add(new VoteResult(item.Key.FirstName, item.Key.LastName, item.Key.PartyId, item.Value, item.Key.NominationDistrictId, item.Key.IsNationalVotingOption));
+                voteResults.Add(new VoteResult(item.Key.FirstName, item.Key.LastName,item.Key.VotingOptionId, item.Key.PartyId, item.Value, item.Key.NominationDistrictId, item.Key.IsNationalVotingOption));
             }
 
             return voteResults;

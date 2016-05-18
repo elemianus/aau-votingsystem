@@ -800,13 +800,14 @@ namespace AauVotingSystemP4
             {
                 int partyId = -1;
                 if (!reader.IsDBNull(4))
-                    partyId = (int)reader[2];
+                    partyId = (int)reader[4];
                 int amount = (int)reader[6];
                 int nominationDistrictId = (int)reader[3];
                 string firstName = (string)reader[1];
                 string lastName = (string)reader[2];
+                int candidateId = (int)reader[5];
                 bool isParty = false;
-                var voteResult = new VoteResult(firstName, lastName, partyId, amount, nominationDistrictId, isParty);
+                var voteResult = new VoteResult(firstName, lastName,candidateId, partyId, amount, nominationDistrictId, isParty);
                 results.Add(voteResult);
             }
 
@@ -833,7 +834,7 @@ namespace AauVotingSystemP4
                 int amount = (int)reader[4];
                 int nominationDistrictId = (int)reader[1];
                 bool isParty = true;
-                var voteResult = new VoteResult(name, "", partyId, amount, nominationDistrictId, isParty);
+                var voteResult = new VoteResult(name, "",-1, partyId, amount, nominationDistrictId, isParty);
                 votes.Add(voteResult);
             }
 
