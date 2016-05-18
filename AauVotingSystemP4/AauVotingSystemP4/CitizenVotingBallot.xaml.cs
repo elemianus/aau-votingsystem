@@ -34,7 +34,6 @@ namespace AauVotingSystemP4
             var databaseConector = new DatabaseConnector();
             myNomCandidates = databaseConector.GetVotingOptionForNominationDistrict(databaseConector.GetNomDFromCPR(LoginCitizen.CitizenCPR), myElectionId);
             this.myParties = databaseConector.GetListOfNationalVotionOptions(myElectionId);
-            LoginCitizen.myCitizen = new Citizen(LoginCitizen.CitizenCPR, 0000, false);
 
             for (int i = 0; i < myParties.Count; i++) //Add candidate for each party
             {

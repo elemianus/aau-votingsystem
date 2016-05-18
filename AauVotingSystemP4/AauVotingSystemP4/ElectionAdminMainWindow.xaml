@@ -5,15 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AauVotingSystemP4"
         mc:Ignorable="d"
-        Title="ElectionAdminMainWindow" Height="429.362" Width="1041.949">
+        Title="ElectionAdminMainWindow" Height="Auto" Width="Auto">
     <Grid Margin="0,0,0,0">
-        <local:HeaderElectionAdmin x:Name="HeaderElectionAdmin" Grid.Row="0" UseLayoutRounding="False" DockPanel.Dock="Top" Height="41.2" Margin="0,-0.2,0,751"/>
+        <local:HeaderElectionAdmin x:Name="HeaderElectionAdmin" Height="41" VerticalAlignment="Top" />
         <ListView Name="electionListView" SelectionChanged="electionListView_SelectionChanged"
                  ScrollViewer.VerticalScrollBarVisibility="Auto" Height="195" VerticalAlignment="Top" Margin="338,46,289,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Type of election" Width="150" DisplayMemberBinding="{Binding ElectionType}" />
-                    <GridViewColumn Header="Startdate" Width="120" DisplayMemberBinding="{Binding StartDate}" />
+                    <GridViewColumn Header="Startdate" Width="Auto" DisplayMemberBinding="{Binding ElectionStartDateAsString}" />
+                    <GridViewColumn Header="Enddate" Width="Auto" DisplayMemberBinding="{Binding ElectionEndDateAsString}" />
                     <GridViewColumn Header="Is ballot final" Width="Auto" DisplayMemberBinding="{Binding IsBallotFinalized}"/>
                 </GridView>
             </ListView.View>

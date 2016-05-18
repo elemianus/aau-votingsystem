@@ -12,6 +12,8 @@ namespace AauVotingSystemP4
         public int Election_ID { get; set; }       
         public DateTime StartDate;
         public DateTime EndDate;
+        public string ElectionStartDateAsString {get { return ElectionStartDateToString(); } }
+        public string ElectionEndDateAsString { get { return ElectionEndDateToString(); } }
 
         public string ElectionType { get; set; }
         private VotingBallot nationalVotingBallot;
@@ -28,6 +30,13 @@ namespace AauVotingSystemP4
             this.isBallotFinalized = isBallotFinalized;
         }
 
+        private string ElectionStartDateToString() {
+            return StartDate.ToString();
+        }
+        private string ElectionEndDateToString()
+        {
+            return EndDate.ToString();
+        }
 
         public void FinalizeBallot()
         {

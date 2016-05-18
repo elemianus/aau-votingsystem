@@ -5,20 +5,20 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AauVotingSystemP4"
       mc:Ignorable="d"
-      Title="CitizenVoteChooseElection" Width="375.6" Height="259.2">
+      Title="CitizenVoteChooseElection" Width="Auto" Height="Auto">
 
-    <Grid Margin="-53,0,0,0.2">
+    <Grid Margin="0,0,0,0">
         
         <ListView Name="electionListView" SelectionChanged="electionListView_SelectionChanged"
-                 ScrollViewer.VerticalScrollBarVisibility="Auto" Height="195" VerticalAlignment="Top" Margin="-10,41,10,0">
+                 ScrollViewer.VerticalScrollBarVisibility="Auto" Height="195" VerticalAlignment="Top" Margin="0,0,0,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Type of election" Width="150" DisplayMemberBinding="{Binding ElectionType}" />
-                    <GridViewColumn Header="Startdate" Width="120" DisplayMemberBinding="{Binding StartDate}" />
-                    <GridViewColumn Header="Enddate" Width="Auto" DisplayMemberBinding="{Binding EndDate}"/>
+                    <GridViewColumn Header="Startdate" Width="Auto" DisplayMemberBinding="{Binding ElectionStartDateAsString}" />
+                    <GridViewColumn Header="Enddate" Width="Auto" DisplayMemberBinding="{Binding ElectionEndDateAsString}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="ChooseElection" Content="Choose election" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Click="ChooseElection_Click" Margin="294,236,0,0"/>
+        <Button x:Name="ChooseElection" Content="Choose election" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Click="ChooseElection_Click" Margin="0,214,0,0"/>
     </Grid>
 </Page>
