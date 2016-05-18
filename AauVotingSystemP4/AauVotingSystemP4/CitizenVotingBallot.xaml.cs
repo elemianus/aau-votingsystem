@@ -56,7 +56,8 @@ namespace AauVotingSystemP4
                 } 
             }
             myListbox.ItemsSource = myFinalListForNomD;
-            
+
+
         }
 
         private void VoteButton_Click(object sender, RoutedEventArgs e)
@@ -73,5 +74,7 @@ namespace AauVotingSystemP4
             }
          
         }
-    }    
+    }
+
+
 }

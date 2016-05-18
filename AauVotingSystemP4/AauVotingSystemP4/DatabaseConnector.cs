@@ -897,58 +897,6 @@ namespace AauVotingSystemP4
             return true;
         }
 
-
-        /// <summary>
-        /// Returns a list of possible parties possible to vote for in a given election. 
-        /// </summary>
-        /// <param name="electionId">Which election?</param>
-        /// <returns>A list of strings with the possible parties</returns>
-        public List<string> ListOfPartiesInElection(int electionId)
-        {
-            MySqlCommand cmd = new MySqlCommand();
-            string sqlComand = String.Format("SELECT DISTINCT party.Name AS Party FROM party JOIN election WHERE party.Election_ID = {0};", electionId);
-            cmd.CommandText = sqlComand;
-            cmd.Connection = GetDefaultConnection();
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                string party = (string)reader[0];
-
-                List<string> listOfPartiesInElection = new List<string>();
-                listOfPartiesInElection.Add(party);
-                return listOfPartiesInElection;
-            }
-            cmd.Connection.Close();
-            return null;
-        }
-
-
-        /// <summary>
-        /// Returns the candidates possible to vote for in one nominationdistrict 
-        /// </summary>
-        /// <param name="nominationDistrictId">Which nominationdistrict is in question?</param>
-        /// <returns>Returns a list of candidates from the given nominationdistrict</returns>
-        public List<Tuple<string, string>> ListOfCandidatesInNominationDistrict(int nominationDistrictId)
-        {
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = String.Format("SELECT candidates.FirstName, candidates.LastName FROM candidates JOIN party ON candidates.Party_ID = party.Party_ID JOIN nominationdistrict ON candidates.NominationDistrict_ID = nominationdistrict.NominationDistrict_ID WHEREnominationdistrict.nominationdistrict_ID = {0} GROUP BY party.Name;  ", nominationDistrictId);
-            cmd.Connection = GetDefaultConnection();
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                string firstName = (string)reader[0];
-                string lastName = (string)reader[1];
-
-                var CandidatesInNominationDistrict = new List<Tuple<string, string>>();
-                CandidatesInNominationDistrict.Add(new Tuple<string, string>(firstName, lastName));
-
-
-                return CandidatesInNominationDistrict;
-            }
-            cmd.Connection.Close();
-            return null;
-        }
-
         public int GetNomDFromCPR(string citizenCPR)
         {
 
