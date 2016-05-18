@@ -53,11 +53,23 @@ namespace AauVotingSystemP4
             {
                 MessageBox.Show("Error: You have already voted in this election");
             }
+            else if (databaseConector.IsBallotFinalized(myElections[electionListView.SelectedIndex].Election_ID))
+            {
+                if (myElections[electionListView.SelectedIndex].StartDate < DateTime.Now && myElections[electionListView.SelectedIndex].EndDate > DateTime.Now)
+                {
+                    CitizenVotingBallot nw = new CitizenVotingBallot(myElections[electionListView.SelectedIndex].Election_ID);
+                    nw.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Error: The election is not open for voting");
+                }
+               
+            }
             else
             {
 
-                CitizenVotingBallot nw = new CitizenVotingBallot(myElections[electionListView.SelectedIndex].Election_ID);
-                nw.Show();
+                MessageBox.Show("Error: Ballot is not finalized");
             }
 
         }

@@ -770,7 +770,9 @@ namespace AauVotingSystemP4
             cmd.Connection = GetDefaultConnection();
             cmd.CommandText = sqlString;
 
+            if (sqlString.Length > 0) { //Check if there is any candidates in the elction
             cmd.ExecuteReader();
+            }
             cmd.Connection.Close();
 
         }
