@@ -76,14 +76,7 @@ namespace AauVotingSystemP4
             }
             return votingOptions;
         }
-
-        private void ParliamentElection_Click(object sender, RoutedEventArgs e)
-        {
-            ElectionboardVotingBallot evb = new ElectionboardVotingBallot();
-            evb.Show();
-        }
-
-
+        
         private void addCandidateButton_Click(object sender, RoutedEventArgs e)
         {
             var window = new ElectionBoard_AddVotingOption(this, electionBoard, nationalVotingOptions);
