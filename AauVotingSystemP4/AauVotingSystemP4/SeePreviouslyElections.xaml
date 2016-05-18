@@ -18,22 +18,19 @@
         </Border>
         <ListView Name="electionsListBox" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible"
                  IsSynchronizedWithCurrentItem="True" SelectionChanged="electionsListBox_SelectionChanged" Margin="0,39.2,0,173" Grid.RowSpan="2">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <WrapPanel>
-                        <TextBlock Text="{Binding TypeOfElection}"/>
-                        <TextBlock Text=" "/>
-                        <TextBlock Text="{Binding StartDate}"/>
-                    </WrapPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Political Party" Width="Auto" DisplayMemberBinding="{Binding ElectionType}" />
+                    <GridViewColumn Header="Votes" Width="Auto" DisplayMemberBinding="{Binding ElectionStartDateAsString}" />
+                </GridView>
+            </ListView.View>
         </ListView>
         <ListView Name="electionResult" Margin="0,37.4,391,-165" Grid.Row="2" 
                  ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Political Party" Width="150" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Votes" Width="120" DisplayMemberBinding="{Binding PartyVoteCount}" />
+                    <GridViewColumn Header="Political Party" Width="150" DisplayMemberBinding="{Binding FirstName}" />
+                    <GridViewColumn Header="Votes" Width="120" DisplayMemberBinding="{Binding AmountOfVotes}" />
                 </GridView>
             </ListView.View>
 

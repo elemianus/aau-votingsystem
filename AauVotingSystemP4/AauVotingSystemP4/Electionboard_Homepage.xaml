@@ -11,8 +11,8 @@
 
     <Grid>
 
-        <ListView x:Name="CandidatesListview" Margin="10,33,10,0"
-        	ScrollViewer.VerticalScrollBarVisibility="Auto" Height="228" VerticalAlignment="Top" SelectionChanged="CandidatesListview_SelectionChanged">
+        <ListView x:Name="CandidatesListview" Margin="10,52,10,0"
+        	ScrollViewer.VerticalScrollBarVisibility="Auto" Height="209" VerticalAlignment="Top" SelectionChanged="CandidatesListview_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Firstname" Width="150" DisplayMemberBinding="{Binding FirstName}" />
@@ -24,6 +24,6 @@
         <Button x:Name="addCandidateButton" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" Width="175" Click="addCandidateButton_Click" Height="20" Content="Add candidate" />
         <Button x:Name="removeCandidateButton" Content="Remove candidate" HorizontalAlignment="Left" Margin="391,266,0,0" VerticalAlignment="Top" Width="175" Click="removeCandidateButton_Click"/>
         <Button x:Name="editCandidateButton" Content="Edit candidate" HorizontalAlignment="Left" Margin="204,266,0,0" VerticalAlignment="Top" Width="175" Click="editCandidateButton_Click"/>
-        <Label x:Name="electionboardName" Content="Election board: " HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" Width="556"/>
+        <Label x:Name="electionboardName" Content="Election board: " FontSize="30" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" Width="556"/>
     </Grid>
 </Page>

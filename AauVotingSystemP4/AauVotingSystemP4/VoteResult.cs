@@ -8,13 +8,13 @@ namespace AauVotingSystemP4
 {
     class VoteResult : IComparable<VoteResult>
     {
-        public string FirstName;
-        public string LastName;
-        public int CandidateId;
-        public int PartyId;
-        public int AmountOfVotes;
-        public int NominationDistrictId;
-        public bool IsNationalVotingOption;
+        public string FirstName { get; }
+        public string LastName { get; }
+        public int CandidateId { get; }
+        public int PartyId { get; }
+        public int AmountOfVotes { get; }
+        public int NominationDistrictId { get; }
+        public bool IsNationalVotingOption { get; }
 
         public VoteResult(string firstName, string lastName, int candidateId, int partyId, int amountOfVotes, int nominationDistrictId, bool isNationalVotingOption)
         {
@@ -29,7 +29,7 @@ namespace AauVotingSystemP4
 
         public int CompareTo(VoteResult other)
         {
-            if (this.AmountOfVotes > other.AmountOfVotes)
+            if (this.AmountOfVotes < other.AmountOfVotes)
                 return 1;
             else
                 return -1;
