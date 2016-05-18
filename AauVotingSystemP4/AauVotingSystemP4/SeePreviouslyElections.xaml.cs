@@ -44,6 +44,7 @@ namespace AauVotingSystemP4
             var resultListParty = partyResults.CalculateResultForParties();
             var resultListCandidate = partyResults.CalculateResultsForCandidates();
             var resultListCandidateFinish = new List<ListOfCandidateResults>();
+           
 
             for (int i = 0; i < resultListCandidate.Count; i++) //Add candidates without party
             {
@@ -51,6 +52,7 @@ namespace AauVotingSystemP4
                 resultListCandidateFinish.Add(new ListOfCandidateResults() { Votes = resultListCandidate[i].AmountOfVotes, Name = resultListCandidate[i].FirstName, Party = partysDictionary[resultListCandidate[i].PartyId].FirstName });
                 
             }
+
 
             resultListParty.Sort();
             resultListCandidateFinish.Sort();
