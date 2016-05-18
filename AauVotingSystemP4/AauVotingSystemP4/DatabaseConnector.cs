@@ -373,27 +373,32 @@ namespace AauVotingSystemP4
         /// Update the voting option, can be either a party or a candidate
         /// </summary>
         /// <param name="option">The VO to update</param>
-        public void UpdateVotingOption(VotingOption option)
+        /// <returns>True if the voting option is updated</returns>
+        public bool UpdateVotingOption(VotingOption option, int electionId)
         {
             string sqlString = "";
-
-            if (option.IsNationalVotingOption)
+            if (!IsBallotFinalized(electionId))
             {
-                sqlString = String.Format("UPDATE party SET Name ='{0}' WHERE Party_ID = {1}", option.FirstName, option.PartyId);
+                if (option.IsNationalVotingOption)
+                {
+                    sqlString = String.Format("UPDATE party SET Name ='{0}' WHERE Party_ID = {1}", option.FirstName, option.PartyId);
+                }
+                else
+                {
+                    sqlString = String.Format("UPDATE candidates SET FirstName = '{0}', LastName = '{1}', Party_ID = {2} WHERE Candidate_ID = {3}", option.FirstName, option.LastName, option.PartyId, option.VotingOptionId);
+                }
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = GetDefaultConnection();
+
+                cmd.CommandText = sqlString;
+                cmd.ExecuteReader();
+                cmd.Connection.Close();
+
+                return true;
             }
-            else
-            {
-                sqlString = String.Format("UPDATE candidates SET FirstName = '{0}', LastName = '{1}', Party_ID = {2} WHERE Candidate_ID = {3}", option.FirstName, option.LastName, option.PartyId, option.VotingOptionId);
+            else {
+                return false;
             }
-
-            Console.WriteLine(sqlString);
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = GetDefaultConnection();
-
-            cmd.CommandText = sqlString;
-            cmd.ExecuteReader();
-            cmd.Connection.Close();
-
         }
 
         /// <summary>
@@ -421,27 +426,41 @@ namespace AauVotingSystemP4
         /// </summary>
         /// <param name="option">Voting option to be added</param>
         /// <param name="electionId">The election to add it to</param>
-        public void AddVotionOPtion(VotingOption option, int electionId)
+        /// <returns>True if the voting option is added, otherwise false</returns>
+        public bool AddVotionOPtion(VotingOption option, int electionId)
         {
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = GetDefaultConnection();
 
-            if (option.IsNationalVotingOption)
+            if (!IsBallotFinalized(electionId))
             {
-                string sqlString = String.Format("INSERT INTO party (Name, Election_ID)VALUES('{0}', '{1}');", option.FirstName, electionId);
+                if (option.IsNationalVotingOption)
+                {
+                    string sqlString = String.Format("INSERT INTO party (Name, Election_ID)VALUES('{0}', '{1}');", option.FirstName, electionId);
 
-                cmd.CommandText = sqlString;
+                    cmd.CommandText = sqlString;
+                }
+                else
+                {
+                    string sqlString = "";
+                    if (option.PartyId == -1)
+                    {
+                        sqlString = String.Format("INSERT INTO candidates(FirstName, LastName, Party_ID, NominationDistrict_ID, Election_ID) VALUES('{0}', '{1}', {2}, {3}, {4});",
+                option.FirstName, option.LastName, "null", option.NominationDistrictId, electionId);
+                    }
+                    else {
+                        sqlString = String.Format("INSERT INTO candidates(FirstName, LastName, Party_ID, NominationDistrict_ID, Election_ID) VALUES('{0}', '{1}', {2}, {3}, {4});",
+                    option.FirstName, option.LastName, option.PartyId, option.NominationDistrictId, electionId);
+                    }
+
+                    cmd.CommandText = sqlString;
+                }
+                cmd.ExecuteReader();
+                cmd.Connection.Close();
+                return true;
             }
-            else
-            {
-                string sqlString = String.Format("INSERT INTO candidates(FirstName, LastName, Party_ID, NominationDistrict_ID, Election_ID) VALUES('{0}', '{1}', {2}, {3}, {4});",
-            option.FirstName, option.LastName, option.PartyId, option.NominationDistrictId, electionId);
-
-                cmd.CommandText = sqlString;
-            }
-
-            cmd.ExecuteReader();
             cmd.Connection.Close();
+            return false;
         }
 
         /// <summary>
@@ -561,27 +580,20 @@ namespace AauVotingSystemP4
         /// </summary>
         /// <param name="ballotfinalized"></param>
         /// <returns>True if the votingballot is finalized and if it is not it returns false</returns>
-        public bool IsBallotFinalized(string ballotfinalized)
+        public bool IsBallotFinalized(int electionId)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = String.Format("SELECT COUNT (*) FROM election WHERE Ballotfinalized = '{0}';", ballotfinalized);
+            cmd.CommandText = String.Format("SELECT Ballotfinalized FROM election WHERE Election_ID = '{0}';", electionId);
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
-            Int64 numberofFinalizedballots = 0;
+            bool isPBallotFinalized = false;
             while (reader.Read())
             {
-                numberofFinalizedballots = (Int64)reader[0];
+                isPBallotFinalized = (bool)reader[0];
             }
 
             cmd.Connection.Close();
-            if (numberofFinalizedballots > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return isPBallotFinalized;
         }
 
         /// <summary>
@@ -610,8 +622,6 @@ namespace AauVotingSystemP4
             return null; //If no result found
 
         }
-
-
 
         /// <summary>
         /// Checks if electionboard exists.
@@ -645,29 +655,30 @@ namespace AauVotingSystemP4
         /// </summary>
         /// <param name="option">Th option to delete</param>
         /// <returns>True if succesfully deleted, otherwise false</returns>
-        public bool DeleteVotionOption(VotingOption option)
+        public bool DeleteVotionOption(VotingOption option, int electionId)
         {
             try
             {
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = GetDefaultConnection();
 
-                if (option.IsNationalVotingOption)
+                if (!IsBallotFinalized(electionId))
                 {
-                    cmd.CommandText = String.Format("DELETE FROM party WHERE Party_ID = {0} ;", option.PartyId);
-                }
-                else
-                {
-                    cmd.CommandText = String.Format("DELETE FROM candidates WHERE Candidate_id = {0} ;", option.VotingOptionId);
-                }
+                    if (option.IsNationalVotingOption)
+                    {
+                        cmd.CommandText = String.Format("DELETE FROM party WHERE Party_ID = {0} ;", option.PartyId);
+                    }
+                    else
+                    {
+                        cmd.CommandText = String.Format("DELETE FROM candidates WHERE Candidate_id = {0} ;", option.VotingOptionId);
+                    }
+                    MySqlDataReader reader = cmd.ExecuteReader();
 
-                MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    Console.WriteLine(reader);
+                    cmd.Connection.Close();
                 }
-
-                cmd.Connection.Close();
+                else {
+                    return false;
+                }
             }
             catch (MySql.Data.MySqlClient.MySqlException)
             {
@@ -863,14 +874,7 @@ namespace AauVotingSystemP4
 
             string sqlString = "";
 
-            if (isBallotFinalized)
-            {
-                sqlString = String.Format("UPDATE election SET Startdate = '{0}', Enddate = '{1}', Type_of_election = '{2}', Ballotfinalized = {3} WHERE Election_ID = {4}", startdate.ToString("yyyy-MM-dd HH:mm:ss"), enddate.ToString("yyyy-MM-dd HH:mm:ss"), typeOfElection, 1, electionId);
-            }
-            else
-            {
-                sqlString = String.Format("UPDATE election SET Startdate = '{0}', Enddate = '{1}', Type_of_election = '{2}', Ballotfinalized = {3} WHERE Election_ID = {4}", startdate.ToString("yyyy-MM-dd HH:mm:ss"), enddate.ToString("yyyy-MM-dd HH:mm:ss"), typeOfElection, 0, electionId);
-            }
+            sqlString = String.Format("UPDATE election SET Startdate = '{0}', Enddate = '{1}', Type_of_election = '{2}', Ballotfinalized = {3} WHERE Election_ID = {4}", startdate.ToString("yyyy-MM-dd HH:mm:ss"), enddate.ToString("yyyy-MM-dd HH:mm:ss"), typeOfElection, isBallotFinalized, electionId);
 
             Console.WriteLine(sqlString);
             MySqlCommand cmd = new MySqlCommand();

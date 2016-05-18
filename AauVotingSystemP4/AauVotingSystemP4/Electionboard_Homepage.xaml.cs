@@ -112,8 +112,14 @@ namespace AauVotingSystemP4
         private void removeCandidateButton_Click(object sender, RoutedEventArgs e)
         {
             var db = new DatabaseConnector();
-            db.DeleteVotionOption(currentVotingOption);
-            UpdateListOfCandidates();
+            if (db.DeleteVotionOption(currentVotingOption, electionBoard.ElectionId))
+            {
+                UpdateListOfCandidates();
+            }
+            else
+            {
+                MessageBox.Show("Cannot remove candidate - ballot likely finalized");
+            }
         }
     }
 }

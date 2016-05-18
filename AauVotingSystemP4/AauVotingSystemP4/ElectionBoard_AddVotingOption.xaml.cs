@@ -61,9 +61,17 @@ namespace AauVotingSystemP4
                 if (currentParty != null)
                     partyId = currentParty.PartyId;
                 VotingOption vo = new VotingOption(firstNameTextBox.Text, lastNameTextBox.Text, electionBoard.NominationDistrictId, partyId);
-                dbConector.AddVotionOPtion(vo, electionBoard.ElectionId);
 
-                launchWindow.UpdateListOfCandidates();
+                if (dbConector.AddVotionOPtion(vo, electionBoard.ElectionId))
+                {
+                    launchWindow.UpdateListOfCandidates();
+                }
+                else
+                {
+                    MessageBox.Show("Could not add the option - the ballot might be finalized");
+                }
+
+                
                 Close();
             }
             else //Existing voting option
@@ -72,8 +80,17 @@ namespace AauVotingSystemP4
                 if(currentParty!=null)
                     partyId = currentParty.PartyId;
                 var vo = new VotingOption(firstNameTextBox.Text, lastNameTextBox.Text, currentVotingOption.NominationDistrictId, partyId, currentVotingOption.VotingOptionId);
-                dbConector.UpdateVotingOption(vo);
-                launchWindow.UpdateListOfCandidates();
+
+
+                if (dbConector.UpdateVotingOption(vo, electionBoard.ElectionId))
+                {
+                    launchWindow.UpdateListOfCandidates();
+                }
+                else
+                {
+                    MessageBox.Show("Could not edit the option - the ballot might be finalized");
+                }
+                
                 Close();
             }
         }

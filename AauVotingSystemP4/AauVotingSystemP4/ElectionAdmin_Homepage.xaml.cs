@@ -187,7 +187,7 @@ namespace AauVotingSystemP4
             if (currentParty != null)
             {
                 var db = new DatabaseConnector();
-                if (db.DeleteVotionOption(currentParty))
+                if (db.DeleteVotionOption(currentParty,currentElection.Election_ID))
                 {
                     UpdateListOfNationalVotingOptions();
                 }

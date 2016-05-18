@@ -44,17 +44,32 @@ namespace AauVotingSystemP4
             {
                 var vo = new VotingOption(partyTextBox.Text, "", -1);
                 vo.IsNationalVotingOption = true;
-                dbConector.AddVotionOPtion(vo, electionId);
+
+                if (dbConector.AddVotionOPtion(vo, electionId))
+                {
+                    launchingWindow.UpdateListOfNationalVotingOptions();
+                    Close();
+                }
+                else {
+                    MessageBox.Show("Cannot add votingoption, ballot is likely finalized");
+                }
             }
             else
             {
                 var vo = new VotingOption(partyTextBox.Text, "", currentVotingOption.NominationDistrictId, currentVotingOption.PartyId, currentVotingOption.VotingOptionId);
                 vo.IsNationalVotingOption = true;
-                dbConector.UpdateVotingOption(vo);
+                if(dbConector.UpdateVotingOption(vo, electionId))
+                {
+                    launchingWindow.UpdateListOfNationalVotingOptions();
+                    Close();
+                }
+                else {
+                    MessageBox.Show("Cannot edit votingoption, ballot is likely finalized");
+                }
             }
 
-            launchingWindow.UpdateListOfNationalVotingOptions();
-            Close();
+            
+            
         }
     }
 }
