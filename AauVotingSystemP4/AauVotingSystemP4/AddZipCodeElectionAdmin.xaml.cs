@@ -33,13 +33,12 @@ namespace AauVotingSystemP4
 
             if (zipCode != null) {
                 zipTextBox.Text = zipCode.ZipCodeId+"";
-                nameTextBox.Text = zipCode.Name;
             }
         }
 
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
-            ZipCode zip = new ZipCode(int.Parse(zipTextBox.Text), nameTextBox.Text);
+            ZipCode zip = new ZipCode(int.Parse(zipTextBox.Text), "");
             var dbConector = new DatabaseConnector();
 
             if (currentZipCode == null)

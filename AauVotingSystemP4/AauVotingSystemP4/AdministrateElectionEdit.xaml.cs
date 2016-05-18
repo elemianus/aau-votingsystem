@@ -42,10 +42,13 @@ namespace AauVotingSystemP4
 
             this.isBallotFinalized = myElection.IsBallotFinalized;
 
-            if (isBallotFinalized)
+            if (isBallotFinalized) { 
                 finalized.IsChecked = true;
-            else
+                notFinalized.Visibility = Visibility.Hidden;
+            }
+            else { 
                 notFinalized.IsChecked = true;
+            }
         }
 
         private string StringFromDateTime(DateTime dateTime) {

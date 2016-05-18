@@ -32,7 +32,7 @@ namespace AauVotingSystemP4
             InitializeComponent();
             myElectionId = ElectionID;
             var databaseConector = new DatabaseConnector();
-            myNomCandidates = databaseConector.GetVotingOptionForNominationDistrict(databaseConector.GetNomDFromCPR(LoginCitizen.CitizenCPR), myElectionId);
+            myNomCandidates = databaseConector.GetVotingOptionForNominationDistrict(databaseConector.GetNomDFromCPR(LoginCitizen.CitizenCPR,myElectionId), myElectionId);
             myParties = databaseConector.GetListOfNationalVotionOptions(myElectionId);
 
             for (int i = 0; i < myParties.Count; i++) //Add candidate for each party
@@ -62,7 +62,7 @@ namespace AauVotingSystemP4
         private void VoteButton_Click(object sender, RoutedEventArgs e)
         {                              
             var databaseConector = new DatabaseConnector();
-            if (databaseConector.RegisterVote(LoginCitizen.myCitizen, myFinalListForNomD[myListbox.SelectedIndex], myElectionId, databaseConector.GetNomDFromCPR(LoginCitizen.CitizenCPR)))
+            if (databaseConector.RegisterVote(LoginCitizen.myCitizen, myFinalListForNomD[myListbox.SelectedIndex], myElectionId, databaseConector.GetNomDFromCPR(LoginCitizen.CitizenCPR,myElectionId)))
             {
                 MessageBox.Show("You have voted for " + myListbox.SelectedItem.ToString());
                 Close();

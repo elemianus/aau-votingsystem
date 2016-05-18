@@ -874,6 +874,15 @@ namespace AauVotingSystemP4
 
             string sqlString = "";
 
+            //Check if finalizing election
+            if (isBallotFinalized)
+            {
+                if (!IsBallotFinalized(electionId))//Check if election allready finalized
+                {
+                    GenerateResultTable(GetElection(electionId)); //If election not allready finalized , generate results table to vote
+                }
+            }
+
             sqlString = String.Format("UPDATE election SET Startdate = '{0}', Enddate = '{1}', Type_of_election = '{2}', Ballotfinalized = {3} WHERE Election_ID = {4}", startdate.ToString("yyyy-MM-dd HH:mm:ss"), enddate.ToString("yyyy-MM-dd HH:mm:ss"), typeOfElection, isBallotFinalized, electionId);
 
             Console.WriteLine(sqlString);
@@ -884,22 +893,25 @@ namespace AauVotingSystemP4
             cmd.ExecuteReader();
             cmd.Connection.Close();
 
+
+            
+
             return true;
         }
 
-        public int GetNomDFromCPR(string citizenCPR)
+        public int GetNomDFromCPR(string citizenCPR,int electionId)
         {
 
-            int zipCode;
+            int nominationDistrictId;
 
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = String.Format("Select * FROM citizen JOIN zipcode ON citizen.ZipCode = zipcode.ZipCode JOIN relation ON citizen.ZipCode = relation.ZipCode WHERE citizen.CPR = {0}; ", citizenCPR);
+            cmd.CommandText = String.Format("select * FROM nominationdistrict natural join relation join citizen ON citizen.ZipCode = relation.ZipCode WHERE Election_ID = {0} AND citizen.CPR={1}; ",electionId, citizenCPR);
             cmd.Connection = GetDefaultConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                zipCode = (int)reader[4];
-                return zipCode;
+                nominationDistrictId = (int)reader[0];
+                return nominationDistrictId;
             }
             cmd.Connection.Close();
             return -1;
