@@ -16,6 +16,10 @@ namespace AauVotingSystemP4
         private List<ZipCode> zipCodes = new List<ZipCode>();
         private VotingBallot nomDBallot;
         private Election associatedElection;
+        /// <summary>
+        /// Private lists from containing the results from votes ensures that the contents of the lists cant be modified. That is what the private is for.
+        /// </summary>
+        private List<VoteResult> votesinNomD = new List<VoteResult>();
 
         public NominationDistrict(Election associatedElection, string name, int numberOfMandates, int nominationDistrictId = -1)
         {
@@ -38,15 +42,6 @@ namespace AauVotingSystemP4
                 return false;
             nomDBallot.AddVotingOption(option);
             return true;
-        }
-        /// <summary>
-        /// Private lists from containing the results from votes ensures that the contents of the lists cant be modified. That is what the private is for.
-        /// </summary>
-        private List<Vote> votesinNomD = new List<Vote>();
-
-        public List<Vote> GetVotesForNomD()
-        {
-            return votesinNomD;
         }
 
         /// <summary>
