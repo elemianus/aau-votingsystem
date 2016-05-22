@@ -23,18 +23,18 @@ namespace AauVotingSystemP4
             {
                 if (myNomCandidates[i].PartyId < 1)
                 {
-                    votingOptions.Add(myNomCandidates[i]);
+                    AddVotingOption(myNomCandidates[i]);
                 }
             }
 
             for (int i = 0; i < myParties.Count; i++) //Add candidate for each party
             {
-                votingOptions.Add(myParties[i]);
+                AddVotingOption(myParties[i]);
                 foreach (var item in myNomCandidates)
                 {
                     if (item.PartyId == myParties[i].PartyId)
                     {
-                        votingOptions.Add(item);
+                        AddVotingOption(item);
                     }
                 }
             }
