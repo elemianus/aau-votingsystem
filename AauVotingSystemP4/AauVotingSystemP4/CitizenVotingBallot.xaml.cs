@@ -20,14 +20,8 @@ namespace AauVotingSystemP4
     /// </summary>
     public partial class CitizenVotingBallot : Window
     {
-        List<VotingOption> myParties;
-        List<VotingOption> myNomCandidates;
-        List<VotingOption> myTempListNomD = new List<VotingOption>();
-        List<VotingOption> myinalListForNomD = new List<VotingOption>();
-
         int myElectionId;
         private VotingBallot ballot;
-
 
         public CitizenVotingBallot(int ElectionID)
         {
