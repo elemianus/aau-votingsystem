@@ -35,7 +35,7 @@ namespace AauVotingSystemP4
         public void AddListOfCitizensToZipCode(List<Citizen> input) {
             foreach(Citizen item in input) { 
                 if(item.Zipcode == ZipCodeId)
-                    citizensInThisZipCode.AddRange(input);
+                    citizensInThisZipCode.Add(item);
             }
         }
 
