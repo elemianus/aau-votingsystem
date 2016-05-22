@@ -120,7 +120,6 @@
       <DependentUpon>LoginElectionboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="NominationDistrict.cs" />
-    <Compile Include="NominationDistrictGenerator.cs" />
     <Compile Include="ResultCalculator.cs" />
     <Compile Include="SeePreviouslyElections.xaml.cs">
       <DependentUpon>SeePreviouslyElections.xaml</DependentUpon>

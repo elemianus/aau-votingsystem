@@ -30,7 +30,6 @@ namespace AauVotingSystemP4
             var databaseConector = new DatabaseConnector();
             electionBoard = databaseConector.GetElectionBoardForId(electionBoardId);
             electionboardName.Content += electionBoard.NominationDistrictName;
-
             
             UpdateListOfCandidates();
         }

@@ -9,8 +9,36 @@ namespace AauVotingSystemP4
     public class VotingBallot
     {
 
-        private List<VotingOption> votingOptions;
+        private List<VotingOption> votingOptions = new List<VotingOption>();
+        private int electionId;
 
+        public VotingBallot(int electionId, int nominationDistrictId)
+        {
+            var databaseConector = new DatabaseConnector();
+            this.electionId = electionId;
+            var myNomCandidates = databaseConector.GetVotingOptionForNominationDistrict(nominationDistrictId, electionId);
+            var myParties = databaseConector.GetListOfNationalVotionOptions(electionId);
+
+            for (int i = 0; i < myNomCandidates.Count; i++) //Add candidates without party
+            {
+                if (myNomCandidates[i].PartyId < 1)
+                {
+                    votingOptions.Add(myNomCandidates[i]);
+                }
+            }
+
+            for (int i = 0; i < myParties.Count; i++) //Add candidate for each party
+            {
+                votingOptions.Add(myParties[i]);
+                foreach (var item in myNomCandidates)
+                {
+                    if (item.PartyId == myParties[i].PartyId)
+                    {
+                        votingOptions.Add(item);
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// A ballot can only be inizialised with a voting option. A ballot cannot exist without a voting option
