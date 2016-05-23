@@ -920,7 +920,22 @@ namespace AauVotingSystemP4
             return -1;
         }
 
-        
+        public bool RegisterBlankVote(Citizen citizen, int electionId, int nominationDistrictId)
+        {
+            if (HasCitizenVotedForElection(citizen, electionId))
+            {
+                citizen.SetCitizenHasVoted();
+            }
+            if (citizen.Voteconducted)
+            {//Citizen has allready voted
+                return false;
+            }               
+            
+            RegisterThatCitizenHasVoted(citizen, electionId);
+       
+            return true;
+        }
+
 
 
 

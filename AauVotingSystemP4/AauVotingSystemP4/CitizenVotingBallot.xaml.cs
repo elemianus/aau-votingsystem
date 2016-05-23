@@ -47,6 +47,20 @@ namespace AauVotingSystemP4
             }
 
         }
+
+        private void VoteBlankButton_Click(object sender, RoutedEventArgs e)
+        {
+            var databaseConector = new DatabaseConnector();
+            if (databaseConector.RegisterBlankVote(LoginCitizen.myCitizen, myElectionId, databaseConector.GetNomDFromCPR(LoginCitizen.CitizenCPR, myElectionId)))
+            {
+                MessageBox.Show("You have voted blank");
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Error: You have already voted in this election");
+            }
+        }
     }
 
 
