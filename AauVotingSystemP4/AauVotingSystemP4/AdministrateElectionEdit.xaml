@@ -5,16 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AauVotingSystemP4"
         mc:Ignorable="d"
-        Title="AdministrateElectionEdit" Height="300" Width="402">
+        Title="AdministrateElectionEdit" Height="400" Width="402">
     <Grid>
         <TextBox x:Name="type_Of_Election" HorizontalAlignment="Left" Height="23" Margin="49,32,0,0" TextWrapping="Wrap" Text="Type of election" VerticalAlignment="Top" Width="120"/>
-        <DatePicker Name="startdate" HorizontalAlignment="Left" Margin="49,89,0,0" VerticalAlignment="Top"/>
-        <DatePicker Name="enddate" HorizontalAlignment="Left" Margin="49,60,0,0" VerticalAlignment="Top"/>
-        <RadioButton GroupName="finalize" x:Name="finalized" Content="Finalized" HorizontalAlignment="Left" Margin="49,136,0,0" VerticalAlignment="Top" />
-        <RadioButton GroupName="finalize" x:Name="notFinalized" Content="Not finalized" HorizontalAlignment="Left" Margin="49,156,0,0" VerticalAlignment="Top" />
-        <Button x:Name="saveChanges" Content="Save changes" HorizontalAlignment="Left" Margin="49,213,0,0" VerticalAlignment="Top" Width="75" Click="saveChanges_Click"/>
-        <TextBox x:Name="startTimeTextbox" Height="23" TextWrapping="Wrap" Text="08:00" Margin="178,60,169,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="endTimeTextbox" Height="23" Margin="178,90,169,0" TextWrapping="Wrap" Text="20:00" VerticalAlignment="Top"/>
+        <DatePicker Name="enddate" HorizontalAlignment="Left" Margin="49,127,0,0" VerticalAlignment="Top"/>
+        <DatePicker Name="startdate" HorizontalAlignment="Left" Margin="49,79,0,0" VerticalAlignment="Top"/>
+        <RadioButton GroupName="finalize" x:Name="finalized" Content="Finalized" HorizontalAlignment="Left" Margin="49,176,0,0" VerticalAlignment="Top" />
+        <RadioButton GroupName="finalize" x:Name="notFinalized" Content="Not finalized" HorizontalAlignment="Left" Margin="49,196,0,0" VerticalAlignment="Top" />
+        <Button x:Name="saveChanges" Content="Save changes" HorizontalAlignment="Left" Margin="49,244,0,0" VerticalAlignment="Top" Width="75" Click="saveChanges_Click"/>
+        <TextBox x:Name="startTimeTextbox" Height="23" TextWrapping="Wrap" Text="08:00" Margin="178,79,169,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="endTimeTextbox" Height="23" Margin="178,128,169,0" TextWrapping="Wrap" Text="20:00" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Start date" HorizontalAlignment="Left" Margin="49,53,0,0" VerticalAlignment="Top" Width="84"/>
+        <Label x:Name="label1" Content="End date" HorizontalAlignment="Left" Margin="49,101,0,0" VerticalAlignment="Top" Width="102"/>
 
     </Grid>
 </Window>

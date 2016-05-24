@@ -29,7 +29,7 @@
             </ListView.View>
         </ListView>
         <Button x:Name="editZipCodeButton" Content="Edit zipcode" HorizontalAlignment="Left" Height="25" Margin="212,451,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.505,0.462" Click="editZipCodeButton_Click"/>
-        <Button x:Name="createZipCodeButton" Content="Create zipcode" HorizontalAlignment="Left" Height="25" Margin="50,451,0,0" VerticalAlignment="Top" Width="157" Click="createZipCodeButton_Click"/>
+        <Button x:Name="createZipCodeButton" Content="Add zipcode" HorizontalAlignment="Left" Height="25" Margin="50,451,0,0" VerticalAlignment="Top" Width="157" Click="createZipCodeButton_Click"/>
         <Button x:Name="removeButton" Content="Remove zipcode" HorizontalAlignment="Left" Height="25" Margin="369,451,0,0" VerticalAlignment="Top" Width="157" Click="removeButton_Click"/>
 
         <Button x:Name="createNominationDistrictButton" Content="Create Nomination district" Margin="50,245,0,0" Click="createNominationDistrictButton_Click" HorizontalAlignment="Left" Width="157" Height="25" VerticalAlignment="Top"/>

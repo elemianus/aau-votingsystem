@@ -6,10 +6,10 @@
       xmlns:local="clr-namespace:AauVotingSystemP4"
       mc:Ignorable="d" 
       d:DesignHeight="300"
-      Title="LoginElectionboard" Width="451.525">
+      Title="LoginElectionboard" Width="500.525">
 
     <Grid>
-        <Label>You can use one of the following usernames, if you want to test the system: 1, 2, 3</Label>
+        <Label Content="You can use one of the following usernames, if you want to test the system: 41, 43, 44"/>
         <Label VerticalAlignment="Top" Name="Username" Content="Username:" Margin="27,49,197,223" Width="100"/>
         <TextBox VerticalAlignment="Top" Name="TypeInNominationDistrict" Margin="108,49,27,223" Width="170" Text="4"/>
         <Label VerticalAlignment="Top" Name="Password" Content="Password:" Margin="27,83,207,188" Width="100"/>

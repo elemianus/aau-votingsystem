@@ -46,7 +46,7 @@ namespace AauVotingSystemP4
         /// </summary>
         /// <param name="resultsForAllDistricts"></param>
         /// <returns></returns>
-        public List<VoteResult> TablulateResultsForParties(List<VoteResult> resultsForAllDistricts)
+        private List<VoteResult> TablulateResultsForParties(List<VoteResult> resultsForAllDistricts)
         {
             var conector = new DatabaseConnector();
 
