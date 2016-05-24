@@ -20,8 +20,8 @@
                  IsSynchronizedWithCurrentItem="True" SelectionChanged="electionsListBox_SelectionChanged" Margin="0,39.2,0,173" Grid.RowSpan="2">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Political Party" Width="Auto" DisplayMemberBinding="{Binding ElectionType}" />
-                    <GridViewColumn Header="Votes" Width="Auto" DisplayMemberBinding="{Binding ElectionStartDateAsString}" />
+                    <GridViewColumn Header="Election" Width="Auto" DisplayMemberBinding="{Binding ElectionType}" />
+                    <GridViewColumn Header="Start" Width="Auto" DisplayMemberBinding="{Binding ElectionStartDateAsString}" />
                 </GridView>
             </ListView.View>
         </ListView>
